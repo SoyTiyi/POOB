@@ -37,4 +37,22 @@ public class AutomataCelularTest{
         AutomataCelular ac = new AutomataCelular();
         ac.ticTac(); ac.ticTac(); ac.ticTac();
     }
+    
+    @Test 
+    public void pruebaBarrera(){
+        AutomataCelular ac = new AutomataCelular();
+        ac.ticTac(); ac.ticTac(); ac.ticTac();
+    }
+    
+    @Test
+    public void pruebasCanibalUno(){
+        AutomataCelular ac = new AutomataCelular();
+        ac.ticTac();
+    }
+    
+    @Test
+    public void pruebasCanibalDos(){
+        AutomataCelular ac = new AutomataCelular();
+        ac.ticTac(); ac.ticTac(); ac.ticTac();
+    }
 }

@@ -30,11 +30,14 @@ public class AutomataCelular{
     }
 
     public void algunosElementos(){
-        Celula indiana = new Celula(this,1,1);
-        Celula OO7 = new Celula(this,2,2);
-        Celula marx = new Izquierdosa(this,3,1);
-        Celula hegel = new Izquierdosa(this,3,2);
-        Celula barrera = new Barrera(this,4,1);
+        Elemento indiana = new Celula(this,1,1);
+        Elemento OO7 = new Celula(this,2,2);
+        Elemento marx = new Izquierdosa(this,3,1);
+        Elemento hegel = new Izquierdosa(this,3,2);
+        Elemento suroeste = new Barrera(this,15,18);
+        Elemento noreste = new Barrera(this,1,18);
+        Elemento santiago = new Canibal(this,3,3);
+        Elemento ricardo = new Canibal(this,1,17);
     }
     
     public void ticTac(){
