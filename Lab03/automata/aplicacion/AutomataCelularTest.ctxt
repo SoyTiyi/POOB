@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=AutomataCelularTest
+comment0.text=\r\n\ The\ test\ class\ CelulaTest.\r\n\r\n\ @author\ \ (Santiago\ Martinez\ y\ Ricardo\ Amaya)\r\n\ @version\ (1.0)\r\n
+comment1.params=
+comment1.target=void\ deberiaCrear()
+comment2.params=
+comment2.target=void\ deberiaEstarEnLaMatriz()
+comment3.params=
+comment3.target=void\ deberiaTenerLongitudCuarenta()
+comment4.params=
+comment4.target=void\ pruebaCelulaIzquierdosa()
+numComments=5
