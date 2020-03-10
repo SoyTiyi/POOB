@@ -38,6 +38,9 @@ public class AutomataCelular{
         Elemento noreste = new Barrera(this,1,18);
         Elemento santiago = new Canibal(this,3,3);
         Elemento ricardo = new Canibal(this,1,17);
+        Elemento virus = new Virus(this,4,1);
+        Elemento john = new Conway(this,5,1);
+        Elemento horton  = new Conway(this,5,2);
     }
     
     public void ticTac(){

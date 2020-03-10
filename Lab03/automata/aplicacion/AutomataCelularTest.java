@@ -55,4 +55,23 @@ public class AutomataCelularTest{
         AutomataCelular ac = new AutomataCelular();
         ac.ticTac(); ac.ticTac(); ac.ticTac();
     }
+    
+    @Test
+    public void debeCrearVirus(){
+        AutomataCelular ac = new AutomataCelular();
+        ac.ticTac();
+    }
+    
+    @Test
+    public void deberiaReproducirse(){
+        AutomataCelular ac = new AutomataCelular();
+        ac.ticTac(); ac.ticTac(); ac.ticTac(); ac.ticTac(); ac.ticTac(); ac.ticTac();
+        ac.ticTac();
+    }
+    
+    @Test
+    public void deberiaMoririJuegoDeLaVida(){
+        AutomataCelular ac = new AutomataCelular();
+        ac.ticTac();
+    }
 }
