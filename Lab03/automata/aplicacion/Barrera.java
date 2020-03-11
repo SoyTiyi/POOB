@@ -19,6 +19,7 @@ public class Barrera extends Celula{
         this.fila=fila;
         this.columna=columna;
         estadoActual='m';
+        estadoSiguiente='m';
         automata=ac;
     }
     

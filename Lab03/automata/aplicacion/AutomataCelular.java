@@ -36,11 +36,18 @@ public class AutomataCelular{
         Elemento hegel = new Izquierdosa(this,3,2);
         Elemento suroeste = new Barrera(this,15,18);
         Elemento noreste = new Barrera(this,1,18);
-        Elemento santiago = new Canibal(this,3,3);
+        Elemento santiago = new Canibal(this,2,1);
         Elemento ricardo = new Canibal(this,1,17);
         Elemento virus = new Virus(this,4,1);
-        Elemento john = new Conway(this,5,1);
-        Elemento horton  = new Conway(this,5,2);
+        Elemento john = new Conway(this,5,6);
+        Elemento horton  = new Conway(this,5,7);
+        Elemento bloque1 = new Conway(this,12,0);
+        Elemento bloque2 = new Conway(this,12,1);
+        Elemento bloque3 = new Conway(this,13,0);
+        Elemento bloque4 = new Conway(this,13,1);
+        Elemento parpadea1 = new Conway(this,7,7);
+        Elemento parpadea2 = new Conway(this,7,8);
+        Elemento parpadea3 = new Conway(this,7,9);
     }
     
     public void ticTac(){

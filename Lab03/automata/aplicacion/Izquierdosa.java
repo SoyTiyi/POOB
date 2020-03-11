@@ -22,11 +22,13 @@ public class Izquierdosa extends Celula{
     }
     
     public void decida(){
-        Elemento vecino = automata.getElemento(fila,columna+1);
         super.decida();
-        if(vecino!=null){
-            if(vecino.isVivo()){
-                estadoActual='m';
+        for(int i=columna-1;i>-1;i--){
+            Elemento vecino = automata.getElemento(fila,i);
+            if(vecino!=null){
+                if(vecino.isVivo()){
+                    estadoSiguiente='m';
+                }
             }
         }
     }

@@ -49,8 +49,8 @@ public class Virus implements Elemento{
     }
     
     public final void cambie(){
-        if(edad>5){
-            if(fila<=20 && columna<=20){
+        if(edad>5 && automata.getElemento(fila,columna+1)==null){
+            if(columna<19){
                 Virus hijo = new Virus(automata,fila,columna+1);
             }
         }

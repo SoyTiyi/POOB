@@ -27,7 +27,7 @@ public class AutomataGUI extends JFrame{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         automata=ac;
         foto=new FotoAutomata(automata);
-        setSize(new Dimension(802,870)); 
+        setSize(new Dimension(800,700)); 
         prepareElementos();
         prepareAcciones();
 

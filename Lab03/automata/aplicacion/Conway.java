@@ -28,13 +28,13 @@ public class Conway extends Celula
         int vivas=0;
         if(fila<19 && columna<19 && fila>0 && columna>0){
             if(automata.getElemento(fila,columna+1)!= null && automata.getElemento(fila,columna+1).isVivo()){vivas++;}
-            else if(automata.getElemento(fila+1,columna+1)!= null && automata.getElemento(fila+1,columna+1).isVivo()){vivas++;}
-            else if(automata.getElemento(fila+1,columna)!= null && automata.getElemento(fila+1,columna).isVivo()){vivas++;}
-            else if(automata.getElemento(fila,columna-1)!= null && automata.getElemento(fila,columna-1).isVivo()){vivas++;}
-            else if(automata.getElemento(fila+1,columna-1)!= null && automata.getElemento(fila+1,columna-1).isVivo()){vivas++;}
-            else if(automata.getElemento(fila-1,columna+1)!= null && automata.getElemento(fila-1,columna+1).isVivo()){vivas++;}
-            else if(automata.getElemento(fila-1,columna-1)!= null && automata.getElemento(fila-1,columna-1).isVivo()){vivas++;}
-            else if(automata.getElemento(fila-1,columna)!= null && automata.getElemento(fila-1,columna).isVivo()){vivas++;}
+            if(automata.getElemento(fila+1,columna+1)!= null && automata.getElemento(fila+1,columna+1).isVivo()){vivas++;}
+            if(automata.getElemento(fila+1,columna)!= null && automata.getElemento(fila+1,columna).isVivo()){vivas++;}
+            if(automata.getElemento(fila,columna-1)!= null && automata.getElemento(fila,columna-1).isVivo()){vivas++;}
+            if(automata.getElemento(fila+1,columna-1)!= null && automata.getElemento(fila+1,columna-1).isVivo()){vivas++;}
+            if(automata.getElemento(fila-1,columna+1)!= null && automata.getElemento(fila-1,columna+1).isVivo()){vivas++;}
+            if(automata.getElemento(fila-1,columna-1)!= null && automata.getElemento(fila-1,columna-1).isVivo()){vivas++;}
+            if(automata.getElemento(fila-1,columna)!= null && automata.getElemento(fila-1,columna).isVivo()){vivas++;}
         }
         else{
             vivas=fronterasX();
@@ -46,17 +46,17 @@ public class Conway extends Celula
         int vivas=0;
         if(fila==0 && columna>0 && columna<19){
             if(automata.getElemento(fila,columna+1)!= null && automata.getElemento(fila,columna+1).isVivo()){vivas++;}
-            else if(automata.getElemento(fila,columna-1)!= null && automata.getElemento(fila,columna-1).isVivo()){vivas++;}
-            else if(automata.getElemento(fila+1,columna+1)!= null && automata.getElemento(fila+1,columna+1).isVivo()){vivas++;}
-            else if(automata.getElemento(fila+1,columna-1)!= null && automata.getElemento(fila+1,columna-1).isVivo()){vivas++;}
-            else if(automata.getElemento(fila+1,columna)!= null && automata.getElemento(fila+1,columna).isVivo()){vivas++;}
+            if(automata.getElemento(fila,columna-1)!= null && automata.getElemento(fila,columna-1).isVivo()){vivas++;}
+            if(automata.getElemento(fila+1,columna+1)!= null && automata.getElemento(fila+1,columna+1).isVivo()){vivas++;}
+            if(automata.getElemento(fila+1,columna-1)!= null && automata.getElemento(fila+1,columna-1).isVivo()){vivas++;}
+            if(automata.getElemento(fila+1,columna)!= null && automata.getElemento(fila+1,columna).isVivo()){vivas++;}
         }
         else if(fila==19 && columna>0 && columna<19){
             if(automata.getElemento(fila,columna+1)!= null && automata.getElemento(fila,columna+1).isVivo()){vivas++;}
-            else if(automata.getElemento(fila,columna-1)!= null && automata.getElemento(fila,columna-1).isVivo()){vivas++;}
-            else if(automata.getElemento(fila-1,columna+1)!= null && automata.getElemento(fila+1,columna+1).isVivo()){vivas++;}
-            else if(automata.getElemento(fila-1,columna-1)!= null && automata.getElemento(fila+1,columna-1).isVivo()){vivas++;}
-            else if(automata.getElemento(fila-1,columna)!= null && automata.getElemento(fila+1,columna).isVivo()){vivas++;}
+            if(automata.getElemento(fila,columna-1)!= null && automata.getElemento(fila,columna-1).isVivo()){vivas++;}
+            if(automata.getElemento(fila-1,columna+1)!= null && automata.getElemento(fila-1,columna+1).isVivo()){vivas++;}
+            if(automata.getElemento(fila-1,columna-1)!= null && automata.getElemento(fila-1,columna-1).isVivo()){vivas++;}
+            if(automata.getElemento(fila-1,columna)!= null && automata.getElemento(fila-1,columna).isVivo()){vivas++;}
         }
         else{
             vivas=fronterasY();
@@ -68,17 +68,17 @@ public class Conway extends Celula
         int vivas=0;
         if(columna==0 && fila>0 && fila<19){
             if(automata.getElemento(fila,columna+1)!= null && automata.getElemento(fila,columna+1).isVivo()){vivas++;}
-            else if(automata.getElemento(fila-1,columna)!= null && automata.getElemento(fila,columna-1).isVivo()){vivas++;}
-            else if(automata.getElemento(fila-1,columna+1)!= null && automata.getElemento(fila+1,columna+1).isVivo()){vivas++;}
-            else if(automata.getElemento(fila+1,columna)!= null && automata.getElemento(fila+1,columna-1).isVivo()){vivas++;}
-            else if(automata.getElemento(fila+1,columna+1)!= null && automata.getElemento(fila+1,columna).isVivo()){vivas++;}
+            if(automata.getElemento(fila-1,columna)!= null && automata.getElemento(fila-1,columna).isVivo()){vivas++;}
+            if(automata.getElemento(fila-1,columna+1)!= null && automata.getElemento(fila-1,columna+1).isVivo()){vivas++;}
+            if(automata.getElemento(fila+1,columna)!= null && automata.getElemento(fila+1,columna).isVivo()){vivas++;}
+            if(automata.getElemento(fila+1,columna+1)!= null && automata.getElemento(fila+1,columna+1).isVivo()){vivas++;}
         }
         else if(columna==19 && fila>0 && fila<19){
             if(automata.getElemento(fila,columna+1)!= null && automata.getElemento(fila,columna+1).isVivo()){vivas++;}
-            else if(automata.getElemento(fila,columna-1)!= null && automata.getElemento(fila,columna-1).isVivo()){vivas++;}
-            else if(automata.getElemento(fila-1,columna+1)!= null && automata.getElemento(fila+1,columna+1).isVivo()){vivas++;}
-            else if(automata.getElemento(fila-1,columna-1)!= null && automata.getElemento(fila+1,columna-1).isVivo()){vivas++;}
-            else if(automata.getElemento(fila-1,columna)!= null && automata.getElemento(fila+1,columna).isVivo()){vivas++;}
+            if(automata.getElemento(fila,columna-1)!= null && automata.getElemento(fila,columna-1).isVivo()){vivas++;}
+            if(automata.getElemento(fila-1,columna+1)!= null && automata.getElemento(fila-1,columna+1).isVivo()){vivas++;}
+            if(automata.getElemento(fila-1,columna-1)!= null && automata.getElemento(fila-1,columna-1).isVivo()){vivas++;}
+            if(automata.getElemento(fila-1,columna)!= null && automata.getElemento(fila-1,columna).isVivo()){vivas++;}
         }
         else{
             vivas=esquinas();
@@ -90,29 +90,30 @@ public class Conway extends Celula
         int vivas=0;
         if(columna==0 && fila==0){
             if(automata.getElemento(fila,columna+1)!=null && automata.getElemento(fila,columna+1).isVivo()){vivas++;}
-            else if(automata.getElemento(fila+1,columna+1)!=null && automata.getElemento(fila+1,columna+1).isVivo()){vivas++;}
-            else if(automata.getElemento(fila+1,columna)!=null && automata.getElemento(fila+1,columna).isVivo()){vivas++;}
+            if(automata.getElemento(fila+1,columna+1)!=null && automata.getElemento(fila+1,columna+1).isVivo()){vivas++;}
+            if(automata.getElemento(fila+1,columna)!=null && automata.getElemento(fila+1,columna).isVivo()){vivas++;}
         }
         else if(fila==0 && columna==19){
             if(automata.getElemento(fila-1,columna)!=null && automata.getElemento(fila-1,columna).isVivo()){vivas++;}
-            else if(automata.getElemento(fila+1,columna-1)!=null && automata.getElemento(fila+1,columna-1).isVivo()){vivas++;}
-            else if(automata.getElemento(fila+1,columna)!=null && automata.getElemento(fila+1,columna).isVivo()){vivas++;}
+            if(automata.getElemento(fila+1,columna-1)!=null && automata.getElemento(fila+1,columna-1).isVivo()){vivas++;}
+            if(automata.getElemento(fila+1,columna)!=null && automata.getElemento(fila+1,columna).isVivo()){vivas++;}
         }
         else if(fila==19 && columna==0){
             if(automata.getElemento(fila,columna+1)!=null && automata.getElemento(fila,columna+1).isVivo()){vivas++;}
-            else if(automata.getElemento(fila-1,columna+1)!=null && automata.getElemento(fila-1,columna+1).isVivo()){vivas++;}
-            else if(automata.getElemento(fila-1,columna)!=null && automata.getElemento(fila-1,columna).isVivo()){vivas++;}
+            if(automata.getElemento(fila-1,columna+1)!=null && automata.getElemento(fila-1,columna+1).isVivo()){vivas++;}
+            if(automata.getElemento(fila-1,columna)!=null && automata.getElemento(fila-1,columna).isVivo()){vivas++;}
         }
         else{
             if(automata.getElemento(fila,columna-1)!=null && automata.getElemento(fila,columna-1).isVivo()){vivas++;}
-            else if(automata.getElemento(fila-1,columna-1)!=null && automata.getElemento(fila-1,columna-1).isVivo()){vivas++;}
-            else if(automata.getElemento(fila-1,columna)!=null && automata.getElemento(fila-1,columna).isVivo()){vivas++;}
+            if(automata.getElemento(fila-1,columna-1)!=null && automata.getElemento(fila-1,columna-1).isVivo()){vivas++;}
+            if(automata.getElemento(fila-1,columna)!=null && automata.getElemento(fila-1,columna).isVivo()){vivas++;}
         }
         return vivas;
     }
     
     public void decida(){
         int vecinasVivas = verVesinos();
+        System.out.println(vecinasVivas);
         if((vecinasVivas==2 || vecinasVivas==3) && estadoActual=='m'){
             estadoSiguiente='v';
         }

@@ -47,7 +47,7 @@ public class AutomataCelularTest{
     @Test
     public void pruebasCanibalUno(){
         AutomataCelular ac = new AutomataCelular();
-        ac.ticTac();
+        ac.ticTac(); ac.ticTac();
     }
     
     @Test
@@ -72,6 +72,30 @@ public class AutomataCelularTest{
     @Test
     public void deberiaMoririJuegoDeLaVida(){
         AutomataCelular ac = new AutomataCelular();
+        ac.ticTac(); ac.ticTac();
+    }
+    
+    @Test
+    public void cuboPrimerTicTac(){
+        AutomataCelular ac = new AutomataCelular();
         ac.ticTac();
+    }
+    
+    @Test
+    public void cuboSegundoTicTac(){
+        AutomataCelular ac = new AutomataCelular();
+        ac.ticTac(); ac.ticTac();
+    }
+    
+    @Test
+    public void pruebaParpaderoPrimera(){
+        AutomataCelular ac = new AutomataCelular();
+        ac.ticTac(); ac.ticTac();
+    }
+    
+    @Test
+    public void pruebaParpaderoSegunda(){
+        AutomataCelular ac = new AutomataCelular();
+        ac.ticTac(); ac.ticTac(); ac.ticTac();
     }
 }
