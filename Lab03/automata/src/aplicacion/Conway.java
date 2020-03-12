@@ -24,7 +24,7 @@ public class Conway extends Celula
         color = Color.blue;
     }
 
-    private int verVesinos(){
+    private int verVecinos(){
         int vivas=0;
         if(fila<19 && columna<19 && fila>0 && columna>0){
             if(automata.getElemento(fila,columna+1)!= null && automata.getElemento(fila,columna+1).isVivo()){vivas++;}
@@ -111,16 +111,18 @@ public class Conway extends Celula
         return vivas;
     }
     
+    @Override
     public void decida(){
-        int vecinasVivas = verVesinos();
-        System.out.println(vecinasVivas);
-        if((vecinasVivas==2 || vecinasVivas==3) && estadoActual=='m'){
+        int vecinasVivas = verVecinos();
+        //System.out.println(vecinasVivas);
+        if((vecinasVivas==2 || vecinasVivas==3) && estadoActual=='v'){
             estadoSiguiente='v';
         }
-        else if(vecinasVivas==3 && estadoActual=='v'){
+        if(vecinasVivas==3 && estadoActual=='m'){
             estadoSiguiente='v';
         }
-        else if(vecinasVivas==1 || vecinasVivas>3){
+        if(vecinasVivas==1 || vecinasVivas>3){
+            System.out.println(fila+" "+columna+"entre al que no era"+vecinasVivas);
             estadoSiguiente='m';
         }
     }
