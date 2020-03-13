@@ -20,7 +20,6 @@ public class Conway extends Celula
         automata=ac;
         this.fila=fila;
         this.columna=columna;
-        estadoActual='v';
         color = Color.blue;
     }
 
@@ -118,11 +117,10 @@ public class Conway extends Celula
         if((vecinasVivas==2 || vecinasVivas==3) && estadoActual=='v'){
             estadoSiguiente='v';
         }
-        if(vecinasVivas==3 && estadoActual=='m'){
+        else if(vecinasVivas==3 && estadoActual=='m'){
             estadoSiguiente='v';
         }
-        if(vecinasVivas==1 || vecinasVivas>3){
-            System.out.println(fila+" "+columna+"entre al que no era"+vecinasVivas);
+        else if(vecinasVivas==1 || vecinasVivas>3){
             estadoSiguiente='m';
         }
     }
