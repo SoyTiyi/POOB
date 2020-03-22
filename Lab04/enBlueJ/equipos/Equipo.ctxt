@@ -9,4 +9,6 @@ comment2.text=\r\n\ Calcula\ el\ valor\ hora\ de\ un\ equipo\r\n
 comment3.params=
 comment3.target=int\ valorHoraEstimado()
 comment3.text=\r\n\ Calcula\ el\ valor\ hora\ estimado\ de\ un\ equipo.\r\n\ El\ valor\ estimado\ de\ una\ persona\ a\ la\ que\ no\ se\ conoce\ su\ valor\ es\ la\r\n\ media\ de\ los\ valores\ conocidos\r\n\ M\u00E1s\ del\ 75%\ del\ equipo\ debe\ tener\ valores\ conocidos\ \r\n\ @return\ el\ valor\ hora\ del\ equipo\r\n\ @throws\ EquipoException\ si\ en\ el\ equipo\ hay\ una\ persona\ desconocida\r\n\ o\ si\ no\ es\ posible\ calular\ el\ valor\ estimado\r\n
-numComments=4
+comment4.params=
+comment4.target=int\ valorPromedio()
+numComments=5

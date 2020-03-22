@@ -7,17 +7,13 @@ import org.junit.Test;
 
 
 public class EquipoTest{
-   
-
-    
     public EquipoTest(){
     }
-
-
+    
     @Before
     public void setUp(){
     }
-
+    
     @After
     public void tearDown(){
     }
@@ -32,6 +28,29 @@ public class EquipoTest{
             fail("Lanzó excepcion");
         }    
     }    
+    
+    @Test
+    public void deberiaCalcularElValorPromedioDeUnEquipoDePersonasConValorConocido(){
+        String [] nombres = {"Pedro","Santiago","Marcos","Juan","Judas"};
+        Equipo eq = new Equipo(nombres);
+        try {
+           assertEquals(150000,eq.valorHoraEstimado());
+        } catch (EquipoExcepcion e){
+            fail("Lanzó excepcion");
+        } 
+    }
+    
+    @Test
+    public void deberiaCalcularElValorPromedioDeUnEquipoDePersonasConValorySinValorConocido(){
+       String [] nombres = {"Pedro","Santiago","Marcos","Juan","Judas","Garcia","Ospina","Guarin"};
+        Equipo eq = new Equipo(nombres);
+        System.out.println();
+        try {
+           assertEquals(300000,eq.valorHoraEstimado());
+        } catch (EquipoExcepcion e){
+            fail("Lanzó excepcion");
+        }  
+    }
     
     @Test
     public void deberiaLanzarExcepcionSiElEquipoNoTienePersonas(){

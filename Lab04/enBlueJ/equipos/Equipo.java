@@ -24,7 +24,12 @@ public class Equipo{
         }
         else{
             for(Persona p: personas){
-                cantidad+=p.valorHora();
+                try{
+                    cantidad+=p.valorHora();
+                }
+                catch(EquipoExcepcion e){
+                    cantidad+=0;
+                }
             }
         }
         return cantidad;
@@ -40,23 +45,34 @@ public class Equipo{
      * o si no es posible calular el valor estimado
      */
     public int valorHoraEstimado() throws EquipoExcepcion{
-        int valorEstimado = valorHora()/personas.size();
+        int denominador = valorPromedio();
+        int valorEstimado = valorHora()/denominador;
+        System.out.println(valorEstimado);
         int cantidad=0;
         if(personas.size()==0){throw new EquipoExcepcion(EquipoExcepcion.EQUIPO_VACIO);}
         else{
             for(Persona p: personas){
-                if(p!=null){
-                    if(p.valorHora()!=0){cantidad+=p.valorHora();}
-                    else{cantidad+=valorEstimado;}
+                try{
+                    cantidad+=p.valorHora();
                 }
-                else{throw new EquipoExcepcion(EquipoExcepcion.PERSONA_DESCONOCIDA);}
+                catch(EquipoExcepcion e){
+                    cantidad+=valorEstimado;
+                }
             }
         }
         return cantidad;
     }
-        
     
-
-    
-    
+    private int valorPromedio(){
+        int n=0;
+        for(Persona p:personas){
+            try{
+                p.valorHora();
+            }
+            catch(EquipoExcepcion e){
+                n+=1;
+            }
+        }
+        return n;
+    }
 }
