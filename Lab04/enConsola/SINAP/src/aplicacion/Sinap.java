@@ -17,7 +17,6 @@ public class Sinap{
     public Sinap() {
         areas = new LinkedList<Area>();
     }
-
     /**
      * Adiciona cinco areas
      */
@@ -50,7 +49,8 @@ public class Sinap{
                                 + "que la diversidad que sostiene el área es elevada, a pesar de la problemática ambiental que afectó el ecosistema. "
                                 + "El Vía Parque Isla de Salamanca cuenta con hábitats o refugios en donde se pueden observar especies declaradas en "
                                 + "peligro de extinción por presión del hombre, destrucción y fragmentación de hábitats y disminución de la oferta "
-                                + "alimentaria, entre otros factores.") };
+                                + "alimentaria, entre otros factores."),
+                new Area("Sistema Lacustre de Chingaza","gingham lake system","Meta","766 km²","Es un conjunto de lagunas y páramos,") };
         for (final Area detalles : ejemplos) {
             adicioneDetalles(detalles);
         }
