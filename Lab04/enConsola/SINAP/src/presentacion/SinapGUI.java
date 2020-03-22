@@ -10,7 +10,10 @@ import java.util.*;
  * @version ECI 2016
  */
 public class SinapGUI extends JFrame{
-
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private static final int ANCHO_PREFERIDO = 450;
     private static final int ALTO_PREFERIDO= 450;
     private static final Dimension DIMENSION_PREFERIDA =

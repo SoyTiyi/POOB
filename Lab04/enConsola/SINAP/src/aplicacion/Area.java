@@ -1,5 +1,4 @@
 package aplicacion; 
- 
 /**
  * Contiene los detalles de las áreas de reserva
  * @author POOB 01 
@@ -7,21 +6,23 @@ package aplicacion;
  */
 
 public class Area{
-    private String nombre;
-    private String name;
-    private String ubicacion;
-    private String area;    
-    private String descripcion;
+    private final String nombre;
+    private final String name;
+    private final String ubicacion;
+    private final String area;
+    private final String descripcion;
 
     /**
      * Crea un area con sus detalles
-     * @param nombre nombre en español
-     * @param name nombre en ingles
-     * @param ubicacion departamento(s) donde su ubica
+     * 
+     * @param nombre      nombre en español
+     * @param name        nombre en inglescd 
+     * @param ubicacion   departamento(s) donde su ubica
      * @param area
-     * @param descripcion 
+     * @param descripcion
      */
-    public Area(String nombre, String name,  String ubicacion, String area,String descripcion){
+    public Area(final String nombre, final String name, final String ubicacion, final String area,
+            final String descripcion) {
         this.nombre = nombre.trim();
         this.name = name.trim();
         this.ubicacion = ubicacion.trim();

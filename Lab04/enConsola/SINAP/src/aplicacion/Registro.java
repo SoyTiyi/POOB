@@ -1,5 +1,4 @@
 package aplicacion;  
-
 import java.util.logging.Logger;
 import java.util.logging.FileHandler;
 import java.util.logging.SimpleFormatter;
