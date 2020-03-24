@@ -1,11 +1,7 @@
-
-
 import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-
 public class EquipoTest{
     public EquipoTest(){
     }
@@ -39,18 +35,19 @@ public class EquipoTest{
             fail("Lanzó excepcion");
         } 
     }
-    
+   
     @Test
     public void deberiaCalcularElValorPromedioDeUnEquipoDePersonasConValorySinValorConocido(){
        String [] nombres = {"Pedro","Santiago","Marcos","Juan","Judas","Garcia","Ospina","Guarin"};
         Equipo eq = new Equipo(nombres);
         System.out.println();
         try {
-           assertEquals(300000,eq.valorHoraEstimado());
+           assertEquals(240000,eq.valorHoraEstimado());
         } catch (EquipoExcepcion e){
             fail("Lanzó excepcion");
         }  
     }
+    
     
     @Test
     public void deberiaLanzarExcepcionSiElEquipoNoTienePersonas(){

@@ -29,6 +29,7 @@ public class Equipo{
                 }
                 catch(EquipoExcepcion e){
                     cantidad+=0;
+
                 }
             }
         }
@@ -45,9 +46,8 @@ public class Equipo{
      * o si no es posible calular el valor estimado
      */
     public int valorHoraEstimado() throws EquipoExcepcion{
-        int denominador = valorPromedio();
+        int denominador = personas.size()-valorPromedio();
         int valorEstimado = valorHora()/denominador;
-        System.out.println(valorEstimado);
         int cantidad=0;
         if(personas.size()==0){throw new EquipoExcepcion(EquipoExcepcion.EQUIPO_VACIO);}
         else{
@@ -57,6 +57,7 @@ public class Equipo{
                 }
                 catch(EquipoExcepcion e){
                     cantidad+=valorEstimado;
+                    
                 }
             }
         }

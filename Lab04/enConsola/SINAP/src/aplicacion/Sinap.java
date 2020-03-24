@@ -95,12 +95,30 @@ public class Sinap{
     public void adicione(final String nombre, final String name, final String ubicacion, final String area,
         final String descripcion) throws SINAPExcepcion{  
         final Area holi = new Area(nombre,name,ubicacion,area,descripcion);
-        if(holi.getName()==""){
-            throw new SINAPExcepcion(SINAPExcepcion.NO_INTERNATIONAL_NAME);
+        if(estaEnArea(holi)!=true) {
+            if(holi.getName().equals("")){
+                throw new SINAPExcepcion(SINAPExcepcion.NO_INTERNATIONAL_NAME);
+            }
+            else{     
+                adicioneDetalles(new Area(nombre, name, ubicacion, area, descripcion));
+            }
         }
-        else{     
-            adicioneDetalles(new Area(nombre, name, ubicacion, area, descripcion));
+        else{
+            throw new SINAPExcepcion(SINAPExcepcion.AREA_REPETIDA);
         }
+    }
+
+    /**
+     * Este metodo nos permitira saber si ya esta un area
+     */
+    public boolean estaEnArea(final Area newArea){
+        boolean flag=false;
+        for(int i=0;i<areas.size();i++){
+            if(newArea.toString().equals(areas.get(i).toString())){
+                flag=true;
+            }   
+        }
+        return flag;
     }
 
     /**

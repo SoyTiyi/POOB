@@ -22,8 +22,8 @@ public class PruebasSinap{
     @Test
     public void deberiaAdicionarUnaNuevaArea() throws SINAPExcepcion {
         Sinap sinap = new Sinap();
-        sinap.adicione("Santuario de Flora Isla de la Corota", 
-        "La Corota Island Flora Sanctuary","Pasto","","Alberga un santuario de flora y fauna protegido a nivel internacional");
+        sinap.adicione("Parque Chicamocha", 
+        "Chicamocha Parck","Santander","","Parque recreativo");
     }
 
     /**
@@ -32,7 +32,8 @@ public class PruebasSinap{
     @Test
     public void deberiaAdicionarDetalleDeUnaNuevaArea(){
         Sinap sinap = new Sinap();
-        Area area = new Area("Santuario de Flora Isla de la Corota", "La Corota Island Flora Sanctuary","Pasto","","Alberga un santuario de flora y fauna protegido a nivel internacional");
+        Area area = new Area("Parque Chicamocha", 
+        "Chicamocha Parck","Santander","","Parque recreativo");
         sinap.adicioneDetalles(area);
     }
 
@@ -42,7 +43,8 @@ public class PruebasSinap{
     @Test
     public void deberiaListar(){
         Sinap sinap = new Sinap();
-        Area area = new Area("Santuario de Flora Isla de la Corota", "La Corota Island Flora Sanctuary","Pasto","","Alberga un santuario de flora y fauna protegido a nivel internacional");
+        Area area = new Area("Parque Chicamocha", 
+        "Chicamocha Parck","Santander","","Parque recreativo");
         sinap.adicioneDetalles(area);
         sinap.toString();
     }
@@ -57,6 +59,17 @@ public class PruebasSinap{
     public void deberiaExplotarPorFaltaDeName() throws SINAPExcepcion {
         Sinap sinap = new Sinap();
         sinap.adicione("Tuparro", "", "Vichada", "548.000", "Es una extensa sabana verde surcada por grandes ríos con potentes raudales y playas doradas, pequeñas"+
+        "caños de aguas cristalinas, bosques de galería, morichales y saladillales, además de enormes rocas"+
+        "cristalinas en forma de cerros redondeados.");
+    }
+
+    @Test
+    public void deberiaDeMandarExcepcionPorAreaRepetida() throws SINAPExcepcion {
+        Sinap sinap = new Sinap();
+        sinap.adicione("Tuparro", "hh", "Vichada", "548.000", "Es una extensa sabana verde surcada por grandes ríos con potentes raudales y playas doradas, pequeñas"+
+        "caños de aguas cristalinas, bosques de galería, morichales y saladillales, además de enormes rocas"+
+        "cristalinas en forma de cerros redondeados.");
+        sinap.adicione("Tuparro", "hh", "Vichada", "548.000", "Es una extensa sabana verde surcada por grandes ríos con potentes raudales y playas doradas, pequeñas"+
         "caños de aguas cristalinas, bosques de galería, morichales y saladillales, además de enormes rocas"+
         "cristalinas en forma de cerros redondeados.");
     }
