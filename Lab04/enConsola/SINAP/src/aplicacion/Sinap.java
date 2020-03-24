@@ -18,6 +18,15 @@ public class Sinap{
         areas = new LinkedList<Area>();
     }
     /**
+     * Adicione Tuparro
+     */
+    public void adicioneTuparro() throws SINAPExcepcion{
+        adicione("Tuparro National Park","","Vichada","548.000",
+        "Es una extensa sabana verde surcada por grandees ríos con potentes raudales y playas doradas, pequeños"
+                +"caños de aguas cristalinas, bosques de galeria, morichales y saladillales, ademas de enormes rocas"
+                +"cristalinas en forma de cerros redondeados.");
+    }
+    /**
      * Adiciona cinco areas
      */
     public void adicioneCinco() {
@@ -50,7 +59,7 @@ public class Sinap{
                                 + "El Vía Parque Isla de Salamanca cuenta con hábitats o refugios en donde se pueden observar especies declaradas en "
                                 + "peligro de extinción por presión del hombre, destrucción y fragmentación de hábitats y disminución de la oferta "
                                 + "alimentaria, entre otros factores."),
-                new Area("Sistema Lacustre de Chingaza","gingham lake system","Meta","766 km²","Es un conjunto de lagunas y páramos,") };
+                new Area("Sistema Lacustre de Chingaza","gingham lake system","Meta","766 km²","Es un conjunto de lagunas y páramos,")};
         for (final Area detalles : ejemplos) {
             adicioneDetalles(detalles);
         }
@@ -84,8 +93,14 @@ public class Sinap{
      * @param descripcion
      */
     public void adicione(final String nombre, final String name, final String ubicacion, final String area,
-            final String descripcion) {
-        adicioneDetalles(new Area(nombre, name, ubicacion, area, descripcion));
+        final String descripcion) throws SINAPExcepcion{  
+        final Area holi = new Area(nombre,name,ubicacion,area,descripcion);
+        if(holi.getName()==""){
+            throw new SINAPExcepcion(SINAPExcepcion.NO_INTERNATIONAL_NAME);
+        }
+        else{     
+            adicioneDetalles(new Area(nombre, name, ubicacion, area, descripcion));
+        }
     }
 
     /**

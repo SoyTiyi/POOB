@@ -18,15 +18,15 @@ public class Area{
      * @param nombre      nombre en español
      * @param name        nombre en inglescd 
      * @param ubicacion   departamento(s) donde su ubica
-     * @param area
+     * @param area2
      * @param descripcion
      */
-    public Area(final String nombre, final String name, final String ubicacion, final String area,
+    public Area(final String nombre, final String name, final String ubicacion, final String area2,
             final String descripcion) {
         this.nombre = nombre.trim();
         this.name = name.trim();
         this.ubicacion = ubicacion.trim();
-        this.area = area.trim();
+        this.area = area2.trim();
         this.descripcion = descripcion.trim();
     }
     
