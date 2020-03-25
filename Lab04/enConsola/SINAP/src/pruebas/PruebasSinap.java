@@ -2,6 +2,7 @@ package pruebas;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
@@ -70,37 +71,55 @@ public class PruebasSinap{
     @Test
     public void deberiaDeMandarExcepcionPorFaltaDeName() throws SINAPExcepcion {
         Sinap sinap = new Sinap();
-        sinap.adicione("Tuparro", "", "Vichada", "548.000", "Es una extensa sabana verde surcada por grandes ríos con potentes raudales y playas doradas, pequeñas"+
-        "caños de aguas cristalinas, bosques de galería, morichales y saladillales, además de enormes rocas"+
-        "cristalinas en forma de cerros redondeados.");
+        try{
+            sinap.adicione("Tuparro", "", "Vichada", "548.000", "Es una extensa sabana verde surcada por grandes ríos con potentes raudales y playas doradas, pequeñas"+
+            "caños de aguas cristalinas, bosques de galería, morichales y saladillales, además de enormes rocas"+
+            "cristalinas en forma de cerros redondeados.");
+        }catch(SINAPExcepcion e){
+            assertTrue(true);
+        }
     }
 
     @Test
     public void deberiaDeMandarExcepcionPorAreaRepetida() throws SINAPExcepcion {
         Sinap sinap = new Sinap();
-        sinap.adicione("Tuparro", "hh", "Vichada", "548.000", "Es una extensa sabana verde surcada por grandes ríos con potentes raudales y playas doradas, pequeñas"+
-        "caños de aguas cristalinas, bosques de galería, morichales y saladillales, además de enormes rocas"+
-        "cristalinas en forma de cerros redondeados.");
-        sinap.adicione("Tuparro", "hh", "Vichada", "548.000", "Es una extensa sabana verde surcada por grandes ríos con potentes raudales y playas doradas, pequeñas"+
-        "caños de aguas cristalinas, bosques de galería, morichales y saladillales, además de enormes rocas"+
-        "cristalinas en forma de cerros redondeados.");
+        try{
+            sinap.adicione("Tuparro", "hh", "Vichada", "548.000", "Es una extensa sabana verde surcada por grandes ríos con potentes raudales y playas doradas, pequeñas"+
+            "caños de aguas cristalinas, bosques de galería, morichales y saladillales, además de enormes rocas"+
+            "cristalinas en forma de cerros redondeados.");
+            sinap.adicione("Tuparro", "hh", "Vichada", "548.000", "Es una extensa sabana verde surcada por grandes ríos con potentes raudales y playas doradas, pequeñas"+
+            "caños de aguas cristalinas, bosques de galería, morichales y saladillales, además de enormes rocas"+
+            "cristalinas en forma de cerros redondeados.");
+        }catch(SINAPExcepcion e){
+            assertTrue(true);
+        }
     }
 
     @Test
     public void deberiaDeMandarExcepcionPorUbicacionConNumero() throws SINAPExcepcion{
         Sinap sinap = new Sinap();
-        sinap.adicione("Parque Chicamocha","Chicamocha Park","Bosa1","300.000","Es un parque turistico donde puedes subirte en diferentes atracciones al lado del cañon");
+        try{
+            sinap.adicione("Parque Chicamocha","Chicamocha Park","Bosa1","300.000","Es un parque turistico donde puedes subirte en diferentes atracciones al lado del cañon");
+        }catch(SINAPExcepcion e){
+            assertTrue(true);
+        }
     }
 
     @Test
     public void deberiaDeMandarExcepcionPorUbicacionNula() throws SINAPExcepcion{
         Sinap sinap = new Sinap();
-        sinap.adicione("Parque Chicamocha","Chicamocha Park","","300.000","Es un parque turistico donde puedes subirte en diferentes atracciones al lado del cañon");
+        try{
+            sinap.adicione("Parque Chicamocha","Chicamocha Park","","300.000","Es un parque turistico donde puedes subirte en diferentes atracciones al lado del cañon");
+            fail("No lanzó excepcion");
+        }catch(SINAPExcepcion e){
+            assertTrue(true);
+        }
     }
 
     @Test
     public void deberiaBuscar(){
         Sinap sinap = new Sinap();
-        sinap.busque("Laguna");
+        boolean flag = sinap.busque("Laguna")==null;
+        assertTrue(flag==false);
     }
 }
