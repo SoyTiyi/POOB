@@ -1,11 +1,12 @@
-package aplicacion;  
+package aplicacion;
+
 import java.util.logging.Logger;
 import java.util.logging.FileHandler;
 import java.util.logging.SimpleFormatter;
 import java.util.logging.Level;
 
 /**
- * 
+ * Este metodo registra una excepcion cuando ocurre
  */
 public class Registro{
     public static String nombre="SINAP";

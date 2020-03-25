@@ -264,8 +264,14 @@ public class SinapGUI extends JFrame {
     }
     
     private void  accionAdicionar() throws SINAPExcepcion {
-        areas.adicione(textoOriginal.getText(),textoEspa_ol.getText(),textoPais.getText(), textoDirector.getText(),
+        try{
+            areas.adicione(textoOriginal.getText(),textoEspa_ol.getText(),textoPais.getText(), textoDirector.getText(),
         textoDescripcion.getText());
+        }
+        catch(SINAPExcepcion e) {
+            JOptionPane.showMessageDialog(null,e.getMessage(),"ERROR", JOptionPane.WARNING_MESSAGE);
+            Registro.registre(e);
+        }
     }
 
     private void accionBuscar(){

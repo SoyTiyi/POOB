@@ -1,7 +1,7 @@
 package aplicacion;
 import java.util.LinkedList;
 import java.util.ArrayList;
-
+import java.util.*;
 /**
  * Sinap contiene la informacion del Sistema Nacional de Areas Protegidas
  * @author POOB 01 
@@ -21,7 +21,7 @@ public class Sinap{
      * Adicione Tuparro
      */
     public void adicioneTuparro() throws SINAPExcepcion{
-        adicione("Tuparro National Park","","Vichada","548.000",
+        adicione("Tuparro","Tuparro National Park","Vichada","548.000",
         "Es una extensa sabana verde surcada por grandees ríos con potentes raudales y playas doradas, pequeños"
                 +"caños de aguas cristalinas, bosques de galeria, morichales y saladillales, ademas de enormes rocas"
                 +"cristalinas en forma de cerros redondeados.");
@@ -95,16 +95,21 @@ public class Sinap{
     public void adicione(final String nombre, final String name, final String ubicacion, final String area,
         final String descripcion) throws SINAPExcepcion{  
         final Area holi = new Area(nombre,name,ubicacion,area,descripcion);
-        if(estaEnArea(holi)!=true) {
-            if(holi.getName().equals("")){
-                throw new SINAPExcepcion(SINAPExcepcion.NO_INTERNATIONAL_NAME);
+        if(ubicacion!="" && haveNumber(ubicacion)!=true){
+            if(estaEnArea(holi)!=true) {
+                if(holi.getName().equals("")){
+                    throw new SINAPExcepcion(SINAPExcepcion.NO_INTERNATIONAL_NAME);
+                }
+                else{     
+                    adicioneDetalles(new Area(nombre, name, ubicacion, area, descripcion));
+                }
             }
-            else{     
-                adicioneDetalles(new Area(nombre, name, ubicacion, area, descripcion));
+            else{
+                throw new SINAPExcepcion(SINAPExcepcion.AREA_REPETIDA);
             }
         }
         else{
-            throw new SINAPExcepcion(SINAPExcepcion.AREA_REPETIDA);
+            throw new SINAPExcepcion(SINAPExcepcion.UBICACION_TIENE_NUMERO);
         }
     }
 
@@ -117,6 +122,24 @@ public class Sinap{
             if(newArea.toString().equals(areas.get(i).toString())){
                 flag=true;
             }   
+        }
+        return flag;
+    }
+
+    /**
+     * Este metodo retorna si ubicacion tiene algun numero 
+     * @param ubicacion es un String, hace referencia en donde esta localizado el Parque Natural
+     */
+    public boolean haveNumber(String ubicacion){
+        boolean flag = false;
+        String[] listaNumbers = {"1","2","3","4","5","6","7","8","9","0"};
+        List<String> list = Arrays.asList(listaNumbers);
+        for(int i=0;i<ubicacion.length();i++){
+            String s = ""+ubicacion.charAt(i);
+            if(list.contains(s)){
+                flag=true;
+            }
+
         }
         return flag;
     }
