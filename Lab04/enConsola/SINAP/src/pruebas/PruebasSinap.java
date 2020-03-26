@@ -76,7 +76,7 @@ public class PruebasSinap{
             "caños de aguas cristalinas, bosques de galería, morichales y saladillales, además de enormes rocas"+
             "cristalinas en forma de cerros redondeados.");
         }catch(SINAPExcepcion e){
-            assertTrue(true);
+            assertEquals(SINAPExcepcion.NO_INTERNATIONAL_NAME,e.getMessage());
         }
     }
 
@@ -91,7 +91,7 @@ public class PruebasSinap{
             "caños de aguas cristalinas, bosques de galería, morichales y saladillales, además de enormes rocas"+
             "cristalinas en forma de cerros redondeados.");
         }catch(SINAPExcepcion e){
-            assertTrue(true);
+            assertEquals(SINAPExcepcion.AREA_REPETIDA,e.getMessage());
         }
     }
 
@@ -101,7 +101,7 @@ public class PruebasSinap{
         try{
             sinap.adicione("Parque Chicamocha","Chicamocha Park","Bosa1","300.000","Es un parque turistico donde puedes subirte en diferentes atracciones al lado del cañon");
         }catch(SINAPExcepcion e){
-            assertTrue(true);
+            assertEquals(SINAPExcepcion.UBICACION_TIENE_NUMERO,e.getMessage());
         }
     }
 
@@ -112,7 +112,7 @@ public class PruebasSinap{
             sinap.adicione("Parque Chicamocha","Chicamocha Park","","300.000","Es un parque turistico donde puedes subirte en diferentes atracciones al lado del cañon");
             fail("No lanzó excepcion");
         }catch(SINAPExcepcion e){
-            assertTrue(true);
+            assertEquals(SINAPExcepcion.UBICACION_TIENE_NUMERO,e.getMessage());
         }
     }
 
