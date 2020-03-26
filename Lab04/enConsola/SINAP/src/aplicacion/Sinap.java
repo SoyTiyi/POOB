@@ -95,7 +95,7 @@ public class Sinap{
     public void adicione(final String nombre, final String name, final String ubicacion, final String area,
         final String descripcion) throws SINAPExcepcion{  
         final Area holi = new Area(nombre,name,ubicacion,area,descripcion);
-        if(ubicacion!="" && haveNumber(ubicacion)!=true){
+        if(!ubicacion.equals("") && haveNumber(ubicacion)!=true){
             if(estaEnArea(holi)!=true) {
                 if(holi.getName().equals("")){
                     throw new SINAPExcepcion(SINAPExcepcion.NO_INTERNATIONAL_NAME);
