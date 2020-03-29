@@ -1,0 +1,25 @@
+Que es awt 
+Que es swing
+Ver como se implementa 
+AWT nos permite que al programar una aplicacion
+en Windows entonces sirve en Mac y Linux
+SWING Permite que una aplicacion java ofrezca un estandar en la interfaz grafica
+JOption es un contenedor
+
+Superiores:
+JApplet, JFrame, JDialog, JoptionPane
+
+JFrame - JDialog:
+Solo son ,arcos, su contenido se debe diseñar y codificar
+Lucen igual (Titulo. botones propios del sistema)
+JFrame: 
+PRESENTACION
+
+Intermedios:
+
+
+
+
+
+
+Los componentes se adabtan en dimensiones a la ventana padre que tenemos
