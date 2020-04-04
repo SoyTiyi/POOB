@@ -49,7 +49,7 @@ public class MarbelGameGUI extends JFrame {
     private void prepareElementosMenu(){
         botonAbrir = new JButton("Abrir");
         botonNuevo = new JButton("Nuevo");
-        botonSalvarComo = new JButton("Salir");
+        botonSalvarComo = new JButton("Cerrar");
         add(botonAbrir); add(botonNuevo); add(botonSalvarComo);
         botonAbrir.setBounds(300,120,100,40);
         botonNuevo.setBounds(300,170,100,40);
@@ -71,6 +71,12 @@ public class MarbelGameGUI extends JFrame {
                     setVisible(true);
                     remove(dialogButton);
                 }
+            }
+        });
+
+        botonSalvarComo.addActionListener( new ActionListener() {
+            public void actionPerformed( ActionEvent ev){
+                System.exit(0);
             }
         });
     }
