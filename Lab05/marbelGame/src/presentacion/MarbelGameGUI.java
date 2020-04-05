@@ -17,11 +17,14 @@ public class MarbelGameGUI extends JFrame {
     /* Estos atributos corresponden a los objetos con los que interactua el usuario*/
     private JButton botonNuevo;
     private JButton botonAbrir;
-    private JButton botonSalvarComo;
+    private JButton botonCerrar;
+    private JButton botonGuardar;
+    private JFileChooser fileChooser;
     /**
      * Este es el contructor nos permite crear los objetos y preparar los elementos de la interfaz grafica
      */
     private MarbelGameGUI() {
+        fileChooser = new JFileChooser();
         prepareElementos();
         prepareElementosMenu();
         prepareAcciones();
@@ -49,11 +52,13 @@ public class MarbelGameGUI extends JFrame {
     private void prepareElementosMenu(){
         botonAbrir = new JButton("Abrir");
         botonNuevo = new JButton("Nuevo");
-        botonSalvarComo = new JButton("Cerrar");
-        add(botonAbrir); add(botonNuevo); add(botonSalvarComo);
-        botonAbrir.setBounds(300,120,100,40);
-        botonNuevo.setBounds(300,170,100,40);
-        botonSalvarComo.setBounds(300,220,100,40);
+        botonGuardar = new JButton("Guardar");
+        botonCerrar = new JButton("Cerrar");
+        add(botonAbrir); add(botonNuevo); add(botonCerrar); add(botonGuardar);
+        botonNuevo.setBounds(300,120,100,40);
+        botonAbrir.setBounds(300,170,100,40);
+        botonGuardar.setBounds(300,220,100,40);
+        botonCerrar.setBounds(300,270,100,40);
     }
     /**
      * Este metodo nos prepara las acciones de la interfaz grafica
@@ -74,11 +79,32 @@ public class MarbelGameGUI extends JFrame {
             }
         });
 
-        botonSalvarComo.addActionListener( new ActionListener() {
+        botonCerrar.addActionListener( new ActionListener() {
             public void actionPerformed( ActionEvent ev){
                 System.exit(0);
             }
         });
+
+        botonAbrir.addActionListener(new ActionListener() {
+            public void actionPerformed( ActionEvent ev){
+                fileChooser.showOpenDialog(null);
+                /**
+                 * Al seleccionar el archivo este sera utilizado para cargar la partida
+                 * que deseamos seguir jugando
+                 */
+            }
+        });
+
+        botonGuardar.addActionListener(new ActionListener() {
+            public void actionPerformed( ActionEvent ev){
+                fileChooser.showSaveDialog(null);
+                /**
+                 * Al seleccionar el archivo este sera utilizado para huardar la partida
+                 * en la que estabamos 
+                 */
+            }
+        });
+
     }
 
     /**
