@@ -16,6 +16,8 @@ public class ConfiguracionGUI extends JFrame {
    private JButton jugar;
    private JPanel panelConfiguracion;
    private JComboBox<String> lista;
+   private JTextField cantMarbels;
+   private JTextField cantBarriers;
 
    /**
     * Este es el contructor para la clase Configuracion
@@ -27,7 +29,7 @@ public class ConfiguracionGUI extends JFrame {
       prepareAccciones();
    }
 
-   public void prepararElementos() {
+   private void prepararElementos() {
       setLayout(null);
       setTitle("Configuracion");
       Toolkit t = Toolkit.getDefaultToolkit();
@@ -52,12 +54,12 @@ public class ConfiguracionGUI extends JFrame {
       panelConfiguracion.add(tamaño); panelConfiguracion.add(lista);
       JLabel marbels = new JLabel("Marbels");
       marbels.setBounds(50, 70, 70, 20);
-      JTextField cantMarbels = new JTextField();
+      cantMarbels = new JTextField();
       cantMarbels.setBounds(200, 75, 70, 20);
       panelConfiguracion.add(marbels); panelConfiguracion.add(cantMarbels);
       JLabel barriers = new JLabel("Barriers");
       barriers.setBounds(50,120,70,20);
-      JTextField cantBarriers = new JTextField();
+      cantBarriers = new JTextField();
       cantBarriers.setBounds(200, 120, 70, 20);
       panelConfiguracion.add(barriers); panelConfiguracion.add(cantBarriers);
       JLabel color = new JLabel("Color");
@@ -68,12 +70,26 @@ public class ConfiguracionGUI extends JFrame {
       add(panelConfiguracion);
    }
 
-   public void prepareAccciones() {
+   private void prepareAccciones() {
       addWindowListener(new WindowAdapter() {
          public void windowClosing (WindowEvent ev){
             setDefaultCloseOperation(EXIT_ON_CLOSE);
          }
      });
+
+     jugar.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent ev) {
+           if(cantBarriers.getText().equals("") || cantMarbels.getText().equals("")){
+               JOptionPane.showMessageDialog(null, "Debe de llenar todas las casillas");
+           }
+           else{
+              /**
+               * Se debe de implementar el salto a la ventana de juego
+               */
+           }
+        }
+     });
+      
      }
 
 
