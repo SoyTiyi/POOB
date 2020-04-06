@@ -105,6 +105,14 @@ public class MarbelGameGUI extends JFrame {
             }
         });
 
+        botonNuevo.addActionListener(new ActionListener() {
+            public void actionPerformed( ActionEvent ex) {
+                ConfiguracionGUI configuracionGUI = new ConfiguracionGUI();
+                configuracionGUI.setVisible(true);
+                setVisible(false);
+            }
+        });
+
     }
 
     /**

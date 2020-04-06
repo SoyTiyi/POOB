@@ -25,7 +25,7 @@ public class TableroGUI extends JFrame{
     public static int tamaño;
     public static int cantMarbels;
     public static int cantBarriers;
-    public static String color;
+    public static Color color;
     public JPanel espacioJuego;
     //Estos atributos son fundamentales para llevar la cuenta de movimientos,
     //fichas que se ubican y las que no
@@ -37,7 +37,7 @@ public class TableroGUI extends JFrame{
     /**
      * Este metodo es el constructor de la ventana del juego
     */
-    public TableroGUI(int tamaño, int cantMarbels, int cantBarriers, String color){
+    public TableroGUI(int tamaño, int cantMarbels, int cantBarriers, Color color){
         fileChooser = new JFileChooser();
         prepareElementosTablero();
         prepareTablero();
