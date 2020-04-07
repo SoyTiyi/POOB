@@ -95,6 +95,10 @@ public class TableroGUI extends JFrame{
         add(panelInformacion);
     }
 
+    public void refresque(){
+
+    }
+
     private void prepareTablero(){
         espacioJuego = new JPanel();
         espacioJuego.setBounds(330, 20, 300, 300);

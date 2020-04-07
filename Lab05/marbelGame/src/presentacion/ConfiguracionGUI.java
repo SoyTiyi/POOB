@@ -95,6 +95,7 @@ public class ConfiguracionGUI extends JFrame {
                changeVariables();
                TableroGUI tableroGUI = new TableroGUI(tamaño, cantidadMar, cantidadBar, colorTablero);
                tableroGUI.setVisible(true);
+               setVisible(false);
             }
          }
       });
