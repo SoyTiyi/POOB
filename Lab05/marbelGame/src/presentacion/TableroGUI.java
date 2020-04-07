@@ -1,6 +1,9 @@
 package presentacion;
+
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.border.LineBorder;
+
 import java.awt.event.*;
 public class TableroGUI extends JFrame{
     /**
@@ -20,7 +23,7 @@ public class TableroGUI extends JFrame{
     private JFileChooser fileChooser;
     /* Estos atriburos hacen parte del panel de informacion */
     private JPanel panelInformacion;
-
+    private Font fuente = new Font("Times New Roman",Font.BOLD,12);
     //Estos atributos son necesarios para dibujar el tablero
     public static int tamaño;
     public static int cantMarbels;
@@ -45,6 +48,7 @@ public class TableroGUI extends JFrame{
     }
 
     private void prepareElementosTablero(){
+        getContentPane().setBackground(Color.BLACK);
         setLayout(null);
         setTitle("Zona de Juego");
         Toolkit t = Toolkit.getDefaultToolkit();
@@ -54,7 +58,8 @@ public class TableroGUI extends JFrame{
         setResizable(false);
         prepareBotonesMovimientos();
         prepareElementosInformacion();
-        guardar = new JButton("Guardar");
+        guardar = new JButton("Guardar"); guardar.setBackground(Color.red); guardar.setForeground(Color.black); guardar.setBorder(new LineBorder(Color.black));
+        guardar.setFont(fuente);
         guardar.setBounds(20,300,100,50);
         add(guardar);
     }
@@ -64,10 +69,10 @@ public class TableroGUI extends JFrame{
         panelBotones.setBounds(20,20,250,60);
         panelBotones.setBorder(BorderFactory.createLineBorder(Color.black));
         panelBotones.setLayout(new GridLayout(2,4));
-        norte = new JButton("Norte");
-        sur= new JButton("Sur");
-        este = new JButton("Este");
-        oeste = new JButton("Oeste");
+        norte = new JButton("Norte"); norte.setFont(fuente); norte.setBackground(Color.red); norte.setForeground(Color.black); norte.setBorder(new LineBorder(Color.black));
+        sur= new JButton("Sur"); sur.setFont(fuente); sur.setBackground(Color.red); sur.setForeground(Color.black); sur.setBorder(new LineBorder(Color.black));
+        este = new JButton("Este"); este.setFont(fuente); este.setBackground(Color.red); este.setForeground(Color.black); este.setBorder(new LineBorder(Color.black));
+        oeste = new JButton("Oeste"); oeste.setFont(fuente); oeste.setBackground(Color.red); oeste.setForeground(Color.black); oeste.setBorder(new LineBorder(Color.black));
         panelBotones.add(norte); panelBotones.add(sur); panelBotones.add(este); panelBotones.add(oeste);
         add(panelBotones);
 
@@ -75,20 +80,21 @@ public class TableroGUI extends JFrame{
 
     private void prepareElementosInformacion(){
         panelInformacion = new JPanel();
+        panelInformacion.setBackground(Color.black);
+        panelInformacion.setBorder(new LineBorder(Color.red));
         panelInformacion.setBounds(20,90,250,200);
-        panelInformacion.setBorder(BorderFactory.createLineBorder(Color.black));
         panelInformacion.setLayout(null);
-        JLabel movimientos = new JLabel("Movimientos :");
+        JLabel movimientos = new JLabel("Movimientos :"); movimientos.setForeground(Color.red);
         movimientos.setBounds(10,40,80,20);
-        numMovimientos = new JLabel(""+cont);
+        numMovimientos = new JLabel(""+cont); numMovimientos.setForeground(Color.red);
         numMovimientos.setBounds(100,40,30,20);
-        JLabel ubicadas = new JLabel("Ubicadas :");
+        JLabel ubicadas = new JLabel("Ubicadas :"); ubicadas.setForeground(Color.red);
         ubicadas.setBounds(10,90,80,20);
-        numUbicadas = new JLabel(""+cont);
+        numUbicadas = new JLabel(""+cont); numUbicadas.setForeground(Color.red);
         numUbicadas.setBounds(100,90,30,20);
-        JLabel noUbicadas = new JLabel("No Ubicadas :");
+        JLabel noUbicadas = new JLabel("No Ubicadas :"); noUbicadas.setForeground(Color.red);
         noUbicadas.setBounds(10,140,80,20);
-        numNoUbicadas = new JLabel(""+cont);
+        numNoUbicadas = new JLabel(""+cont); numNoUbicadas.setForeground(Color.red);
         numNoUbicadas.setBounds(100,140,30,20);
         panelInformacion.add(movimientos); panelInformacion.add(ubicadas); panelInformacion.add(noUbicadas);
         panelInformacion.add(numMovimientos); panelInformacion.add(numUbicadas); panelInformacion.add(numNoUbicadas);
@@ -100,10 +106,9 @@ public class TableroGUI extends JFrame{
     }
 
     private void prepareTablero(){
-        espacioJuego = new JPanel();
+        espacioJuego = new JPanel(); espacioJuego.setBackground(Color.black); espacioJuego.setBorder(new LineBorder(Color.red));
         espacioJuego.setBounds(330, 20, 300, 300);
-        espacioJuego.setBorder(BorderFactory.createLineBorder(Color.black));
-        JLabel titulo = new JLabel("Aqui va el tablero");
+        JLabel titulo = new JLabel("Aqui va el tablero"); titulo.setForeground(Color.red);
         espacioJuego.add(titulo);
         add(espacioJuego);
     }

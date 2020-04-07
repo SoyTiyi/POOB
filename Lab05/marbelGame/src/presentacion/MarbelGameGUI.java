@@ -1,9 +1,11 @@
 package presentacion;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 //import javax.swing.event.*;
 //import java.util.*;
+import javax.swing.border.LineBorder;
 
 public class MarbelGameGUI extends JFrame {
     /**
@@ -13,7 +15,7 @@ public class MarbelGameGUI extends JFrame {
 
     /* Esta variable nos muestra el titulo del juego*/
     private JLabel tituloJuego;
-
+    private Font fuente;
     /* Estos atributos corresponden a los objetos con los que interactua el usuario*/
     private JButton botonNuevo;
     private JButton botonAbrir;
@@ -25,6 +27,7 @@ public class MarbelGameGUI extends JFrame {
      */
     private MarbelGameGUI() {
         fileChooser = new JFileChooser();
+        fuente = new Font("Times New Roman",Font.BOLD,40);
         prepareElementos();
         prepareElementosMenu();
         prepareAcciones();
@@ -34,6 +37,7 @@ public class MarbelGameGUI extends JFrame {
      * Este metodo nos permite preparar los elementos que tendra nuestra interfaz grafica
      */
     private void prepareElementos(){
+        getContentPane().setBackground(Color.BLACK);
         setLayout(null);
         setTitle("Marbell's Game");
         Toolkit t = Toolkit.getDefaultToolkit();
@@ -42,7 +46,9 @@ public class MarbelGameGUI extends JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         tituloJuego = new JLabel("Marbell's Game");
-        tituloJuego.setBounds(300,20,300,30);
+        tituloJuego.setBounds(210,20,300,60);
+        tituloJuego.setFont(fuente);
+        tituloJuego.setForeground(Color.RED);
         add(tituloJuego);
     }
 
@@ -55,10 +61,10 @@ public class MarbelGameGUI extends JFrame {
         botonGuardar = new JButton("Guardar");
         botonCerrar = new JButton("Cerrar");
         add(botonAbrir); add(botonNuevo); add(botonCerrar); add(botonGuardar);
-        botonNuevo.setBounds(300,120,100,40);
-        botonAbrir.setBounds(300,170,100,40);
-        botonGuardar.setBounds(300,220,100,40);
-        botonCerrar.setBounds(300,270,100,40);
+        botonNuevo.setBounds(300,120,100,40); botonNuevo.setBackground(Color.red); botonNuevo.setForeground(Color.black); botonNuevo.setBorder(new LineBorder(Color.black));
+        botonAbrir.setBounds(300,170,100,40); botonAbrir.setBackground(Color.red); botonAbrir.setForeground(Color.black); botonAbrir.setBorder(new LineBorder(Color.black));
+        botonGuardar.setBounds(300,220,100,40); botonGuardar.setBackground(Color.red); botonGuardar.setForeground(Color.black); botonGuardar.setBorder(new LineBorder(Color.black));
+        botonCerrar.setBounds(300,270,100,40); botonCerrar.setBackground(Color.red); botonCerrar.setForeground(Color.black); botonCerrar.setBorder(new LineBorder(Color.black));
     }
     /**
      * Este metodo nos prepara las acciones de la interfaz grafica
