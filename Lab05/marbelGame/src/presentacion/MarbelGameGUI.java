@@ -66,10 +66,11 @@ public class MarbelGameGUI extends JFrame {
         botonGuardar.setBounds(300,220,100,40); botonGuardar.setBackground(Color.red); botonGuardar.setForeground(Color.black); botonGuardar.setBorder(new LineBorder(Color.black));
         botonCerrar.setBounds(300,270,100,40); botonCerrar.setBackground(Color.red); botonCerrar.setForeground(Color.black); botonCerrar.setBorder(new LineBorder(Color.black));
     }
+
     /**
-     * Este metodo nos prepara las acciones de la interfaz grafica
+     * Este metodo nos hace salir de una manera correcta del programa
      */
-    private void prepareAcciones(){
+    public void salga(){
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent ev){
                 int dialogButton = JOptionPane.YES_NO_OPTION;
@@ -81,10 +82,16 @@ public class MarbelGameGUI extends JFrame {
                 else if(dialogButton == JOptionPane.NO_OPTION){
                     setVisible(true);
                     remove(dialogButton);
+                    setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
                 }
             }
         });
-
+    }
+    /**
+     * Este metodo nos prepara las acciones de la interfaz grafica
+     */
+    private void prepareAcciones(){
+        salga();
         botonCerrar.addActionListener( new ActionListener() {
             public void actionPerformed( ActionEvent ev){
                 System.exit(0);
