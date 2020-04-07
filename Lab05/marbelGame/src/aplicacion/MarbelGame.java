@@ -28,4 +28,11 @@ public class MarbelGame {
      public void move(char letter){
 
      }
+
+     /**
+      * Este metodo actualiza el tablero dependiendo de el movimiento que se haya hecho antes
+      */
+     public void refresque(){
+         
+     }
 }
