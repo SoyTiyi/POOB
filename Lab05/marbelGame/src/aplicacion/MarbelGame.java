@@ -7,9 +7,9 @@ public class MarbelGame {
     private int tamaño;
     private int cantMarbels;
     private int cantBarriers;
-    private Color color;
 
-    public MarbelGame(int tamaño, int cantMarbels, int cantBarriers, Color color){
+
+    public MarbelGame(int tamaño, int cantMarbels, int cantBarriers){
         tablero = new Elemento[tamaño][tamaño];
         this.tamaño=tamaño;
         this.cantMarbels=cantMarbels;
@@ -273,7 +273,7 @@ public class MarbelGame {
 
     public static void main(String args[]){
         System.out.println("Primera Matriz");
-        MarbelGame marbelgame = new MarbelGame(4, 3, 3, Color.BLACK);
+        MarbelGame marbelgame = new MarbelGame(4, 3, 3);
         marbelgame.move('N');
         marbelgame.move('E');
         System.out.println("Segunda Matriz");

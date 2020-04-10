@@ -1,5 +1,5 @@
 package presentacion;
-
+import aplicacion.*;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -30,17 +30,24 @@ public class TableroGUI extends JFrame{
     public static int cantBarriers;
     public static Color color;
     public JPanel espacioJuego;
+    private FotoTablero foto;
     //Estos atributos son fundamentales para llevar la cuenta de movimientos,
     //fichas que se ubican y las que no
     private JLabel numMovimientos;
     private JLabel numUbicadas;
     private JLabel numNoUbicadas;
     private int cont=0;
+    private MarbelGame marbelgame;
 
     /**
      * Este metodo es el constructor de la ventana del juego
     */
     public TableroGUI(int tamaño, int cantMarbels, int cantBarriers, Color color){
+        this.tamaño = tamaño;
+        this.cantMarbels=cantMarbels;
+        this.cantBarriers=cantBarriers;
+        this.color=color;
+        marbelgame = new MarbelGame(tamaño, cantMarbels, cantBarriers);
         fileChooser = new JFileChooser();
         prepareElementosTablero();
         prepareTablero();
@@ -106,10 +113,8 @@ public class TableroGUI extends JFrame{
     }
 
     private void prepareTablero(){
-        espacioJuego = new JPanel(); espacioJuego.setBackground(Color.black); espacioJuego.setBorder(new LineBorder(Color.red));
+        espacioJuego = new FotoTablero(marbelgame, tamaño,color); espacioJuego.setBackground(Color.white); 
         espacioJuego.setBounds(330, 20, 300, 300);
-        JLabel titulo = new JLabel("Aqui va el tablero"); titulo.setForeground(Color.red);
-        espacioJuego.add(titulo);
         add(espacioJuego);
     }
 
@@ -167,7 +172,44 @@ public class TableroGUI extends JFrame{
     }
     
     public static void main(String args[]){
-        TableroGUI tableroGUI = new TableroGUI(tamaño,cantMarbels,cantBarriers,color);
+        TableroGUI tableroGUI = new TableroGUI(4,3,3,Color.black);
         tableroGUI.setVisible(true);
+    }
+}
+
+class FotoTablero extends JPanel{
+    /**
+     *Esta clase nos crea el diseño del tablero
+     */
+    private static final long serialVersionUID = 1L;
+    private int hola;
+    private MarbelGame tablero;
+    private int tamaño;
+
+    public FotoTablero(MarbelGame marbelgame, int tamaño, Color color){
+        setBackground(Color.WHITE);
+        this.tablero=marbelgame;
+        this.tamaño=tamaño;
+        hola=300/tamaño;
+        setPreferredSize(new Dimension(300,300));
+    }
+
+    public void setTablero(MarbelGame marbelgame){
+        this.tablero=marbelgame;
+    }
+
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+        for(int i=0;i<tamaño;i++){
+            g.drawLine(i*hola, 0, i*hola,hola*tamaño);
+        }
+        for(int i=0;i<tamaño;i++){
+            g.drawLine(0, i*hola, tamaño*hola, i*hola);
+        }
+        for(int i=0; i<tamaño; i++){
+            for(int j=0;j<tamaño;j++){
+
+            }
+        }
     }
 }
