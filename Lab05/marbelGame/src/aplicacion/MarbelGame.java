@@ -26,6 +26,7 @@ public class MarbelGame {
     public Elemento getElemento(int i, int j){
         return tablero[i][j];    
     }
+
     
     public void pintarNazi(){
         for(int i=0;i<tamaño;i++){
