@@ -20,7 +20,7 @@ public class Barrier implements Elemento {
     public int getColumna(){
         return columna;
     }
-
+    @Override
     public Color getColor(){
         return color;
     }
