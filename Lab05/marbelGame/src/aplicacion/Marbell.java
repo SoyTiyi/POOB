@@ -2,23 +2,22 @@ package aplicacion;
 
 import javafx.scene.paint.Color;
 
-public class Barrier implements Elemento {
-    private int fila, columna;
+public class Marbell implements Elemento {
+    private int fila,columna;
     private MarbelGame marbelgame;
     private Color color;
-    public Barrier (MarbelGame marbelgame,int fila, int columna, Color color){
-        this.marbelgame=marbelgame;
+    public Marbell(MarbelGame marbelgame, int fila, int columna, Color color) {
         this.fila=fila;
         this.columna=columna;
         this.color=color;
     }
 
-    public int getFila(){
-        return fila;
-    }
-
     public int getColumna(){
         return columna;
+    }
+
+    public int getFila(){
+        return fila;
     }
 
     public Color getColor(){
@@ -26,7 +25,8 @@ public class Barrier implements Elemento {
     }
 
     @Override
-    public boolean itsBarrier(){
+    public boolean itsMarbel(){
         return true;
     }
+
 }

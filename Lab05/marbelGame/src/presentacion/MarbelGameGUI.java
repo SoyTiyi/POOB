@@ -112,7 +112,7 @@ public class MarbelGameGUI extends JFrame {
             public void actionPerformed( ActionEvent ev){
                 fileChooser.showSaveDialog(null);
                 /**
-                 * Al seleccionar el archivo este sera utilizado para huardar la partida
+                 * Al seleccionar el archivo este sera utilizado para guardar la partida
                  * en la que estabamos 
                  */
             }
