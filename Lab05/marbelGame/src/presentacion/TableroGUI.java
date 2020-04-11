@@ -29,7 +29,8 @@ public class TableroGUI extends JFrame{
     public static int tamaño;
     public static int cantMarbels;
     public static int cantBarriers;
-    public static Color color;
+    public static Color colorTablero;
+    public static Color colorLineas;
     public JPanel espacioJuego;
     //Estos atributos son fundamentales para llevar la cuenta de movimientos,
     //fichas que se ubican y las que no
@@ -42,11 +43,12 @@ public class TableroGUI extends JFrame{
     /**
      * Este metodo es el constructor de la ventana del juego
     */
-    public TableroGUI(int tamaño, int cantMarbels, int cantBarriers, Color color){
+    public TableroGUI(int tamaño, int cantMarbels, int cantBarriers, Color colorTablero, Color colorLineas){
         this.tamaño = tamaño;
         this.cantMarbels=cantMarbels;
         this.cantBarriers=cantBarriers;
-        this.color=color;
+        this.colorTablero=colorTablero;
+        this.colorLineas=colorLineas;
         marbelgame = new MarbelGame(tamaño, cantMarbels, cantBarriers);
         fileChooser = new JFileChooser();
         prepareElementosTablero();
@@ -116,7 +118,7 @@ public class TableroGUI extends JFrame{
     }
 
     private void prepareTablero(){
-        espacioJuego = new FotoTablero(marbelgame, tamaño,color); espacioJuego.setBackground(Color.white); 
+        espacioJuego = new FotoTablero(marbelgame, tamaño,colorTablero, colorLineas); espacioJuego.setBackground(colorTablero); 
         espacioJuego.setBounds(330, 20, 300, 300);
         add(espacioJuego);
     }
@@ -180,7 +182,7 @@ public class TableroGUI extends JFrame{
     }
     
     public static void main(String args[]){
-        TableroGUI tableroGUI = new TableroGUI(4,3,3,Color.black);
+        TableroGUI tableroGUI = new TableroGUI(4,3,3,Color.white,Color.black);
         tableroGUI.setVisible(true);
     }
 }
@@ -195,12 +197,11 @@ class FotoTablero extends JPanel{
     private int tamaño;
     private Color color;
 
-    public FotoTablero(MarbelGame marbelgame, int tamaño, Color color){
-        setBackground(Color.WHITE);
+    public FotoTablero(MarbelGame marbelgame, int tamaño, Color colorTablero, Color colorLineas){
         this.tablero=marbelgame;
         this.tamaño=tamaño;
         hola=300/tamaño;
-        this.color=color;
+        this.color=colorLineas;
         setPreferredSize(new Dimension(300,300));
     }
 
@@ -216,6 +217,16 @@ class FotoTablero extends JPanel{
         }
         for(int i=0;i<tamaño;i++){
             g.drawLine(0, i*hola, tamaño*hola, i*hola);
+        
+        }
+        for(int i=0;i<tamaño;i++){
+            for(int j=0;j<tamaño;j++){
+                if(tablero.getElentoPosicionada(i, j)!=null){
+                    g.setColor(tablero.getElentoPosicionada(i, j).getColor());
+                    g.drawOval(hola * j +hola/10, hola*i +hola/10, hola/2+hola/10+10, hola/2+hola/10+10);
+                    g.fillOval(hola * j +hola/7 , hola*i +hola/7, hola/2+hola/10, hola/2+hola/10);
+                }
+            }
         }
         for(int i=0; i<tamaño; i++){
             for(int j=0;j<tamaño;j++){
@@ -223,14 +234,14 @@ class FotoTablero extends JPanel{
                     g.setColor(tablero.getElemento(i, j).getColor());
                     if(tablero.getElemento(i,j).getForma()==Elemento.REDONDA){
                         if(tablero.getElemento(i,j)instanceof Marbell){
-                            g.fillOval(hola * j + 15, hola * i+10 + 3, 45, 45);
+                            g.fillOval(hola * j +hola/7 , hola*i +hola/7, hola/2+hola/10, hola/2+hola/10);
                         }
                         else{
-                            g.drawOval(hola * j + 10, hola * i+10 + 3, 55, 55);
+                            g.drawOval(hola * j +hola/10, hola*i +hola/10, hola/2+hola/10+5, hola/2+hola/10+5);
                         }
                     }
                     else{
-                        g.fillRoundRect(hola * j +10, hola*i+10, 55, 55, j, j);
+                        g.fillRoundRect(hola * j +hola/10, hola*i +hola/10, hola/2 +10, hola/2+10, j, j);
                     }
                 }
             }

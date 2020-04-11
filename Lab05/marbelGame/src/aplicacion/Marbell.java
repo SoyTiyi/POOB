@@ -4,11 +4,9 @@ import java.awt.Color;
 
 public class Marbell implements Elemento {
     private int fila,columna;
-    private MarbelGame marbelgame;
     private Color color;
     private boolean haveHole;
     public Marbell(MarbelGame marbelgame, int fila, int columna, Color color, boolean haveHole) {
-        this.haveHole=haveHole;
         this.fila=fila;
         this.columna=columna;
         this.color=color;

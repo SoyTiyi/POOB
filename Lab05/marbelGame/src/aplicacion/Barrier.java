@@ -4,10 +4,8 @@ import java.awt.Color;
 
 public class Barrier implements Elemento {
     private int fila, columna;
-    private MarbelGame marbelgame;
     private Color color;
     public Barrier (MarbelGame marbelgame,int fila, int columna, Color color){
-        this.marbelgame=marbelgame;
         this.fila=fila;
         this.columna=columna;
         this.color=color;

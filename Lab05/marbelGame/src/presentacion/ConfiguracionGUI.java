@@ -14,12 +14,14 @@ public class ConfiguracionGUI extends JFrame {
    private static final long serialVersionUID = 1L;
    /* Estos son los botones para el menu */
    private JButton seleccionarColor;
+   private JButton colorBackGrounda;
    private JButton jugar;
    private JPanel panelConfiguracion;
    private JTextField lista;
    private JTextField cantMarbels;
    private JTextField cantBarriers;
    public Color colorTablero;
+   public Color colorLineas;
    public static int tamaño;
    public static int cantidadBar;
    public static int cantidadMar;
@@ -52,29 +54,35 @@ public class ConfiguracionGUI extends JFrame {
       panelConfiguracion.setBorder(BorderFactory.createLineBorder(Color.black));
       panelConfiguracion.setLayout(null);
       JLabel tamaño = new JLabel("Tamaño :");
-      tamaño.setBounds(50, 20, 70, 20); tamaño.setForeground(Color.black);
+      tamaño.setBounds(50, 10, 70, 20); tamaño.setForeground(Color.black);
       lista = new JTextField();
-      lista.setBounds(200, 25, 70, 20);
+      lista.setBounds(200, 15, 70, 20);
       panelConfiguracion.add(tamaño);
       panelConfiguracion.add(lista);
       JLabel marbels = new JLabel("Marbels"); marbels.setForeground(Color.black);
-      marbels.setBounds(50, 70, 70, 20);
+      marbels.setBounds(50, 50, 70, 20);
       cantMarbels = new JTextField();
-      cantMarbels.setBounds(200, 75, 70, 20);
+      cantMarbels.setBounds(200, 55, 70, 20);
       panelConfiguracion.add(marbels);
       panelConfiguracion.add(cantMarbels);
       JLabel barriers = new JLabel("Barriers"); barriers.setForeground(Color.black);
-      barriers.setBounds(50, 120, 70, 20);
+      barriers.setBounds(50, 100, 70, 20);
       cantBarriers = new JTextField();
-      cantBarriers.setBounds(200, 120, 70, 20);
+      cantBarriers.setBounds(200, 100, 70, 20);
       panelConfiguracion.add(barriers);
       panelConfiguracion.add(cantBarriers);
-      JLabel color = new JLabel("Color"); color.setForeground(Color.black);
-      color.setBounds(50, 170, 70, 20);
+      JLabel colorPrincipal = new JLabel("Color Principal"); colorPrincipal.setForeground(Color.black);
+      colorPrincipal.setBounds(50, 150, 120, 20);
       seleccionarColor = new JButton("Cambiar"); seleccionarColor.setForeground(Color.red); seleccionarColor.setBackground(Color.black); seleccionarColor.setBorder(new LineBorder(Color.red));
-      seleccionarColor.setBounds(200, 170, 120, 20);
-      panelConfiguracion.add(color);
+      seleccionarColor.setBounds(200, 150, 120, 20);
+      panelConfiguracion.add(colorPrincipal);
       panelConfiguracion.add(seleccionarColor);
+      JLabel colorSecundario = new JLabel("Color Secundario"); colorSecundario.setForeground(Color.black);
+      colorSecundario.setBounds(50, 200, 120, 20);
+      colorBackGrounda = new JButton("Cambiar"); colorBackGrounda.setForeground(Color.red); colorBackGrounda.setBackground(Color.black); colorBackGrounda.setBorder(new LineBorder(Color.red));
+      colorBackGrounda.setBounds(200,200,120,20);
+      panelConfiguracion.add(colorSecundario);
+      panelConfiguracion.add(colorBackGrounda);
       add(panelConfiguracion);
    }
 
@@ -91,7 +99,7 @@ public class ConfiguracionGUI extends JFrame {
                JOptionPane.showMessageDialog(null, "Debe de llenar todas las casillas");
             } else {
                changeVariables();
-               TableroGUI tableroGUI = new TableroGUI(tamaño, cantidadMar, cantidadBar, colorTablero);
+               TableroGUI tableroGUI = new TableroGUI(tamaño, cantidadMar, cantidadBar, colorTablero, colorLineas);
                tableroGUI.setVisible(true);
                setVisible(false);
             }
@@ -100,7 +108,13 @@ public class ConfiguracionGUI extends JFrame {
 
       seleccionarColor.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent ev) {
-            colorTablero = JColorChooser.showDialog(null, "Seleccione Color", Color.black);
+            colorTablero = JColorChooser.showDialog(null, "Seleccione Color", Color.white);
+         }
+      });
+
+      colorBackGrounda.addActionListener(new ActionListener() {
+         public void actionPerformed(ActionEvent ev) {
+            colorLineas = JColorChooser.showDialog(null, "Seleccione Color", Color.black);
          }
       });
    }

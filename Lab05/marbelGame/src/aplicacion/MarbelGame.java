@@ -5,6 +5,7 @@ import java.util.Random;
 public class MarbelGame {
     private Elemento[][] tablero;
     private Elemento[][] inicial;
+    private Elemento[][] posicionada;
     private int tamaño;
     private int cantMarbels;
     private int cantBarriers;
@@ -13,6 +14,7 @@ public class MarbelGame {
     public MarbelGame(int tamaño, int cantMarbels, int cantBarriers){
         tablero = new Elemento[tamaño][tamaño];
         inicial = new Elemento[tamaño][tamaño];
+        posicionada = new Elemento[tamaño][tamaño];
         this.tamaño=tamaño;
         this.cantMarbels=cantMarbels;
         this.cantBarriers=cantBarriers;
@@ -54,10 +56,12 @@ public class MarbelGame {
         }
     }
 
+    public Elemento getElentoPosicionada(int i, int j){
+        return posicionada[i][j];
+    }
     private void createBarriers(){
         Random random = new Random();
         for(int i=0;i<cantBarriers;i++){
-            float r = random.nextFloat(), g = random.nextFloat(), b = random.nextFloat(); 
             boolean flag = false;
             int fila,columna;
             while(!flag){
@@ -83,6 +87,7 @@ public class MarbelGame {
         for(int i=0;i<tablero.length;i++){
             for(int j=0; j<tablero.length;j++){
                 tablero[i][j]=inicial[i][j];
+                posicionada[i][j]=null;
             }
         }
     }
@@ -112,7 +117,7 @@ public class MarbelGame {
         }
         return temp;
     }
-
+    /*
     private void prepararAlgunosElementos(){
         tablero[0][1]= new Marbell(this, 1, 2, Color.ORANGE,false);
         tablero[1][0] = new Marbell(this,2,1,Color.BLUE,false);
@@ -122,7 +127,7 @@ public class MarbelGame {
         tablero[3][1] = new Hole(this,4,2,Color.GREEN);
         tablero[2][3] = new Hole(this,3,4,Color.ORANGE);
     }
-
+    */  
     public void move(char direccion){
         boolean whatLetter = saidWhatLetter(direccion);
         if(whatLetter){
@@ -158,7 +163,7 @@ public class MarbelGame {
     private void readHorizontal(char direccion){
         if(direccion=='E'){
             for(int i=0;i<tamaño;i++){
-                for(int j=tamaño-1;j>=0;j--){
+                for(int j=0;j<tamaño;j++){
                     if(tablero[i][j] instanceof Marbell && tablero[i][j].getHaveHole()==false){
                         moverEste(i,j);
                     }
@@ -190,8 +195,8 @@ public class MarbelGame {
             }
             else if(tablero[i][z] instanceof Hole){
                 if(tablero[i][j].getColor().equals(tablero[i][z].getColor())){
-                    tablero[i][z]=tablero[i][j]; tablero[i][z].setHaveHole(true);
-                    tablero[i][j]=null;
+                    posicionada[i][z]=tablero[i][j]; posicionada[i][z].setHaveHole(true);
+                    tablero[i][j]=null; tablero[i][z]=null;
                 }
                 else{
                     if(z!=j-1){
@@ -226,8 +231,8 @@ public class MarbelGame {
             }
             else if(tablero[i][z] instanceof Hole){
                 if(tablero[i][j].getColor().equals(tablero[i][z].getColor())){
-                    tablero[i][z]=tablero[i][j]; tablero[i][z].setHaveHole(true);
-                    tablero[i][j]=null;
+                    posicionada[i][z]=tablero[i][j]; posicionada[i][z].setHaveHole(true);
+                    tablero[i][j]=null; tablero[i][z]=null;
                 }
                 else{
                     if(z!=j+1){
@@ -262,8 +267,8 @@ public class MarbelGame {
             }
             else if(tablero[z][i] instanceof Hole){
                 if(tablero[z][i].getColor().equals(tablero[j][i].getColor())){
-                    tablero[z][i]=tablero[j][i]; tablero[z][i].setHaveHole(true);
-                    tablero[j][i]=null;
+                    posicionada[z][i]=tablero[j][i]; posicionada[z][i].setHaveHole(true);
+                    tablero[j][i]=null; tablero[z][i]=null;
                 }
                 else{
                     if(z!=j+1){
@@ -299,8 +304,8 @@ public class MarbelGame {
             }
             else if(tablero[z][i] instanceof Hole){
                 if(tablero[z][i].getColor().equals(tablero[j][i].getColor())){
-                    tablero[z][i]=tablero[j][i]; tablero[z][i].setHaveHole(true);
-                    tablero[j][i]=null;
+                    posicionada[z][i]=tablero[j][i]; posicionada[z][i].setHaveHole(true);
+                    tablero[j][i]=null; tablero[z][i]=null;
                 }
                 else{
                     if(z!=j-1){
