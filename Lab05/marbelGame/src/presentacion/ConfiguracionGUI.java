@@ -30,6 +30,8 @@ public class ConfiguracionGUI extends JFrame {
     * Este es el contructor para la clase Configuracion
     */
    public ConfiguracionGUI() {
+      colorTablero=Color.white;
+      colorLineas=Color.black;
       prepararElementos();
       prepareElementosConfiguracion();
       prepareAccciones();

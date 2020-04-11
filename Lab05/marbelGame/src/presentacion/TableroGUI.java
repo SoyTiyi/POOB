@@ -44,11 +44,11 @@ public class TableroGUI extends JFrame{
      * Este metodo es el constructor de la ventana del juego
     */
     public TableroGUI(int tamaño, int cantMarbels, int cantBarriers, Color colorTablero, Color colorLineas){
-        this.tamaño = tamaño;
-        this.cantMarbels=cantMarbels;
-        this.cantBarriers=cantBarriers;
-        this.colorTablero=colorTablero;
-        this.colorLineas=colorLineas;
+        TableroGUI.tamaño = tamaño;
+        TableroGUI.cantMarbels = cantMarbels;
+        TableroGUI.cantBarriers = cantBarriers;
+        TableroGUI.colorTablero = colorTablero;
+        TableroGUI.colorLineas = colorLineas;
         marbelgame = new MarbelGame(tamaño, cantMarbels, cantBarriers);
         fileChooser = new JFileChooser();
         prepareElementosTablero();
