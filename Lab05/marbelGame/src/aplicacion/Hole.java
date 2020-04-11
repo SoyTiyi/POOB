@@ -1,6 +1,6 @@
 package aplicacion;
 
-import javafx.scene.paint.Color;
+import java.awt.Color;
 
 public class Hole implements Elemento{
     private int fila;
@@ -14,6 +14,10 @@ public class Hole implements Elemento{
         this.color=color;
     }
 
+    @Override
+    public int getForma(){
+        return REDONDA;
+    }
     public int getFila(){
         return fila;
     }

@@ -1,8 +1,10 @@
 package aplicacion;
 
-import javafx.scene.paint.Color;
+import java.awt.*;
 
 public interface Elemento {
+    int REDONDA=1;
+    int CUADRADA=2;
     default boolean itsMarbel(){
         return false;
     }
@@ -28,5 +30,9 @@ public interface Elemento {
 
     default boolean getHaveHole(){
         return false;
+    }
+
+    default int getForma(){
+        return REDONDA;
     }
 }

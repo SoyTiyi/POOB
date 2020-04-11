@@ -1,9 +1,10 @@
 package aplicacion;
 
-import javafx.scene.paint.Color;
-
+import java.awt.Color;
+import java.util.Random;
 public class MarbelGame {
     private Elemento[][] tablero;
+    private Elemento[][] inicial;
     private int tamaño;
     private int cantMarbels;
     private int cantBarriers;
@@ -11,6 +12,7 @@ public class MarbelGame {
 
     public MarbelGame(int tamaño, int cantMarbels, int cantBarriers){
         tablero = new Elemento[tamaño][tamaño];
+        inicial = new Elemento[tamaño][tamaño];
         this.tamaño=tamaño;
         this.cantMarbels=cantMarbels;
         this.cantBarriers=cantBarriers;
@@ -19,18 +21,79 @@ public class MarbelGame {
                 tablero[i][j]=null;
             }
         }
-        prepararAlgunosElementos();
-        pintarNazi();
+        //prepararAlgunosElementos();
+        createMarbelsAndHoles();
+        createBarriers();
+        prepareInicial();
     }
 
+    private void createMarbelsAndHoles(){
+        Random random = new Random();
+        for(int i=0; i<cantMarbels;i++){
+            float r = random.nextFloat(), g = random.nextFloat(), b = random.nextFloat(); 
+            boolean flag = false;
+            int fila, filaHole;
+            int columna, columnaHole;
+            while(!flag){
+                fila = random.nextInt(tamaño);
+                columna = random.nextInt(tamaño);
+                if(tablero[fila][columna]==null){
+                    tablero[fila][columna]= new Marbell(this, fila, columna, new Color(r,g,b) ,false);
+                    flag=true;
+                }
+            }
+            flag=false;
+            while(!flag){
+                filaHole = random.nextInt(tamaño);
+                columnaHole = random.nextInt(tamaño);
+                if(tablero[filaHole][columnaHole]==null){
+                    tablero[filaHole][columnaHole]= new Hole(this, filaHole, columnaHole, new Color(r,g,b));
+                    flag=true;
+                }
+            }
+        }
+    }
+
+    private void createBarriers(){
+        Random random = new Random();
+        for(int i=0;i<cantBarriers;i++){
+            float r = random.nextFloat(), g = random.nextFloat(), b = random.nextFloat(); 
+            boolean flag = false;
+            int fila,columna;
+            while(!flag){
+                fila = random.nextInt(tamaño);
+                columna = random.nextInt(tamaño);
+                if(tablero[fila][columna]==null){
+                    tablero[fila][columna]= new Barrier(this, fila, columna, Color.black);
+                    flag=true;
+                }
+            }
+        }
+    }
+
+    private void prepareInicial(){
+        for(int i=0; i< tablero.length;i++){
+            for(int j=0; j<tablero.length;j++){
+                inicial[i][j]=tablero[i][j];
+            }
+        }
+    }
+
+    public void reiniciar(){
+        for(int i=0;i<tablero.length;i++){
+            for(int j=0; j<tablero.length;j++){
+                tablero[i][j]=inicial[i][j];
+            }
+        }
+    }
     public Elemento getElemento(int i, int j){
         return tablero[i][j];    
     }
 
     
-    public void pintarNazi(){
+    public String pintarNazi(){
+        String temp="[";
         for(int i=0;i<tamaño;i++){
-            String temp="[";
             for(int j=0;j<tamaño;j++){
                 if(tablero[i][j] instanceof Marbell){
                     temp+="1 , ";
@@ -46,8 +109,8 @@ public class MarbelGame {
                 }
             }
             temp+="]";
-            System.out.println(temp);
         }
+        return temp;
     }
 
     private void prepararAlgunosElementos(){
@@ -275,11 +338,6 @@ public class MarbelGame {
         System.out.println("Primera Matriz");
         MarbelGame marbelgame = new MarbelGame(4, 3, 3);
         marbelgame.move('N');
-        marbelgame.move('E');
-        System.out.println("Segunda Matriz");
-        marbelgame.pintarNazi();
-        marbelgame.move('N');
-        System.out.println("Tercera Matriz");
-        marbelgame.pintarNazi();
+        System.out.println(marbelgame.pintarNazi());
     }
 }

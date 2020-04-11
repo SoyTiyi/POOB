@@ -1,6 +1,6 @@
 package aplicacion;
 
-import javafx.scene.paint.Color;
+import java.awt.Color;
 
 public class Barrier implements Elemento {
     private int fila, columna;
@@ -17,11 +17,16 @@ public class Barrier implements Elemento {
         return fila;
     }
 
+    @Override
+    public int getForma(){
+        return CUADRADA;
+    }
+
     public int getColumna(){
         return columna;
     }
     @Override
-    public Color getColor(){
+    public  Color getColor() {
         return color;
     }
 

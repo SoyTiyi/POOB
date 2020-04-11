@@ -20,6 +20,7 @@ public class TableroGUI extends JFrame{
     private JButton este;
     private JButton oeste;
     private JButton guardar;
+    private JButton reiniciar;
     private JFileChooser fileChooser;
     /* Estos atriburos hacen parte del panel de informacion */
     private JPanel panelInformacion;
@@ -30,7 +31,6 @@ public class TableroGUI extends JFrame{
     public static int cantBarriers;
     public static Color color;
     public JPanel espacioJuego;
-    private FotoTablero foto;
     //Estos atributos son fundamentales para llevar la cuenta de movimientos,
     //fichas que se ubican y las que no
     private JLabel numMovimientos;
@@ -68,6 +68,9 @@ public class TableroGUI extends JFrame{
         guardar = new JButton("Guardar"); guardar.setBackground(Color.red); guardar.setForeground(Color.black); guardar.setBorder(new LineBorder(Color.black));
         guardar.setFont(fuente);
         guardar.setBounds(20,300,100,50);
+        reiniciar = new JButton("Reiniciar"); reiniciar.setBackground(Color.red); reiniciar.setForeground(Color.black); reiniciar.setBorder(new LineBorder(Color.black));
+        reiniciar.setBounds(140,300,100,50);
+        add(reiniciar);
         add(guardar);
     }
 
@@ -109,7 +112,7 @@ public class TableroGUI extends JFrame{
     }
 
     public void refresque(){
-
+        espacioJuego.repaint();
     }
 
     private void prepareTablero(){
@@ -128,9 +131,8 @@ public class TableroGUI extends JFrame{
             public void actionPerformed(ActionEvent ev){
                 cont+=1;
                 numMovimientos.setText(""+cont);
-                /**
-                 * Se debe implementar los movimientos en el tablero
-                 */
+                marbelgame.move('N');
+                refresque();
             }
         });
 
@@ -138,9 +140,8 @@ public class TableroGUI extends JFrame{
             public void actionPerformed(ActionEvent ev){
                 cont+=1;
                 numMovimientos.setText(""+cont);
-                /**
-                 * Se debe de implementar los movimientos en el tablero
-                 */
+                marbelgame.move('S');
+                refresque();
             }
         });
 
@@ -148,9 +149,8 @@ public class TableroGUI extends JFrame{
             public void actionPerformed(ActionEvent ev){
                 cont+=1;
                 numMovimientos.setText(""+cont);
-                /**
-                 * Se debe de implementar los movimientos en el tablero
-                 */
+                marbelgame.move('E');
+                refresque();
             }
         });
 
@@ -158,15 +158,23 @@ public class TableroGUI extends JFrame{
             public void actionPerformed(ActionEvent ev){
                 cont+=1;
                 numMovimientos.setText(""+cont);
-                /**
-                 * Se debe de implementar los movimientos en el tablero
-                 */
+                marbelgame.move('O');
+                refresque();
             }
         });
 
         guardar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ev){
                 fileChooser.showSaveDialog(null);
+            }
+        });
+
+        reiniciar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ev){
+                cont=0;
+                numMovimientos.setText(""+cont);
+                marbelgame.reiniciar();
+                espacioJuego.repaint();
             }
         });
     }
@@ -185,12 +193,14 @@ class FotoTablero extends JPanel{
     private int hola;
     private MarbelGame tablero;
     private int tamaño;
+    private Color color;
 
     public FotoTablero(MarbelGame marbelgame, int tamaño, Color color){
         setBackground(Color.WHITE);
         this.tablero=marbelgame;
         this.tamaño=tamaño;
         hola=300/tamaño;
+        this.color=color;
         setPreferredSize(new Dimension(300,300));
     }
 
@@ -200,6 +210,7 @@ class FotoTablero extends JPanel{
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
+        g.setColor(color);
         for(int i=0;i<tamaño;i++){
             g.drawLine(i*hola, 0, i*hola,hola*tamaño);
         }
@@ -208,7 +219,20 @@ class FotoTablero extends JPanel{
         }
         for(int i=0; i<tamaño; i++){
             for(int j=0;j<tamaño;j++){
-
+                if(tablero.getElemento(i, j)!=null){
+                    g.setColor(tablero.getElemento(i, j).getColor());
+                    if(tablero.getElemento(i,j).getForma()==Elemento.REDONDA){
+                        if(tablero.getElemento(i,j)instanceof Marbell){
+                            g.fillOval(hola * j + 15, hola * i+10 + 3, 45, 45);
+                        }
+                        else{
+                            g.drawOval(hola * j + 10, hola * i+10 + 3, 55, 55);
+                        }
+                    }
+                    else{
+                        g.fillRoundRect(hola * j +10, hola*i+10, 55, 55, j, j);
+                    }
+                }
             }
         }
     }
