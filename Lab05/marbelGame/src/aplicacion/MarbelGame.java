@@ -195,8 +195,9 @@ public class MarbelGame {
             }
             else if(tablero[i][z] instanceof Hole){
                 if(tablero[i][j].getColor().equals(tablero[i][z].getColor())){
-                    posicionada[i][z]=tablero[i][j]; posicionada[i][z].setHaveHole(true);
+                    posicionada[i][z]=tablero[i][j]; 
                     tablero[i][j]=null; tablero[i][z]=null;
+                    break;
                 }
                 else{
                     if(z!=j-1){
@@ -231,8 +232,9 @@ public class MarbelGame {
             }
             else if(tablero[i][z] instanceof Hole){
                 if(tablero[i][j].getColor().equals(tablero[i][z].getColor())){
-                    posicionada[i][z]=tablero[i][j]; posicionada[i][z].setHaveHole(true);
+                    posicionada[i][z]=tablero[i][j]; 
                     tablero[i][j]=null; tablero[i][z]=null;
+                    break;
                 }
                 else{
                     if(z!=j+1){
@@ -267,8 +269,9 @@ public class MarbelGame {
             }
             else if(tablero[z][i] instanceof Hole){
                 if(tablero[z][i].getColor().equals(tablero[j][i].getColor())){
-                    posicionada[z][i]=tablero[j][i]; posicionada[z][i].setHaveHole(true);
+                    posicionada[z][i]=tablero[j][i]; 
                     tablero[j][i]=null; tablero[z][i]=null;
+                    break;
                 }
                 else{
                     if(z!=j+1){
@@ -304,8 +307,9 @@ public class MarbelGame {
             }
             else if(tablero[z][i] instanceof Hole){
                 if(tablero[z][i].getColor().equals(tablero[j][i].getColor())){
-                    posicionada[z][i]=tablero[j][i]; posicionada[z][i].setHaveHole(true);
+                    posicionada[z][i]=tablero[j][i]; 
                     tablero[j][i]=null; tablero[z][i]=null;
+                    break;
                 }
                 else{
                     if(z!=j-1){
