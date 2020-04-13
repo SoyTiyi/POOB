@@ -123,6 +123,10 @@ public class TableroGUI extends JFrame{
         add(espacioJuego);
     }
 
+    private void mesajeDeQueGano(){
+        JOptionPane.showMessageDialog(null, "Marbell Game");
+    }
+
     private void prepareAcciones(){
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent ev) {
@@ -131,41 +135,61 @@ public class TableroGUI extends JFrame{
         });
         norte.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ev){
-                cont+=1;
-                numMovimientos.setText(""+cont);
-                marbelgame.move('N');
-                numUbicadas.setText(marbelgame.getPosicionadas()+""); numNoUbicadas.setText(marbelgame.getNoPosicionadas()+"");
-                refresque();
+                if(!numUbicadas.getText().equals(cantMarbels+"")){
+                    cont+=1;
+                    numMovimientos.setText(""+cont);
+                    marbelgame.move('N');
+                    numUbicadas.setText(marbelgame.getPosicionadas()+""); numNoUbicadas.setText(marbelgame.getNoPosicionadas()+"");
+                    refresque();
+                }
+                else{
+                    mesajeDeQueGano();
+                }
             }
         });
 
         sur.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ev){
-                cont+=1;
-                numMovimientos.setText(""+cont);
-                marbelgame.move('S');
-                numUbicadas.setText(marbelgame.getPosicionadas()+""); numNoUbicadas.setText(marbelgame.getNoPosicionadas()+"");
-                refresque();
+                if(!numUbicadas.getText().equals(cantMarbels+"")){
+                    cont+=1;
+                    numMovimientos.setText(""+cont);
+                    marbelgame.move('S');
+                    numUbicadas.setText(marbelgame.getPosicionadas()+""); numNoUbicadas.setText(marbelgame.getNoPosicionadas()+"");
+                    refresque();
+                }
+                else{
+                    mesajeDeQueGano();
+                }
             }
         });
 
         este.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ev){
-                cont+=1;
-                numMovimientos.setText(""+cont);
-                marbelgame.move('E');
-                numUbicadas.setText(marbelgame.getPosicionadas()+""); numNoUbicadas.setText(marbelgame.getNoPosicionadas()+"");
-                refresque();
+                if(!numUbicadas.getText().equals(cantMarbels+"")){
+                    cont+=1;
+                    numMovimientos.setText(""+cont);
+                    marbelgame.move('E');
+                    numUbicadas.setText(marbelgame.getPosicionadas()+""); numNoUbicadas.setText(marbelgame.getNoPosicionadas()+"");
+                    refresque();
+                }
+                else{
+                    mesajeDeQueGano();
+                }
             }
         });
 
         oeste.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ev){
-                cont+=1;
-                numMovimientos.setText(""+cont);
-                marbelgame.move('O');
-                numUbicadas.setText(marbelgame.getPosicionadas()+""); numNoUbicadas.setText(marbelgame.getNoPosicionadas()+"");
-                refresque();
+                if(!numUbicadas.getText().equals(cantMarbels+"")){
+                    cont+=1;
+                    numMovimientos.setText(""+cont);
+                    marbelgame.move('O');
+                    numUbicadas.setText(marbelgame.getPosicionadas()+""); numNoUbicadas.setText(marbelgame.getNoPosicionadas()+"");
+                    refresque();
+                }
+                else{
+                    mesajeDeQueGano();
+                }
             }
         });
 
