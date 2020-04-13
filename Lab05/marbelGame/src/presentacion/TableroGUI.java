@@ -124,7 +124,7 @@ public class TableroGUI extends JFrame{
     }
 
     private void mesajeDeQueGano(){
-        JOptionPane.showMessageDialog(null, "Marbell Game");
+        JOptionPane.showMessageDialog(null, "Ganaste!");
     }
 
     private void prepareAcciones(){
