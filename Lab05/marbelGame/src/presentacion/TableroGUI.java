@@ -102,11 +102,11 @@ public class TableroGUI extends JFrame{
         numMovimientos.setBounds(100,40,30,20);
         JLabel ubicadas = new JLabel("Ubicadas :"); ubicadas.setForeground(Color.red);
         ubicadas.setBounds(10,90,80,20);
-        numUbicadas = new JLabel(""+cont); numUbicadas.setForeground(Color.red);
+        numUbicadas = new JLabel(""+0); numUbicadas.setForeground(Color.red);
         numUbicadas.setBounds(100,90,30,20);
         JLabel noUbicadas = new JLabel("No Ubicadas :"); noUbicadas.setForeground(Color.red);
         noUbicadas.setBounds(10,140,80,20);
-        numNoUbicadas = new JLabel(""+cont); numNoUbicadas.setForeground(Color.red);
+        numNoUbicadas = new JLabel(""+0); numNoUbicadas.setForeground(Color.red);
         numNoUbicadas.setBounds(100,140,30,20);
         panelInformacion.add(movimientos); panelInformacion.add(ubicadas); panelInformacion.add(noUbicadas);
         panelInformacion.add(numMovimientos); panelInformacion.add(numUbicadas); panelInformacion.add(numNoUbicadas);
@@ -134,6 +134,7 @@ public class TableroGUI extends JFrame{
                 cont+=1;
                 numMovimientos.setText(""+cont);
                 marbelgame.move('N');
+                numUbicadas.setText(marbelgame.getPosicionadas()+""); numNoUbicadas.setText(marbelgame.getNoPosicionadas()+"");
                 refresque();
             }
         });
@@ -143,6 +144,7 @@ public class TableroGUI extends JFrame{
                 cont+=1;
                 numMovimientos.setText(""+cont);
                 marbelgame.move('S');
+                numUbicadas.setText(marbelgame.getPosicionadas()+""); numNoUbicadas.setText(marbelgame.getNoPosicionadas()+"");
                 refresque();
             }
         });
@@ -152,6 +154,7 @@ public class TableroGUI extends JFrame{
                 cont+=1;
                 numMovimientos.setText(""+cont);
                 marbelgame.move('E');
+                numUbicadas.setText(marbelgame.getPosicionadas()+""); numNoUbicadas.setText(marbelgame.getNoPosicionadas()+"");
                 refresque();
             }
         });
@@ -161,6 +164,7 @@ public class TableroGUI extends JFrame{
                 cont+=1;
                 numMovimientos.setText(""+cont);
                 marbelgame.move('O');
+                numUbicadas.setText(marbelgame.getPosicionadas()+""); numNoUbicadas.setText(marbelgame.getNoPosicionadas()+"");
                 refresque();
             }
         });
@@ -175,6 +179,8 @@ public class TableroGUI extends JFrame{
             public void actionPerformed(ActionEvent ev){
                 cont=0;
                 numMovimientos.setText(""+cont);
+                numUbicadas.setText(""+0);
+                numNoUbicadas.setText(""+0);
                 marbelgame.reiniciar();
                 espacioJuego.repaint();
             }
@@ -223,8 +229,13 @@ class FotoTablero extends JPanel{
             for(int j=0;j<tamaño;j++){
                 if(tablero.getElentoPosicionada(i, j)!=null){
                     g.setColor(tablero.getElentoPosicionada(i, j).getColor());
-                    g.drawOval(hola * j +hola/10, hola*i +hola/10, hola/2+hola/10+10, hola/2+hola/10+10);
-                    g.fillOval(hola * j +hola/7 , hola*i +hola/7, hola/2+hola/10, hola/2+hola/10);
+                    if(tablero.getElentoPosicionada(i, j) instanceof Marbell){
+                        g.drawOval(hola * j +hola/10, hola*i +hola/10, hola/2+hola/10+10, hola/2+hola/10+10);
+                        g.fillOval(hola * j +hola/7 , hola*i +hola/7, hola/2+hola/10, hola/2+hola/10);
+                    }
+                    else{
+                        g.drawOval(hola * j +hola/10, hola*i +hola/10, hola/2+hola/10+10, hola/2+hola/10+10);
+                    }
                 }
             }
         }
@@ -233,12 +244,7 @@ class FotoTablero extends JPanel{
                 if(tablero.getElemento(i, j)!=null){
                     g.setColor(tablero.getElemento(i, j).getColor());
                     if(tablero.getElemento(i,j).getForma()==Elemento.REDONDA){
-                        if(tablero.getElemento(i,j)instanceof Marbell){
-                            g.fillOval(hola * j +hola/7 , hola*i +hola/7, hola/2+hola/10, hola/2+hola/10);
-                        }
-                        else{
-                            g.drawOval(hola * j +hola/10, hola*i +hola/10, hola/2+hola/10+5, hola/2+hola/10+5);
-                        }
+                        g.fillOval(hola * j +hola/7 , hola*i +hola/7, hola/2+hola/10, hola/2+hola/10);
                     }
                     else{
                         g.fillRoundRect(hola * j +hola/10, hola*i +hola/10, hola/2 +10, hola/2+10, j, j);

@@ -6,15 +6,20 @@ public class MarbelGame {
     private Elemento[][] tablero;
     private Elemento[][] inicial;
     private Elemento[][] posicionada;
+    private Elemento[][] posicionadaInicial;
     private int tamaño;
     private int cantMarbels;
     private int cantBarriers;
-
+    private int posicionadas;
+    private int noPosicionadas;
 
     public MarbelGame(int tamaño, int cantMarbels, int cantBarriers){
         tablero = new Elemento[tamaño][tamaño];
         inicial = new Elemento[tamaño][tamaño];
         posicionada = new Elemento[tamaño][tamaño];
+        posicionadaInicial = new Elemento[tamaño][tamaño];
+        posicionadas=0;
+        noPosicionadas=cantMarbels;
         this.tamaño=tamaño;
         this.cantMarbels=cantMarbels;
         this.cantBarriers=cantBarriers;
@@ -29,6 +34,14 @@ public class MarbelGame {
         prepareInicial();
     }
 
+    public int getPosicionadas(){
+        return posicionadas;
+    }
+
+    public int getNoPosicionadas(){
+        return noPosicionadas;
+    }
+
     private void createMarbelsAndHoles(){
         Random random = new Random();
         for(int i=0; i<cantMarbels;i++){
@@ -39,7 +52,7 @@ public class MarbelGame {
             while(!flag){
                 fila = random.nextInt(tamaño);
                 columna = random.nextInt(tamaño);
-                if(tablero[fila][columna]==null){
+                if(tablero[fila][columna]==null && posicionada[fila][columna]==null){
                     tablero[fila][columna]= new Marbell(this, fila, columna, new Color(r,g,b) ,false);
                     flag=true;
                 }
@@ -48,8 +61,8 @@ public class MarbelGame {
             while(!flag){
                 filaHole = random.nextInt(tamaño);
                 columnaHole = random.nextInt(tamaño);
-                if(tablero[filaHole][columnaHole]==null){
-                    tablero[filaHole][columnaHole]= new Hole(this, filaHole, columnaHole, new Color(r,g,b));
+                if(tablero[filaHole][columnaHole]==null && posicionada[filaHole][columnaHole]==null){
+                    posicionada[filaHole][columnaHole]= new Hole(this, filaHole, columnaHole, new Color(r,g,b));
                     flag=true;
                 }
             }
@@ -67,7 +80,7 @@ public class MarbelGame {
             while(!flag){
                 fila = random.nextInt(tamaño);
                 columna = random.nextInt(tamaño);
-                if(tablero[fila][columna]==null){
+                if(tablero[fila][columna]==null && posicionada[fila][columna]==null){
                     tablero[fila][columna]= new Barrier(this, fila, columna, Color.black);
                     flag=true;
                 }
@@ -79,15 +92,18 @@ public class MarbelGame {
         for(int i=0; i< tablero.length;i++){
             for(int j=0; j<tablero.length;j++){
                 inicial[i][j]=tablero[i][j];
+                posicionadaInicial[i][j]=posicionada[i][j];
             }
         }
     }
 
     public void reiniciar(){
+        posicionadas=0;
+        noPosicionadas=cantMarbels;
         for(int i=0;i<tablero.length;i++){
             for(int j=0; j<tablero.length;j++){
                 tablero[i][j]=inicial[i][j];
-                posicionada[i][j]=null;
+                posicionada[i][j]=posicionadaInicial[i][j];
             }
         }
     }
@@ -193,21 +209,19 @@ public class MarbelGame {
                     break;
                 }
             }
-            else if(tablero[i][z] instanceof Hole){
-                if(tablero[i][j].getColor().equals(tablero[i][z].getColor())){
+            else if(posicionada[i][z] instanceof Hole){
+                if(tablero[i][j].getColor().equals(posicionada[i][z].getColor())){
+                    posicionadas+=1;
+                    noPosicionadas-=1;
+                    posicionada[i][z]=null;
                     posicionada[i][z]=tablero[i][j]; 
-                    tablero[i][j]=null; tablero[i][z]=null;
+                    tablero[i][j]=null;
                     break;
                 }
-                else{
-                    if(z!=j-1){
-                        tablero[i][z+1]=tablero[i][j];
-                        tablero[i][j]=null;
-                        break;
-                    }
-                    else{
-                        break;
-                    }
+                else if(z==0){
+                    tablero[i][z]=tablero[i][j];
+                    tablero[i][j]=null;
+                    break;
                 }
             }
             else if(z==0){
@@ -230,21 +244,19 @@ public class MarbelGame {
                     break;
                 }
             }
-            else if(tablero[i][z] instanceof Hole){
-                if(tablero[i][j].getColor().equals(tablero[i][z].getColor())){
+            else if(posicionada[i][z] instanceof Hole){
+                if(tablero[i][j].getColor().equals(posicionada[i][z].getColor())){
+                    posicionadas+=1;
+                    noPosicionadas-=1;
+                    posicionada[i][z]=null;
                     posicionada[i][z]=tablero[i][j]; 
-                    tablero[i][j]=null; tablero[i][z]=null;
+                    tablero[i][j]=null; 
                     break;
                 }
-                else{
-                    if(z!=j+1){
-                        tablero[i][z-1]=tablero[i][j];
-                        tablero[i][j]=null;
-                        break;
-                    }
-                    else{
-                        break;
-                    }
+                else if(z==tamaño-1){
+                    tablero[i][z]=tablero[i][j];
+                    tablero[i][j]=null;
+                    break;
                 }
             }
             else if(z==tamaño-1){
@@ -267,21 +279,19 @@ public class MarbelGame {
                     break;
                 }
             }
-            else if(tablero[z][i] instanceof Hole){
-                if(tablero[z][i].getColor().equals(tablero[j][i].getColor())){
+            else if(posicionada[z][i] instanceof Hole){
+                if(posicionada[z][i].getColor().equals(tablero[j][i].getColor())){
+                    posicionadas+=1;
+                    noPosicionadas-=1;
+                    posicionada[z][i]=null;
                     posicionada[z][i]=tablero[j][i]; 
-                    tablero[j][i]=null; tablero[z][i]=null;
+                    tablero[j][i]=null;
                     break;
                 }
-                else{
-                    if(z!=j+1){
-                        tablero[z-1][i]=tablero[j][i];
-                        tablero[j][i]=null;
-                        break;
-                    }
-                    else{
-                        break;
-                    }
+                else if(z==tamaño-1){
+                    tablero[z][i]=tablero[j][i];
+                    tablero[j][i]=null;
+                    break;
                 }
             }
             else if(z==tamaño-1){
@@ -305,21 +315,19 @@ public class MarbelGame {
                     break;
                 }
             }
-            else if(tablero[z][i] instanceof Hole){
-                if(tablero[z][i].getColor().equals(tablero[j][i].getColor())){
+            else if(posicionada[z][i] instanceof Hole){
+                if(posicionada[z][i].getColor().equals(tablero[j][i].getColor())){
+                    posicionadas+=1;
+                    noPosicionadas-=1;
+                    posicionada[z][i]=null;
                     posicionada[z][i]=tablero[j][i]; 
-                    tablero[j][i]=null; tablero[z][i]=null;
+                    tablero[j][i]=null;
                     break;
                 }
-                else{
-                    if(z!=j-1){
-                        tablero[z+1][i]=tablero[j][i];
-                        tablero[j][i]=null;
-                        break;
-                    }
-                    else{
-                        break;
-                    }
+                else if(z==0){
+                    tablero[z][i]=tablero[j][i];
+                    tablero[j][i]=null;
+                    break;
                 }
             }
             else if(z==0){
