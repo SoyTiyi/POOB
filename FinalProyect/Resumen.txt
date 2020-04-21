@@ -1,0 +1,54 @@
+Requisitos:
+
+1.  POOng debe de tener diferentes aspectos visuales para los personajes
+2.  Debe de tener 3 modelos de juego, jugador vs jugador, jugador vs maquina, maquina vs maquina
+3.  Tres tipos diferentes de maquinas
+4.  Deben de haber sorpresas, esto quiere decir que si son golpeadas daran una ventaja a las raquetas o a las pelotas
+5.  Blancos en los laterales, que si son golpeados dan puntos extras
+6.  Bloques que eviten el paso de la pelota, esto sobre la maya de tenis
+7.  Tener encuenta la fortalez de los jugadores, esto cuando se mueven
+
+Los diseños para los jugadores seran con base a :
+  1. Superheroe
+  2. Pelicula de terror
+  3. Tema libre, meteremos un darth vader nazi
+
+Las maquinas tendran un diseño propio dependiendo de la configuracion
+
+Modos de las maquinas: 
+1. Experto: busca devolver la pelota al lado contrario de donde la recibio
+2. Sniper: es especialista en pegarle a los blancos. si no hay objetos se comporta como un extreme
+3. Greedy: es especialista en pegarle a los premios que aparecen. si no hay premio se comporta como un extreme
+4. Lazy: su especialidad es hamar con el minimo gasto de energía
+
+
+
+Pelotas
+1. Se permite elegir la velocidad de la pelota: LENTA, RAPIDA o INCREMENTAL(Aumenta progresivamente
+y se reinicia cuando alguien gnaa un punto).
+
+
+Sorpresas
+Estan en la mitad del mapa y aprecen en un tiempo entre 10 a 20 segundos
+
+1. FastBall: aumenta la velocidad un 20%
+2. Freezer: congela al jugador rival por un tiempo de 2 segundos
+3. Flash: acelera la pelota hasta que el jugador contrario la regrese o la deje ir, despues
+vuelve a la normalidad
+4. Turtle: hace que el jugador contrario se mueva más despacio por un tiempo de 3 segundos
+5. Phantom Racket: permite que duplique la bola, una fantasma y otra que será la real, cuando la pelota paso al lado del rival
+la false desaparece y la real se vuelve visible
+6. Cold Racket:  permite que el jugador que golpeo la sorpresa cambie su raqueta a congeladora y haga que la pelota
+se vuelva congeladora y esta al golpiar al otro jugador lo congele durante 3 segundos
+7. Energy : Otorga al jugador el 50% de la fortaleza perdida
+
+
+Objetivos
+
+Tendran un valor de 2 a puntosTotales/2
+Durarán 10 segundos
+
+Bloques
+Los bloques se puede que aparezcan cuando se golpea una sorpresa en el campo enemigo
+Si un jugador se deja golpear por un bloque pierde el 50% de la fortaleza que tenia en el momento
+
