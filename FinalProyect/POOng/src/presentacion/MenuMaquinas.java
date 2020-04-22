@@ -12,10 +12,12 @@ public class MenuMaquinas extends JFrame{
     private JButton playerVSplayer;
     private JButton playerVScpu;
     private JButton cpuVScpu;
+    private JButton atras;
     private JLabel imagePP;
     private JLabel imagePC;
     private JLabel imageCC;
     private JLabel backGround;
+    private JLabel imageAtras;
     /**
      * Este es el constructor de la clase
      */
@@ -41,6 +43,28 @@ public class MenuMaquinas extends JFrame{
         backGround = new JLabel(back);
         backGround.setBounds(0,0,d.width/2+50,d.height/2+50);
         backGround.setLayout(null);
+        prepareBotones();
+        prepareAtras();
+        add(backGround);
+    }
+
+    /**
+     * Este metodo nos crea la flecha atras
+     */
+    private void prepareAtras(){
+        atras = new JButton();
+        atras.setOpaque(false); atras.setContentAreaFilled(false); atras.setBorderPainted(false);
+        atras.setBounds(20, 20 , 50 , 50);
+        ImageIcon imagenAtras = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/Atras.png");
+        imageAtras = new JLabel(imagenAtras);
+        imageAtras.setBounds(20, 20, 50, 50);
+        backGround.add(atras); backGround.add(imageAtras);
+    }
+
+    /**
+     * Este metodo prepara los botones con los que interactua el usuario
+     */
+    private void prepareBotones(){
         ImageIcon imagen = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/Modos.png");
         logoModo = new JLabel(imagen);
         logoModo.setBounds(90,5,550,170);
@@ -64,9 +88,7 @@ public class MenuMaquinas extends JFrame{
         imageCC = new JLabel(imageCVC);
         imageCC.setBounds(305, 300, 150, 40);
         backGround.add(playerVSplayer); backGround.add(imagePP); backGround.add(playerVScpu); backGround.add(imagePC); backGround.add(cpuVScpu); backGround.add(imageCC);
-        add(backGround);
     }
-
     /**
      * Este metodo nos prepara las acciones de los objetos con los que interactua el usuario
      */
@@ -86,7 +108,36 @@ public class MenuMaquinas extends JFrame{
                 }
             }
         });
+
+        playerVScpu.addActionListener( new ActionListener(){
+            public void actionPerformed(ActionEvent ev){
+                setVisible(false);
+                MenuTipoMaquina menu = new MenuTipoMaquina();
+                menu.setVisible(true);
+            }
+        });
+
+        cpuVScpu.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent ev){
+                setVisible(false);
+                MenuTipoMaquina menu = new MenuTipoMaquina();
+                menu.setVisible(true);
+            }
+        });
+
+        atras.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent ev){
+                setVisible(false);
+                MenuPOOng menu = new MenuPOOng();
+                menu.setVisible(true);
+            }
+        });
     }
+
+    /**
+     * Este metodo nos permite visualizar la ventana 
+     * @param args
+     */
     public static void main(String[] args){
         MenuMaquinas menu = new MenuMaquinas();
         menu.setVisible(true);

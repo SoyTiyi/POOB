@@ -2,6 +2,8 @@ package src.presentacion;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+
 import javax.swing.*;
 import javax.swing.ImageIcon;
 
@@ -29,6 +31,7 @@ public class MenuPOOng extends JFrame{
     private JLabel imageAbrir;
     private JLabel imageCerrar;
     private JLabel backGround;
+    private JFileChooser fileChooser = new JFileChooser();
      /**
       * Esta clase es el constructor de nuestra ventana para el menu de POOng
       */
@@ -54,6 +57,14 @@ public class MenuPOOng extends JFrame{
         backGround = new JLabel(back);
         backGround.setBounds(0,0,d.width/2+50,d.height/2+50);
         backGround.setLayout(null);
+        prepareBotones();
+        add(backGround);
+    }
+
+    /**
+     * Este metodo nos prepara los objetos con los que interactua el usuario
+     */
+    private void prepareBotones(){
         ImageIcon imagen = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/poong.png");
         logoPong = new JLabel(imagen);
         logoPong.setBounds(90,5,550,170);
@@ -77,9 +88,7 @@ public class MenuPOOng extends JFrame{
         imageCerrar = new JLabel(imagenSalir);
         imageCerrar.setBounds(300, 320, 130, 50);
         backGround.add(botonJugar); backGround.add(imageJugar); backGround.add(botonAbrir); backGround.add(imageAbrir); backGround.add(botonSalir); backGround.add(imageCerrar);
-        add(backGround);
     }
-
     /**
      * Este metodo prepara las acciones para los objetos con los que se interactua 
      * 
@@ -111,6 +120,23 @@ public class MenuPOOng extends JFrame{
                 }
                 else if(dialogButton == JOptionPane.NO_OPTION){
                     remove(dialogButton);
+                }
+            }
+        });
+
+        botonJugar.addActionListener( new ActionListener(){
+            public void actionPerformed(ActionEvent ev){
+                setVisible(false);
+                MenuMaquinas menu = new MenuMaquinas();
+                menu.setVisible(true);
+            }
+        });
+
+        botonAbrir.addActionListener( new ActionListener(){
+            public void actionPerformed(ActionEvent ev){
+                int returnVal = fileChooser.showOpenDialog(null);
+                if(returnVal == JFileChooser.APPROVE_OPTION){
+                    File file = fileChooser.getSelectedFile();
                 }
             }
         });
