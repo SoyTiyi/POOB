@@ -13,6 +13,15 @@ public class MenuTipoMaquina extends JFrame{
      */
     private JLabel backGround;
     private JLabel logoTipo;
+    private JButton lazy;
+    private JButton expert;
+    private JButton snipe;
+    private JButton greedy;
+    private JLabel imageLazy;
+    private JLabel imageExpert;
+    private JLabel imageSnipe;
+    private JLabel imageGreedy;
+
     public MenuTipoMaquina(){
         getContentPane().setBackground(Color.black);
         prepareElementos();
@@ -38,7 +47,7 @@ public class MenuTipoMaquina extends JFrame{
         logoTipo = new JLabel(imagen);
         logoTipo.setBounds(90,5,550,170);
         backGround.add(logoTipo);
-
+        prepareBotones();
         add(backGround);
     }
 
@@ -46,7 +55,31 @@ public class MenuTipoMaquina extends JFrame{
      * Este metodo prepara los botones con los que interactua el usuario
      */
     private void prepareBotones(){
-        
+        lazy = new JButton();
+        lazy.setBounds(160, 200, 150, 40);
+        lazy.setOpaque(false); lazy.setContentAreaFilled(false); lazy.setBorderPainted(false);
+        ImageIcon imagenLazy = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/lazy.png");
+        imageLazy = new JLabel(imagenLazy);
+        imageLazy.setBounds(160,200,150,40);
+        expert = new JButton();
+        expert.setBounds(420, 200, 150, 40);
+        expert.setOpaque(false); expert.setContentAreaFilled(false); expert.setBorderPainted(false);
+        ImageIcon imagenExpert = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/Expert.png");
+        imageExpert = new JLabel(imagenExpert);
+        imageExpert.setBounds(420, 200, 150, 40);
+        snipe = new JButton();
+        snipe.setBounds(160, 300, 150, 40);
+        snipe.setOpaque(false); snipe.setContentAreaFilled(false); snipe.setBorderPainted(false);
+        ImageIcon imagenSnipe = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/Sniper.png");
+        imageSnipe = new JLabel(imagenSnipe);
+        imageSnipe.setBounds(160, 300, 150, 40);
+        greedy = new JButton();
+        greedy.setBounds(420, 300, 150, 40);
+        greedy.setOpaque(false); greedy.setContentAreaFilled(false); greedy.setBorderPainted(false);
+        ImageIcon imagenGreedy = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/greedy.png");
+        imageGreedy = new JLabel(imagenGreedy);
+        imageGreedy.setBounds(420,300,150,40);
+        backGround.add(lazy);backGround.add(imageLazy);  backGround.add(expert); backGround.add(imageExpert); backGround.add(snipe); backGround.add(expert); backGround.add(imageExpert); backGround.add(imageSnipe); backGround.add(greedy); backGround.add(imageGreedy);
     }
 
     /**
