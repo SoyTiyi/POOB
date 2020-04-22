@@ -12,6 +12,7 @@ public class MenuTipoMaquina extends JFrame{
      * Este es el constructor de la clase
      */
     private JLabel backGround;
+    private JLabel logoTipo;
     public MenuTipoMaquina(){
         getContentPane().setBackground(Color.black);
         prepareElementos();
@@ -33,9 +34,20 @@ public class MenuTipoMaquina extends JFrame{
         backGround = new JLabel(back);
         backGround.setBounds(0,0,d.width/2+50,d.height/2+50);
         backGround.setLayout(null);
+        ImageIcon imagen = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/Tipo.png");
+        logoTipo = new JLabel(imagen);
+        logoTipo.setBounds(90,5,550,170);
+        backGround.add(logoTipo);
+
         add(backGround);
     }
 
+    /**
+     * Este metodo prepara los botones con los que interactua el usuario
+     */
+    private void prepareBotones(){
+        
+    }
 
     /**
      * Este metodo nos visuliza la ventana de los tipos de maquinas
