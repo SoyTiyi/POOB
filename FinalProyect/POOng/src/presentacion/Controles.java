@@ -25,10 +25,10 @@ public class Controles extends JFrame{
     public Controles(String modo){
         prepareElementos();
         if(modo.equals("")){
-            prepareElementosUno();
+            prepareElementosDos();
         }
         else{
-            prepareElementosDos();;
+            prepareElementosUno();
         }
         prepareOk();
         prepareAtras();
@@ -110,7 +110,31 @@ public class Controles extends JFrame{
      * Este metodo nos prepara las imagenes cuando van a jugar dos jugadores
      */
     private void prepareElementosDos(){
-
+        ImageIcon imagePlaUno = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/Player1.png");
+        playerUno = new JLabel(imagePlaUno);
+        playerUno.setBounds(40, 170, 220, 70);
+        backGround.add(playerUno);
+        ImageIcon imageA = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/A.png");
+        ImageIcon imageD = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/D.png");
+        JLabel teclaA = new JLabel(imageA); JLabel teclaD = new JLabel(imageD);
+        teclaA.setBounds(70, 260, 60, 60); teclaD.setBounds(170, 260, 60, 60);
+        backGround.add(teclaA); backGround.add(teclaD);
+        ImageIcon imagePlaDos = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/Player2.png");
+        playerDos = new JLabel(imagePlaDos);
+        playerDos.setBounds(240, 170, 220, 70);
+        backGround.add(playerDos);
+        ImageIcon imageDer = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/Izquierda.png");
+        ImageIcon imageIzq = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/Derecha.png");
+        JLabel teclaDer = new JLabel(imageDer); JLabel teclaIzq = new JLabel(imageIzq);
+        teclaDer.setBounds(270, 260, 60, 60); teclaIzq.setBounds(370, 260, 60, 60);
+        backGround.add(teclaDer); backGround.add(teclaIzq);
+        ImageIcon imageP = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/Pausa.png");
+        JLabel pausa = new JLabel(imageP);
+        pausa.setBounds(450, 170, 160, 60);
+        ImageIcon imageTeclaP = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/P.png");
+        JLabel teclaP = new JLabel(imageTeclaP);
+        teclaP.setBounds(500, 260, 45, 60);
+        backGround.add(pausa); backGround.add(teclaP);
     }
 
     /**
@@ -146,7 +170,7 @@ public class Controles extends JFrame{
      * @param args
      */
     public static void main(String[] args){
-        Controles controles = new Controles("");
+        Controles controles = new Controles("hola");
         controles.setVisible(true);
     }
 }

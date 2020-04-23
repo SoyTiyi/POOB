@@ -117,6 +117,34 @@ public class MenuTipoMaquina extends JFrame{
             }
         });
 
+        lazy.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent ev){
+                Controles controles = new Controles("lazy");
+                controles.setVisible(true);
+            }
+        });
+
+        expert.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent ev){
+                Controles controles = new Controles("expert");
+                controles.setVisible(true);
+            }
+        });
+
+        snipe.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent ev){
+                Controles controles = new Controles("snipe");
+                controles.setVisible(true);
+            }
+        });
+
+        greedy.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent ev){
+                Controles controles = new Controles("greedy");
+                controles.setVisible(true);
+            }
+        });
+        
         atras.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ev){
                 setVisible(false);
