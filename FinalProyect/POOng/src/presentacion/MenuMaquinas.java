@@ -132,6 +132,14 @@ public class MenuMaquinas extends JFrame{
                 menu.setVisible(true);
             }
         });
+
+        playerVSplayer.addActionListener( new ActionListener(){
+            public void actionPerformed(ActionEvent ev){
+                setVisible(false);
+                Controles controles = new Controles("");
+                controles.setVisible(true);
+            }
+        });
     }
 
     /**

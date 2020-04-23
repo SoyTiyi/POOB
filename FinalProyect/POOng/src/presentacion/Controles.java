@@ -18,11 +18,13 @@ public class Controles extends JFrame{
     private JButton atras;
     private JLabel imageAtras;
     private JLabel imageOk;
+    private String modo;
     /**
      * Este es el constructor de la clase
      * @param modo
      */
     public Controles(String modo){
+        this.modo=modo;
         prepareElementos();
         if(modo.equals("")){
             prepareElementosDos();
@@ -157,11 +159,25 @@ public class Controles extends JFrame{
             }
         });
 
+        okButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent ev){
+                setVisible(false);
+                ZonaDeJuego zona = new ZonaDeJuego(modo);
+                zona.setVisible(true);
+            }
+        });
+
         atras.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ev){
                 setVisible(false);
-                MenuMaquinas menu = new MenuMaquinas();
-                menu.setVisible(true);
+                if(modo.equals("")){
+                    MenuMaquinas menu = new MenuMaquinas();
+                    menu.setVisible(true); 
+                }
+                else{
+                    MenuTipoMaquina menu = new MenuTipoMaquina();
+                    menu.setVisible(true);
+                }
             }
         });
     }

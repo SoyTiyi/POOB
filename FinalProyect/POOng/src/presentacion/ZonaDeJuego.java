@@ -1,6 +1,7 @@
 package src.presentacion;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 /**
  * Esta clase nos muestra la ventana para la zona de juego 
  */
@@ -8,11 +9,14 @@ public class ZonaDeJuego extends JFrame{
 
     private static final long serialVersionUID = 1L;
     private JLabel backGround;
+    private String modo;
     /**
      * Este es el constructor para la ventana de juego
      */
-    public ZonaDeJuego(){
+    public ZonaDeJuego(String modo){
+        this.modo=modo;
         prepareElementos();
+        prepareAcciones();
     }
 
     /**
@@ -34,9 +38,29 @@ public class ZonaDeJuego extends JFrame{
         add(backGround);
     }
 
+    /**
+     * Este metodo nos prepara las acciones de los bojetos con los que interactua el usuario
+     */
+    private void prepareAcciones(){
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent ev){
+                int dialogButton = JOptionPane.YES_NO_OPTION;
+                JOptionPane.showConfirmDialog(null,"Esta seguro?","Alerta!",dialogButton);
+                if(dialogButton == JOptionPane.YES_OPTION){
+                    setVisible(false);
+                    setDefaultCloseOperation(EXIT_ON_CLOSE);
+                }
+                else if(dialogButton == JOptionPane.NO_OPTION){
+                    setVisible(true);
+                    remove(dialogButton);
+                    setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+                }
+            }
+        });
+    }
 
     public static void main(String[] args){
-        ZonaDeJuego zona = new ZonaDeJuego();
+        ZonaDeJuego zona = new ZonaDeJuego("");
         zona.setVisible(true);
     }
 }
