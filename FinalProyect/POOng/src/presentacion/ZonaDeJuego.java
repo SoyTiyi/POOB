@@ -1,5 +1,6 @@
 package src.presentacion;
 import javax.swing.*;
+import src.aplicacion.Pelota;
 import java.awt.*;
 import java.awt.event.*;
 /**
@@ -10,6 +11,7 @@ public class ZonaDeJuego extends JFrame{
     private static final long serialVersionUID = 1L;
     private JLabel backGround;
     private String modo;
+    private TableroJuego tablero;
     /**
      * Este es el constructor para la ventana de juego
      */
@@ -17,6 +19,15 @@ public class ZonaDeJuego extends JFrame{
         this.modo=modo;
         prepareElementos();
         prepareAcciones();
+        prepareTablero();
+    }
+
+    /**
+     * Este metodo nos prepara la plantilla en donde se ubicara los objetos para el juego
+     */
+    private void prepareTablero(){
+        tablero = new TableroJuego();
+        backGround.add(tablero);
     }
 
     /**
@@ -62,5 +73,49 @@ public class ZonaDeJuego extends JFrame{
     public static void main(String[] args){
         ZonaDeJuego zona = new ZonaDeJuego("");
         zona.setVisible(true);
+    }
+}
+
+class TableroJuego extends JPanel{
+
+    /**
+     *Esta clase nos permite adquierir la plantilla en donde se jugara
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * Este es el encargado de dibujar el tablero en donde se 
+     */
+    private Pelota pelota;
+    public TableroJuego(){
+        pelota = new Pelota(0,0);
+        prepareElementos();
+    }
+
+    /**
+     * Este metodo nos permite preparar los elemntos los cuales seran las raquetas y las pelotas
+     */
+    private void prepareElementos(){
+        setBackground(Color.black);
+        Toolkit t = Toolkit.getDefaultToolkit();
+        Dimension d = t.getScreenSize();
+        setSize(d.width/2+50,d.height/2+50);
+    }
+
+    @Override
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+        Graphics2D g2 = (Graphics2D)g;
+        g2.setColor(Color.white);
+        dibujar(g2);
+        actualizar();
+    }
+
+    public void dibujar(Graphics2D g){
+        g.fill((Shape) pelota.getPelota());
+    }
+    
+    public void actualizar(){
+        pelota.mover();
     }
 }
