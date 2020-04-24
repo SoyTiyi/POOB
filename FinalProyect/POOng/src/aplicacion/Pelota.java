@@ -44,6 +44,14 @@ public class Pelota {
         if(y == 0){moveY=-moveY;}
     }
 
+    public String getScore1(){
+        return score1+"";
+    }
+
+    public String getScore2(){
+        return score2+"";
+    }
+
     public void setPositionX(int x){
         this.x=x;
     }

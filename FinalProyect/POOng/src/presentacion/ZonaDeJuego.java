@@ -70,12 +70,14 @@ public class ZonaDeJuego extends JFrame{
                 }
             }
         });
-        timer = new Timer(500,new ActionListener(){
+        timer = new Timer(5,new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 tablero.actualizar();
+                tablero.repaint();
             }
         });
         timer.start();
+
         addKeyListener(new EventoTeclado());
     }
 

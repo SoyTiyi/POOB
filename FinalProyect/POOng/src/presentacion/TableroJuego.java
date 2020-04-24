@@ -35,6 +35,7 @@ public class TableroJuego extends JPanel{
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
+        g.setFont(new Font("TimesRoman", Font.PLAIN, 20));
         Graphics2D g2 = (Graphics2D)g;
         g2.setColor(Color.white);
         dibujar(g2);
@@ -42,6 +43,9 @@ public class TableroJuego extends JPanel{
     }
 
     public void dibujar(Graphics2D g){
+        g.drawLine(370, 0, 370, 700);
+        g.drawString(pelota.getScore1(), 250, 30);
+        g.drawString(pelota.getScore2(), 480, 30);
         g.fill((Shape) pelota.getPelota());
         g.fill((Shape) raqueta1.getRaqueta());
         g.fill((Shape) raqueta2.getRaqueta());
@@ -51,7 +55,6 @@ public class TableroJuego extends JPanel{
         pelota.mover(choque(raqueta1.getRaqueta()),choque(raqueta2.getRaqueta())); 
         raqueta1.moveR1();
         raqueta2.moveR2();
-        repaint();
     }
 
     private boolean choque(Rectangle r){
