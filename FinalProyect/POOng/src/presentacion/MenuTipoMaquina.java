@@ -119,6 +119,7 @@ public class MenuTipoMaquina extends JFrame{
 
         lazy.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ev){
+                setVisible(false);
                 Controles controles = new Controles("lazy");
                 controles.setVisible(true);
             }
@@ -126,6 +127,7 @@ public class MenuTipoMaquina extends JFrame{
 
         expert.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ev){
+                setVisible(false);
                 Controles controles = new Controles("expert");
                 controles.setVisible(true);
             }
@@ -133,6 +135,7 @@ public class MenuTipoMaquina extends JFrame{
 
         snipe.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ev){
+                setVisible(false);
                 Controles controles = new Controles("snipe");
                 controles.setVisible(true);
             }
@@ -140,6 +143,7 @@ public class MenuTipoMaquina extends JFrame{
 
         greedy.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ev){
+                setVisible(false);
                 Controles controles = new Controles("greedy");
                 controles.setVisible(true);
             }
