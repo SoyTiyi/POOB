@@ -14,8 +14,6 @@ public class TableroJuego extends JPanel{
      */
     private Pelota pelota;
     private Raqueta raqueta1, raqueta2;
-    private int ANCHO;
-    private int ALTO;
     public TableroJuego(){
         pelota = new Pelota(0,0);
         Toolkit t = Toolkit.getDefaultToolkit();
@@ -50,7 +48,7 @@ public class TableroJuego extends JPanel{
     }
     
     public void actualizar(){
-        pelota.mover(choque(raqueta1.getRaqueta()),choque(raqueta2.getRaqueta()));
+        pelota.mover(choque(raqueta1.getRaqueta()),choque(raqueta2.getRaqueta())); 
         raqueta1.moveR1();
         raqueta2.moveR2();
         repaint();

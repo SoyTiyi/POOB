@@ -14,6 +14,8 @@ public class Pelota {
     private final int limiteX=Toolkit.getDefaultToolkit().getScreenSize().width/2+35;
     private final int limiteY=Toolkit.getDefaultToolkit().getScreenSize().height/2+2;
     private final int ANCHO=15, ALTO=15;
+    private boolean paso;
+    private int score1=0, score2=0;
     public Pelota(int x, int y){
         this.x=x;
         this.y=y;
@@ -28,10 +30,33 @@ public class Pelota {
         y+=moveY;
         if(choqueUno){moveX=-moveX; x=35;}
         if(choqueDos){moveX=-moveX; x=675;}
-        if(x > limiteX){moveX=-moveX;}
-        if(x == 0){moveX=-moveX;}
+        if(x > limiteX ){
+            x=300; y=300;
+            moveX=-moveX;
+            score1+=1;
+        }
+        if(x < 0){
+            x=300; y=300;
+            moveX=-moveX;
+            score2+=1;
+        }
         if(y > limiteY){moveY=-moveY;}
         if(y == 0){moveY=-moveY;}
-        
+    }
+
+    public void setPositionX(int x){
+        this.x=x;
+    }
+
+    public void setPositionY(int y){
+        this.y=y;
+    }
+
+    public boolean getPaso(){
+        return paso;
+    }
+
+    public void setPaso(boolean paso){
+        this.paso=paso;
     }
 }

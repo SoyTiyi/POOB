@@ -12,6 +12,7 @@ public class ZonaDeJuego extends JFrame{
     private JLabel backGround;
     private String modo;
     private TableroJuego tablero;
+    private Timer timer;
     /**
      * Este es el constructor para la ventana de juego
      */
@@ -69,13 +70,12 @@ public class ZonaDeJuego extends JFrame{
                 }
             }
         });
-        Timer timer = new Timer(500,new ActionListener(){
+        timer = new Timer(500,new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 tablero.actualizar();
             }
         });
         timer.start();
-
         addKeyListener(new EventoTeclado());
     }
 
