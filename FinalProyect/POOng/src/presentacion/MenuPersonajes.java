@@ -30,6 +30,10 @@ public class MenuPersonajes extends JFrame{
     private JRadioButton radio1, radio2, radio3, radio4, radio5, radio6, radio7, radio8, radio9, radio10, radio11, radio12;
     private ArrayList<JRadioButton> radioBotones= new ArrayList<JRadioButton>();
     
+    /**
+     * Este es el contructor de la clase
+     * @param tipo
+     */
     public MenuPersonajes(String tipo){
         this.tipo=tipo;
         prepareBotones();
@@ -44,7 +48,9 @@ public class MenuPersonajes extends JFrame{
         prepareAcciones();
     }
 
-
+    /**
+     * Este metodo nos prepara los botones para selecciones los personajes
+     */
     private void prepareBotones(){
         radio1 = new JRadioButton();radioBotones.add(radio1);
         radio2 = new JRadioButton();radioBotones.add(radio2);
@@ -60,6 +66,9 @@ public class MenuPersonajes extends JFrame{
         radio12 = new JRadioButton();radioBotones.add(radio12);
     }
 
+    /**
+     * Este metodo nos prepara los objetos de la ventana
+     */
     private void prepareElementos(){
         setLayout(null);
         setTitle("Personajes");
@@ -76,6 +85,9 @@ public class MenuPersonajes extends JFrame{
         add(backGround);
     }
 
+    /**
+     * Este metodo nos prepara el menu de eleccion para dos jugadores
+     */
     private void dosPlayers(){
         ImageIcon imgPla1 = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/Player1.png");
         player1 = new JLabel(imgPla1);
@@ -88,6 +100,10 @@ public class MenuPersonajes extends JFrame{
         backGround.add(player2);
     }
 
+
+    /**
+     * Este metodo nos añade las imagenes de los personajes
+     */
     private void preparePersonajesDos(){
         ImageIcon imageBat = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/goku.png");
         goku1 = new JLabel(imageBat); goku2 = new JLabel(imageBat);
@@ -116,6 +132,9 @@ public class MenuPersonajes extends JFrame{
 
     }
 
+    /**
+     * Este metodo nos prepara el boton ok 
+     */
     private void prepareOk(){
         okButton = new JButton();
         okButton.setOpaque(false); okButton.setContentAreaFilled(false); okButton.setBorderPainted(false);
@@ -127,6 +146,9 @@ public class MenuPersonajes extends JFrame{
         backGround.add(imageOk);
     }
 
+    /**
+     * Este metodo prepara las acciones de los objetos
+     */
     private void prepareAcciones(){
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent ev){
@@ -321,6 +343,9 @@ public class MenuPersonajes extends JFrame{
         });
     }
 
+    /**
+     * Metodo principal
+     */
     public static void main(String[] args){
         MenuPersonajes menu = new MenuPersonajes("");
         menu.setVisible(true);

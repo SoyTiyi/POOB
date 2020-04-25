@@ -32,6 +32,9 @@ public class TableroJuego extends JPanel{
         setSize(d.width/2+50,d.height/2+50);
     }
 
+    /**
+     * Este metodo es el encargado cordinar la gestion de dibujo del tablero
+     */
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
@@ -42,6 +45,10 @@ public class TableroJuego extends JPanel{
         actualizar();
     }
 
+    /**
+     * Este metodo nos dibuja los elementos
+     * @param g
+     */
     public void dibujar(Graphics2D g){
         g.drawLine(370, 0, 370, 700);
         g.drawString(pelota.getScore1(), 250, 30);
@@ -51,12 +58,18 @@ public class TableroJuego extends JPanel{
         g.fill((Shape) raqueta2.getRaqueta());
     }
     
+    /**
+     * Este metodo actualiza la posicion de los elementos del tablero
+     */
     public void actualizar(){
         pelota.mover(choque(raqueta1.getRaqueta()),choque(raqueta2.getRaqueta())); 
         raqueta1.moveR1();
         raqueta2.moveR2();
     }
 
+    /**
+     * Este metodo nos dice si hay coliciones entre objetos
+     */
     private boolean choque(Rectangle r){
         return pelota.getPelota().intersects(r);
     }

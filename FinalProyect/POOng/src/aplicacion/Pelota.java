@@ -15,15 +15,27 @@ public class Pelota {
     private final int limiteY=Toolkit.getDefaultToolkit().getScreenSize().height/2+2;
     private final int ANCHO=15, ALTO=15;
     private int score1=0, score2=0;
+
+    /**
+     * Este es el constructor de la clase pelota
+     * @param x
+     * @param y
+     */
     public Pelota(int x, int y){
         this.x=x;
         this.y=y;
     }
 
+    /**
+     * Este metodo retorna la pelota
+     */
     public Rectangle getPelota(){
         return  new Rectangle(x,y,ANCHO,ALTO);
     }
 
+    /**
+     * Este metodo gestiona el movimiento de la pelota
+     */
     public void mover(boolean choqueUno, boolean choqueDos){
         x+=moveX;
         y+=moveY;
@@ -43,18 +55,30 @@ public class Pelota {
         if(y == 0){moveY=-moveY;}
     }
 
+    /**
+     * Este metodo devuelve el puntaje del primer jugador
+     */
     public String getScore1(){
         return score1+"";
     }
 
+    /**
+     * Este metodo devuelve el puntaje del segundo jugador
+     */
     public String getScore2(){
         return score2+"";
     }
 
+    /**
+     * Este metodo retorna la posicion x de la pelota
+     */
     public void setPositionX(int x){
         this.x=x;
     }
 
+    /**
+     * Este metodo devuelve la posicion y de la pelota
+     */
     public void setPositionY(int y){
         this.y=y;
     }

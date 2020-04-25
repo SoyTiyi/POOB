@@ -81,6 +81,9 @@ public class ZonaDeJuego extends JFrame{
         addKeyListener(new EventoTeclado());
     }
 
+    /**
+     * Metodo principal para mostrar la ventana
+     */
     public static void main(String[] args){
         ZonaDeJuego zona = new ZonaDeJuego("");
         zona.setVisible(true);

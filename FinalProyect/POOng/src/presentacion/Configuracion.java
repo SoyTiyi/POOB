@@ -59,6 +59,9 @@ public class Configuracion extends JFrame{
         add(backGround);
     }
 
+    /**
+     * Este metodo nos prepara las acciones de los objetos con los que interactua el usuario
+     */
     private void prepareAcciones(){
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent ev){

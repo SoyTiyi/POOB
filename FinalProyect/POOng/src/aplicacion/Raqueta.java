@@ -18,10 +18,17 @@ public class Raqueta {
         this.y=y;
     }
 
+    /**
+     * Este metodo detorna un elemento de tipo raqueta
+     * @return
+     */
     public Rectangle getRaqueta(){
         return new Rectangle(x,y,ANCHO,ALTO);
     }
 
+    /**
+     * Este metodo maneja la logica del movimiento de la raqueta1
+     */
     public void moveR1(){
         if(EventoTeclado.w && y>0){
             y--;
@@ -33,6 +40,9 @@ public class Raqueta {
         
     }
 
+    /**
+     * Este metodo maneja la logica del movimiento de la raqueta2
+     */
     public void moveR2(){
         if(EventoTeclado.up && y>0){
             y--;

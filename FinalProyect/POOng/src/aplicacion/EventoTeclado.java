@@ -7,6 +7,9 @@ import java.awt.event.*;
 public class EventoTeclado extends KeyAdapter{
 
     static boolean w, s, up, down;
+    /**
+     * Este metodo nos dice si se oprime alguna tecla
+     */
     @Override
     public void keyPressed(KeyEvent e){
         int id = e.getKeyCode();
@@ -27,6 +30,9 @@ public class EventoTeclado extends KeyAdapter{
         }
     }
 
+    /**
+     * Este metodo nos dice si una tecla se dejo de oprimir y cambia su estado
+     */
     @Override
     public void keyReleased(KeyEvent e){
         int id = e.getKeyCode();

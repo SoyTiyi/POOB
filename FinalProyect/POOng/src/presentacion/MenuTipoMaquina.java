@@ -25,6 +25,9 @@ public class MenuTipoMaquina extends JFrame{
     private JLabel imageGreedy;
     private JLabel imageAtras;
 
+    /**
+     * Este es el constructor de la clase
+     */
     public MenuTipoMaquina(){
         getContentPane().setBackground(Color.black);
         prepareElementos();
