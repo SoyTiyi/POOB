@@ -44,7 +44,7 @@ public class ZonaDeJuego extends JFrame{
         setBounds(0,0,d.width/2+50,d.height/2+50);
         setLocationRelativeTo(null);
         setResizable(false);
-        ImageIcon back = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/background1.png");
+        ImageIcon back = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/background.jpg");
         backGround = new JLabel(back);
         backGround.setBounds(0,0,d.width/2+50,d.height/2+50);
         backGround.setLayout(null);
