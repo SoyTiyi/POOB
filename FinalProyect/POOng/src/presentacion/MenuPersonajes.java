@@ -29,6 +29,7 @@ public class MenuPersonajes extends JFrame{
     private JLabel imageOk;
     private JRadioButton radio1, radio2, radio3, radio4, radio5, radio6, radio7, radio8, radio9, radio10, radio11, radio12;
     private ArrayList<JRadioButton> radioBotones= new ArrayList<JRadioButton>();
+    
     public MenuPersonajes(String tipo){
         this.tipo=tipo;
         prepareBotones();
