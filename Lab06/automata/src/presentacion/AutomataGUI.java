@@ -1,4 +1,5 @@
 package presentacion;
+
 import aplicacion.*;
 
 import javax.swing.*;
@@ -6,12 +7,12 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 
-public class AutomataGUI extends JFrame{	
+public class AutomataGUI extends JFrame {
 
     private JButton botonReloj;
     private JMenuBar mb;
     private JMenu menu1;
-    private JMenuItem  iniciar, salir, salve, abra, exporte, importe;
+    private JMenuItem iniciar, salir, salve, abra, exporte, importe;
     private JLabel lFila;
     private JLabel lColumna;
     private JTextField tFila;
@@ -21,29 +22,30 @@ public class AutomataGUI extends JFrame{
     private JPanel panelBNueva;
     private JButton botonViva;
     private JButton botonLatente;
-
+    private JFileChooser fileChooser = new JFileChooser();
     private FotoAutomata foto;
-    private AutomataCelular automata=null;
+    private AutomataCelular automata = null;
 
     public AutomataGUI(AutomataCelular ac) {
         super("Automata celular");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        automata=ac;
-        foto=new FotoAutomata(automata);
-        setSize(new Dimension(800,700)); 
+        automata = ac;
+        foto = new FotoAutomata(automata);
+        setSize(new Dimension(800, 700));
         prepareElementos();
         prepareAcciones();
+        prepareAccionesMenu();
 
     }
 
     private void prepareElementos() {
         setResizable(false);
 
-        botonReloj=new JButton("Tic-tac");
+        botonReloj = new JButton("Tic-tac");
 
         getContentPane().setLayout(new BorderLayout());
-        getContentPane().add(foto,BorderLayout.NORTH);
-        getContentPane().add(botonReloj,BorderLayout.SOUTH);
+        getContentPane().add(foto, BorderLayout.NORTH);
+        getContentPane().add(botonReloj, BorderLayout.SOUTH);
 
         mb = new JMenuBar();
         menu1 = new JMenu("Opciones");
@@ -51,15 +53,101 @@ public class AutomataGUI extends JFrame{
         salir = new JMenuItem("salir");
         salve = new JMenuItem("salve");
         abra = new JMenuItem("abra");
-        exporte =  new JMenuItem("exporte");
+        exporte = new JMenuItem("exporte");
         importe = new JMenuItem("importe");
-        menu1.add(iniciar); menu1.add(salir); menu1.add(salve);
-        menu1.add(abra); menu1.add(exporte); menu1.add(importe);
+        menu1.add(iniciar);
+        menu1.add(salir);
+        menu1.add(salve);
+        menu1.add(abra);
+        menu1.add(exporte);
+        menu1.add(importe);
         mb.add(menu1);
         setJMenuBar(mb);
         foto.repaint();
     }
 
+    private void prepareAccionesMenu() {
+        opcionExporte();
+        opcionImporte();
+        opcionSalvar();
+        opcionAbra();
+        opcionIniciar();
+        opcionSalir();
+
+    }
+
+    private void opcionSalir() {
+        salir.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+    }
+
+    private void opcionIniciar() {
+        iniciar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                automata.nuevoAutomata();
+                repaint();
+            }
+        });
+    }
+
+    private void opcionExporte() {
+        exporte.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                fileChooser.showOpenDialog(fileChooser);
+                File file = fileChooser.getSelectedFile();
+                try {
+                    automata.exporte(file);
+                } catch (automataExcepcion e1) {
+                    System.out.println(e1.EXPORTE);
+                }
+            }
+        });
+    }
+
+    private void opcionImporte(){
+        importe.addActionListener( new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                fileChooser.showOpenDialog(fileChooser);
+                File file = fileChooser.getSelectedFile();
+                try {
+                    automata.importe(file);
+                } catch (automataExcepcion e1) {
+                    System.out.println(e1.IMPORTE);               
+                }
+            }
+        });
+    }
+
+    private void opcionAbra(){
+        abra.addActionListener( new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                fileChooser.showOpenDialog(fileChooser);
+                File file = fileChooser.getSelectedFile();
+                try {
+                    automata.abra(file);
+                } catch (automataExcepcion e1) {
+                    System.out.println(e1.ABRA);
+                }
+            }
+        });
+    }
+
+    private void opcionSalvar(){
+        salve.addActionListener( new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                fileChooser.showSaveDialog(fileChooser);
+                File file = fileChooser.getSelectedFile();
+                try {
+                    automata.salve(file);
+                } catch (automataExcepcion e1) {
+                    System.out.println(e1.SALVE);
+                }
+            }
+        });
+    }
     private void prepareAcciones(){
 
         botonReloj.addActionListener(

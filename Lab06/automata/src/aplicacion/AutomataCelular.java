@@ -1,10 +1,17 @@
 package aplicacion;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.*;
 
-public class AutomataCelular{
-    static private int LONGITUD=20;
+public class AutomataCelular implements Serializable{
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    static private int LONGITUD = 20;
     private Elemento[][] automata;
 
         
@@ -30,6 +37,15 @@ public class AutomataCelular{
         automata[f][c]=nueva;
     }
 
+    public void nuevoAutomata(){
+        for(int i=0;i<LONGITUD;i++){
+            for(int j=0;j<LONGITUD;j++){
+                if(automata[i][j]!=null){
+                    automata[i][j]=null;
+                }
+            }
+        }
+    }
     public void algunosElementos(){
         Elemento indiana = new Celula(this,1,1);
         Elemento OO7 = new Celula(this,2,2);
@@ -51,11 +67,21 @@ public class AutomataCelular{
         Elemento parpadea3 = new Conway(this,7,9);
     }
     
-
-    public void salve(File file) throws automataExcepcion{
+    public void salve(File file) throws automataExcepcion{ 
         /**
          * Metodo en construccion
          */
+        try{
+            if(!file.exists()){
+                file.createNewFile();
+            }
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
+            oos.writeObject(automata);
+            oos.close();
+        }
+        catch(Exception e){
+            System.out.println("ERROR");
+        }
     }
 
     public void abra(File file) throws automataExcepcion{
@@ -68,6 +94,7 @@ public class AutomataCelular{
         /**
          * Metodo en construccion
          */
+        
     }
 
     public void importe(File file) throws automataExcepcion{
