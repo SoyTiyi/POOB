@@ -303,9 +303,20 @@ public class MenuPersonajes extends JFrame{
 
         okButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ev){
-                setVisible(false);
-                Controles controles = new Controles(tipo);
-                controles.setVisible(true);
+                int cont = 0;
+                for(int i =0; i < radioBotones.size();i++){
+                    if(radioBotones.get(i).isSelected()){
+                        cont+=1;
+                    }
+                }
+                if(cont==2){
+                    setVisible(false);
+                    Controles controles = new Controles(tipo);
+                    controles.setVisible(true);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Error");
+                }
             }
         });
     }
