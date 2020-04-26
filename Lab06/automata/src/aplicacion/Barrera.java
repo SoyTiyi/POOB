@@ -1,6 +1,7 @@
 package aplicacion;
 
 import java.awt.Color;
+import java.io.Serializable;
 
 /**
  * Write a description of class Barrera here.
@@ -8,8 +9,7 @@ import java.awt.Color;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Barrera implements Elemento {
-    private static final long serialVersionUID = 1L;
+public class Barrera implements Elemento, Serializable{
     /**
      * Constructor for objects of class Barrera
      */
@@ -35,6 +35,15 @@ public class Barrera implements Elemento {
         return 2;
     }
 
+    @Override
+    public int getFila(){
+        return fila;
+    }
+
+    @Override
+    public int getColumna(){
+        return columna;
+    }
     /**
      * Este metodo nos devuelve el tipo de este elemento
      */
