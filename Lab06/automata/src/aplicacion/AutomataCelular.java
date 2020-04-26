@@ -98,6 +98,21 @@ public class AutomataCelular implements Serializable {
         
     }
 
+    public void salve01(File file) throws automataExcepcion {
+        try{
+            if(!file.exists()){
+                file.createNewFile();
+            }
+            ObjectOutputStream out = new ObjectOutputStream( new FileOutputStream(file));
+            out.writeObject(this);
+            out.close();
+        }
+        catch(IOException e){
+            throw new automataExcepcion(automataExcepcion.ERROR_AL_GUARDAR);
+        }
+        
+    }
+
     public void abra(File file) throws automataExcepcion {
         try{
             if(!file.exists()){
@@ -107,8 +122,23 @@ public class AutomataCelular implements Serializable {
             automataCelular = (AutomataCelular) inp.readObject();
         }
         catch (Exception e){
+            throw new automataExcepcion(automataExcepcion.ABRA);
+        }
+    }
+
+    public void abra01(File file) throws automataExcepcion {
+        try{
+            if(!file.exists()){
+                file.createNewFile();
+            }
+            ObjectInputStream inp = new ObjectInputStream(new FileInputStream(file));
+            automataCelular = (AutomataCelular) inp.readObject();
+        }
+        catch (IOException e){
             throw new automataExcepcion(automataExcepcion.ERROR_AL_ABRIR);
-        } 
+        } catch (ClassNotFoundException e) {
+            throw new automataExcepcion(automataExcepcion.CLASS_NOT_FOUND);
+        }
     }
 
     public void exporte(File file) throws automataExcepcion{

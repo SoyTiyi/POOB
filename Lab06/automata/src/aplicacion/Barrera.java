@@ -32,6 +32,10 @@ public class Barrera implements Elemento, Serializable{
         color=Color.green;
     }
 
+    public void cambie(){
+        estadoSiguiente=MUERTA;
+    }
+
     public int getForma() {
         return 2;
     }
@@ -56,10 +60,6 @@ public class Barrera implements Elemento, Serializable{
     @Override
     public Color getColor() {
         return color;
-    }
-
-    public final boolean isVisvo(){
-        return false;
     }
 
     public final int edad(){
