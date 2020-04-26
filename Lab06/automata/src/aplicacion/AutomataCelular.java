@@ -157,6 +157,22 @@ public class AutomataCelular implements Serializable {
         }
     }
 
+    public void exporte01(File file) throws automataExcepcion{
+        try{
+            FileWriter out = new FileWriter(file);
+            for(int i=0; i<automata.length ; i++){
+                for(int j=0; j<automata.length; j++){
+                    if(automata[i][j]!=null){
+                        out.write(automata[i][j].toString()+"\n");
+                    }
+                }
+            }
+            out.close(); 
+        }catch(IOException e){
+            throw new automataExcepcion(automataExcepcion.ERROR_AL_EXPORTAR);
+        }
+    }
+
     public void importe(File file) throws automataExcepcion{
         try{
             resetAutomata();
@@ -172,6 +188,24 @@ public class AutomataCelular implements Serializable {
         }
         catch(Exception e){
 
+        }
+    }
+
+    public void importe01(File file) throws automataExcepcion{
+        try{
+            resetAutomata();
+            BufferedReader in =new BufferedReader( new FileReader(file));
+            String line = in.readLine();
+            while(line != null){
+                line = line.trim();
+                String[] partes = line.split(" ");
+                String tipo=partes[0], fila=partes[1], columna=partes[2];
+                createElemento(tipo,fila,columna);
+                line = in.readLine();
+            }
+        }
+        catch(Exception e){
+            throw new automataExcepcion(automataExcepcion.ERROR_AL_IMPORTAR);
         }
     }
 
