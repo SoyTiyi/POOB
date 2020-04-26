@@ -95,10 +95,19 @@ public class AutomataCelular implements Serializable {
     }
 
     public void exporte(File file) throws automataExcepcion{
-        /**
-         * Metodo en construccion
-         */
-        
+        try{
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
+            for(int i=0; i<automata.length ; i++){
+                for(int j=0; j<automata.length; j++){
+                    if(automata[i][j]!=null){
+                        out.writeObject(toString(automata[i][j]));
+                    }
+                }
+            }
+            out.close();
+        }catch(Exception e){
+            throw new automataExcepcion(automataExcepcion.ERROR_AL_EXPORTAR);
+        }
     }
 
     public void importe(File file) throws automataExcepcion{
@@ -107,7 +116,10 @@ public class AutomataCelular implements Serializable {
          */
     }
 
-
+    public String toString(Elemento elemento){
+        String temp = elemento.getTipo()+" "+elemento.getFila()+" "+elemento.getColumna();
+        return temp;
+    }
 
 
     public void ticTac(){

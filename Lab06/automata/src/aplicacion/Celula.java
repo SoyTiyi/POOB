@@ -90,4 +90,9 @@ public class Celula implements Elemento,Serializable{
         estadoActual=estadoSiguiente;
     }
 
+    @Override
+    public String toString(){
+        return getTipo()+" "+getFila()+" "+getColumma();
+    }
+
 }

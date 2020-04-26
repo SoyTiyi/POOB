@@ -10,6 +10,14 @@ public interface Elemento{
    
   default void cambie(){
   };
+
+  default int getFila(){
+    return 10;
+  }
+  
+  default int getColumna(){
+    return 10;
+  }
   
   default int getForma(){
       return REDONDA;
