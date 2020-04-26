@@ -9,7 +9,11 @@ import java.io.Serializable;
  * @version (a version number or a date)
  */
 public class Virus implements Elemento, Serializable{    
-    private final static char  MUERTA='m';
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    private final static char MUERTA = 'm';
     protected Color color;
     private int fila;
     private int columna;

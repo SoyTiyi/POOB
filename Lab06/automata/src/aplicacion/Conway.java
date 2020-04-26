@@ -9,6 +9,10 @@ import java.awt.Color;
  */
 public class Conway extends Celula
 {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private int fila;
     private int columna;
     private AutomataCelular automata;

@@ -11,7 +11,11 @@ Los posibles estados de una célula son tres: viva, muerta o latente<br>
  */
 public class Celula implements Elemento,Serializable{
 
-    private final static char VIVA='v', MUERTA='m';
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    private final static char VIVA = 'v', MUERTA = 'm';
     private AutomataCelular automata;
     private int fila,columna;
     protected char estadoActual,estadoSiguiente;

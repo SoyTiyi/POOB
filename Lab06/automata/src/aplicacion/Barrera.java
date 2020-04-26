@@ -8,15 +8,14 @@ package aplicacion;
  * @version (a version number or a date)
  */
 public class Barrera extends Celula{
+    private static final long serialVersionUID = 1L;
     /**
      * Constructor for objects of class Barrera
      */
-    private AutomataCelular automata;
     public Barrera(AutomataCelular ac, int fila, int columna){
         super(ac,fila,columna);
         estadoActual='m';
         estadoSiguiente='m';
-        automata=ac;
     }
     
     public int getForma(){

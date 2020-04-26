@@ -10,6 +10,7 @@ public class Izquierdosa extends Celula{
     /**
      * Constructor for objects of class Izquierdosa
      */
+    private static final long serialVersionUID = 1L;
     private int fila;
     private int columna;
     private AutomataCelular automata;
