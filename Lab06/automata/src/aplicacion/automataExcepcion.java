@@ -14,6 +14,7 @@ public class automataExcepcion extends Exception{
     public static final String ERROR_AL_ABRIR="Se presento un error al abrir";
     public static final String ERROR_AL_GUARDAR="Se presento un error al guardar";
     public static final String ERROR_AL_EXPORTAR="Se presento un error al exportar";
+    public static final String ERROR_AL_IMPORTAR="Se presento un error al importar";
     public automataExcepcion(String message){
         super(message);
     }

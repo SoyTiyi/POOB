@@ -114,6 +114,7 @@ public class AutomataGUI extends JFrame{
                 File file = fileChooser.getSelectedFile();
                 try {
                     automata.importe(file);
+                    foto.actualizar();
                 } catch (automataExcepcion e1) {
                     System.out.println(e1.IMPORTE);               
                 }

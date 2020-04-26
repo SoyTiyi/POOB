@@ -1,8 +1,11 @@
 package aplicacion;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -24,6 +27,17 @@ public class AutomataCelular implements Serializable {
             }
         }
         algunosElementos();
+    }
+
+
+    private void resetAutomata(){
+        for(int i=0;i<automata.length;i++){
+            for(int j=0;j<automata.length;j++){
+                if(automata[i][j]!=null){
+                    automata[i][j]=null;
+                }
+            }
+        }
     }
 
     public static AutomataCelular getAutomataCelular(){
@@ -86,6 +100,9 @@ public class AutomataCelular implements Serializable {
 
     public void abra(File file) throws automataExcepcion {
         try{
+            if(!file.exists()){
+                file.createNewFile();
+            }
             ObjectInputStream inp = new ObjectInputStream(new FileInputStream(file));
             automataCelular = (AutomataCelular) inp.readObject();
         }
@@ -96,26 +113,53 @@ public class AutomataCelular implements Serializable {
 
     public void exporte(File file) throws automataExcepcion{
         try{
-            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
+            FileWriter out = new FileWriter(file);
             for(int i=0; i<automata.length ; i++){
                 for(int j=0; j<automata.length; j++){
                     if(automata[i][j]!=null){
-                        out.writeObject(toString(automata[i][j]));
+                        out.write(automata[i][j].toString()+"\n");
                     }
                 }
             }
-            out.close();
+            out.close(); 
         }catch(Exception e){
             throw new automataExcepcion(automataExcepcion.ERROR_AL_EXPORTAR);
         }
     }
 
     public void importe(File file) throws automataExcepcion{
-        /**
-         * Metodo en construccion
-         */
+        try{
+            resetAutomata();
+            BufferedReader in =new BufferedReader( new FileReader(file));
+            String line = in.readLine();
+            while(line != null){
+                line = line.trim();
+                String[] partes = line.split(" ");
+                String tipo=partes[0], fila=partes[1], columna=partes[2];
+                createElemento(tipo,fila,columna);
+                line = in.readLine();
+            }
+        }
+        catch(Exception e){
+
+        }
     }
 
+    private void createElemento(String nombre, String fila, String columna){
+        int i = Integer.parseInt(fila);
+        int j = Integer.parseInt(columna);
+        if(nombre.equals("Virus")){
+            automata[i][j] = new Virus(this, i, j);
+
+        }
+        else if(nombre.equals("Celula")){
+            automata[i][j] = new Celula(this, i, j);
+        }
+        else{
+            automata[i][j] = new Barrera(this, i, j);
+        }
+
+    }
     public String toString(Elemento elemento){
         String temp = elemento.getTipo()+" "+elemento.getFila()+" "+elemento.getColumna();
         return temp;

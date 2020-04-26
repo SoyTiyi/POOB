@@ -68,4 +68,9 @@ public class Virus implements Elemento, Serializable{
     public String getTipo(){
         return "Virus";
     }
+
+    @Override
+    public String toString(){
+        return getTipo()+" "+getFila()+" "+getColumna();
+    }
 }

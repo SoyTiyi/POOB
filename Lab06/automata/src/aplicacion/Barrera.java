@@ -13,6 +13,7 @@ public class Barrera implements Elemento, Serializable{
     /**
      * Constructor for objects of class Barrera
      */
+    private static final long serialVersionUID = 1L;
     private int fila, columna;
     private final static char MUERTA='m';
     protected char estadoActual;
