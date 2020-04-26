@@ -11,13 +11,9 @@ public class Barrera extends Celula{
     /**
      * Constructor for objects of class Barrera
      */
-    private int fila;
-    private int columna;
     private AutomataCelular automata;
     public Barrera(AutomataCelular ac, int fila, int columna){
         super(ac,fila,columna);
-        this.fila=fila;
-        this.columna=columna;
         estadoActual='m';
         estadoSiguiente='m';
         automata=ac;
@@ -25,5 +21,13 @@ public class Barrera extends Celula{
     
     public int getForma(){
         return 2;
+    }
+
+    /**
+     * Este metodo nos devuelve el tipo de este elemento
+     */
+    @Override
+    public String getTipo(){
+        return "Barrera";
     }
 }

@@ -1,5 +1,6 @@
 package aplicacion;
 import java.awt.Color;
+import java.io.Serializable;
 
 /**
  * Write a description of class Virus here.
@@ -7,8 +8,8 @@ import java.awt.Color;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Virus implements Elemento{    
-    private final static char VIVA='v', MUERTA='m';
+public class Virus implements Elemento, Serializable{    
+    private final static char  MUERTA='m';
     protected Color color;
     private int fila;
     private int columna;
@@ -54,5 +55,13 @@ public class Virus implements Elemento{
                 Virus hijo = new Virus(automata,fila,columna+1);
             }
         }
+    }
+
+    /**
+     * Este metodo nos devuelve el tipo de el elemento
+     */
+    @Override
+    public String getTipo(){
+        return "Virus";
     }
 }

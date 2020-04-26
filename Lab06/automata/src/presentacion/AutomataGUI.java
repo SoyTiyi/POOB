@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 
-public class AutomataGUI extends JFrame {
+public class AutomataGUI extends JFrame{
 
     private JButton botonReloj;
     private JMenuBar mb;
@@ -88,7 +88,7 @@ public class AutomataGUI extends JFrame {
         iniciar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 automata.nuevoAutomata();
-                repaint();
+                foto.actualizar();
             }
         });
     }
@@ -126,9 +126,10 @@ public class AutomataGUI extends JFrame {
             public void actionPerformed(ActionEvent e){
                 fileChooser.showOpenDialog(fileChooser);
                 File file = fileChooser.getSelectedFile();
-                try {
+                try{
                     automata.abra(file);
-                } catch (automataExcepcion e1) {
+                    foto.actualizar();
+                } catch (automataExcepcion e1){
                     System.out.println(e1.ABRA);
                 }
             }
@@ -140,9 +141,9 @@ public class AutomataGUI extends JFrame {
             public void actionPerformed(ActionEvent e){
                 fileChooser.showSaveDialog(fileChooser);
                 File file = fileChooser.getSelectedFile();
-                try {
+                try{
                     automata.salve(file);
-                } catch (automataExcepcion e1) {
+                } catch (automataExcepcion e1){
                     System.out.println(e1.SALVE);
                 }
             }
@@ -165,7 +166,7 @@ public class AutomataGUI extends JFrame {
     }
 
     public static void main(String[] args) {
-        AutomataCelular ac=new AutomataCelular();
+        AutomataCelular ac=  AutomataCelular.getAutomataCelular();
         AutomataGUI ca=new AutomataGUI(ac);
         ca.setVisible(true);
 
@@ -181,6 +182,11 @@ class FotoAutomata extends JPanel{
         automata=ac;
         setPreferredSize(new Dimension(800,800)); 		
 
+    }
+
+    public void actualizar(){
+        automata=AutomataCelular.getAutomataCelular();
+        repaint();
     }
 
     public void setAutomata(AutomataCelular automata){

@@ -1,7 +1,7 @@
 package aplicacion;
 import java.awt.Color;
 
-public interface Elemento{
+public interface Elemento{ 
   int REDONDA = 1;
   int CUADRADA = 2;
   
@@ -21,4 +21,7 @@ public interface Elemento{
       return false;
   }
   
+  default String getTipo(){
+    return "Celula";
+  }
 }

@@ -1,6 +1,7 @@
 package aplicacion;
 
 import java.awt.Color;
+import java.io.Serializable;
 
 /**Informacion sobre una célula<br>
 <b>(COLOR,automata,fila,columna,estadoActual,estadoSigiente)</b><br>
@@ -8,7 +9,7 @@ Las celulas conocen su color, el automata en la que viven, la posición en la qu
 Todas las células son de color azul<br>
 Los posibles estados de una célula son tres: viva, muerta o latente<br>
  */
-public class Celula implements Elemento{
+public class Celula implements Elemento,Serializable{
 
     private final static char VIVA='v', MUERTA='m';
     private AutomataCelular automata;
