@@ -19,7 +19,7 @@ public class pruebas {
             automata.abra01(file);
         }
         catch(automataExcepcion e){
-            e.printStackTrace();
+            fail("Entro a la excepcion");
         }
     }
 
@@ -131,6 +131,24 @@ public class pruebas {
         }
         catch(automataExcepcion e){
             assertEquals(automataExcepcion.ERROR_AL_EXPORTAR, e.getMessage());
+        }
+    }
+
+    /**
+     * Este metodo deberia de mandar excepcion para comprobar el compilador
+     */
+    @Test
+    public void deberiaDeMandarErrorParaCompilador(){
+        AutomataCelular automata = AutomataCelular.getAutomataCelular();
+        try{
+            File file = new File("C:/Users/santi/Desktop/importe2.txt");
+            automata.importe02(file);
+            fail("No lanzo la exception");
+        }
+        catch(AutomataCompilador e){
+            assertEquals(true, true);
+        } catch (automataExcepcion e) {
+            fail("No entro a la excepcion correcta");
         }
     }
 }

@@ -182,7 +182,7 @@ public class AutomataCelular implements Serializable {
                 line = line.trim();
                 String[] partes = line.split(" ");
                 String tipo=partes[0], fila=partes[1], columna=partes[2];
-                createElemento(tipo,fila,columna);
+                createElemento(tipo,fila,columna,0);
                 line = in.readLine();
             }
         }
@@ -209,6 +209,47 @@ public class AutomataCelular implements Serializable {
         }
     }
 
+    public void importe02(File file) throws automataExcepcion, AutomataCompilador{
+        try{
+            resetAutomata();
+            BufferedReader in =new BufferedReader( new FileReader(file));
+            String line = in.readLine();
+            int cont = 1;
+            while(line != null){
+                line = line.trim();
+                String[] partes = line.split(" ");
+                compilador(partes, cont);
+                String tipo=partes[0], fila=partes[1], columna=partes[2];
+                createElemento(tipo,fila,columna,cont);
+                cont+=1;
+                line = in.readLine();
+
+            }
+        }
+        catch(IOException e){
+            throw new automataExcepcion(automataExcepcion.ERROR_AL_IMPORTAR);
+        }
+    }
+
+    private void createElemento(String nombre, String fila, String columna, int num) throws AutomataCompilador  {
+        int i = Integer.parseInt(fila);
+        int j = Integer.parseInt(columna);
+        if(nombre.equals("Virus")){
+            automata[i][j] = new Virus(this, i, j);
+
+        }
+        else if(nombre.equals("Celula")){
+            automata[i][j] = new Celula(this, i, j);
+        }
+        else if(nombre.equals("Barrera")){
+            automata[i][j] = new Barrera(this, i, j);
+        }
+        else{
+            throw new AutomataCompilador(AutomataCompilador.CLASS_NOT_FOUND, num, nombre);
+        }
+
+    }
+
     private void createElemento(String nombre, String fila, String columna){
         int i = Integer.parseInt(fila);
         int j = Integer.parseInt(columna);
@@ -229,6 +270,26 @@ public class AutomataCelular implements Serializable {
         return temp;
     }
 
+    public void compilador(String[] lista, int numLinea) throws AutomataCompilador{
+        if(lista[0].equals("false") || lista[0].equals("true")) throw new AutomataCompilador(AutomataCompilador.NAME_ITS_BOOLEAN,0,lista[0]);
+        if(!verificarNumero(lista[1])) throw new AutomataCompilador(AutomataCompilador.ROW_NOT_NUMBER,1,lista[1]);
+        if(!verificarNumero(lista[2])) throw new AutomataCompilador(AutomataCompilador.COLUMN_NOT_NUMBER, 2, lista[2]);
+        if(lista[1].equals("true") || lista[1].equals("false")) throw new AutomataCompilador(AutomataCompilador.ROW_IS_BOOLEAN, 1, lista[1]);
+        if(lista[2].equals("true") || lista[2].equals("false")) throw new AutomataCompilador(AutomataCompilador.COLUMN_IS_BOOLEAN, 2, lista[2]);
+
+
+    }
+
+    private boolean verificarNumero(String num){
+        boolean flag = true;
+        try{
+            int n = Integer.parseInt(num);
+        }
+        catch(Exception e){
+            flag=false;
+        }
+        return flag;
+    }
 
     public void ticTac(){
         for(int i=0;i<automata.length;i++){
