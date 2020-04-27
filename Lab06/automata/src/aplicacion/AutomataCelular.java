@@ -10,6 +10,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 public class AutomataCelular implements Serializable {
     /**
      *
@@ -18,6 +21,8 @@ public class AutomataCelular implements Serializable {
     static private int LONGITUD = 20;
     private Elemento[][] automata;
     private static AutomataCelular automataCelular=null;
+    private String[] listaElementos={"Barrera","Virus","Celula"};
+    private List<String> list = Arrays.asList(listaElementos);
 
     public AutomataCelular() {
         automata = new Elemento[LONGITUD][LONGITUD];
@@ -182,7 +187,7 @@ public class AutomataCelular implements Serializable {
                 line = line.trim();
                 String[] partes = line.split(" ");
                 String tipo=partes[0], fila=partes[1], columna=partes[2];
-                createElemento(tipo,fila,columna,0);
+                createElemento(tipo,fila,columna);
                 line = in.readLine();
             }
         }
@@ -220,8 +225,8 @@ public class AutomataCelular implements Serializable {
                 String[] partes = line.split(" ");
                 compilador(partes, cont);
                 String tipo=partes[0], fila=partes[1], columna=partes[2];
-                createElemento(tipo,fila,columna,cont);
-                cont+=1;
+                createElemento02(tipo,fila,columna,cont);
+                cont++;
                 line = in.readLine();
 
             }
@@ -231,7 +236,50 @@ public class AutomataCelular implements Serializable {
         }
     }
 
-    private void createElemento(String nombre, String fila, String columna, int num) throws AutomataCompilador  {
+    public void importe03(File file) throws automataExcepcion, AutomataCompilador{
+        try{
+            resetAutomata();
+            BufferedReader in =new BufferedReader( new FileReader(file));
+            String line = in.readLine();
+            int cont = 1;
+            while(line != null){
+                line = line.trim();
+                String[] partes = line.split(" ");
+                compilador(partes, cont);
+                String tipo=partes[0], fila=partes[1], columna=partes[2];
+                createElemento03(tipo,fila,columna,cont);
+                cont++;
+                line = in.readLine();
+
+            }
+        }
+        catch(IOException e){
+            throw new automataExcepcion(automataExcepcion.ERROR_AL_IMPORTAR);
+        }
+    }
+
+    private void createElemento03(String nombre, String fila, String columna, int num) throws AutomataCompilador  {
+        int i = Integer.parseInt(fila);
+        int j = Integer.parseInt(columna);
+        if(list.contains(nombre)){
+            if(nombre.equals("Virus")){
+                automata[i][j] = new Virus(this, i, j);
+    
+            }
+            else if(nombre.equals("Celula")){
+                automata[i][j] = new Celula(this, i, j);
+            }
+            else if(nombre.equals("Barrera")){
+                automata[i][j] = new Barrera(this, i, j);
+            }
+        }
+        else{
+            throw new AutomataCompilador(AutomataCompilador.ELEMENT_NOT_CREATE, num, nombre);
+        }
+
+    }
+
+    private void createElemento02(String nombre, String fila, String columna, int num) throws AutomataCompilador  {
         int i = Integer.parseInt(fila);
         int j = Integer.parseInt(columna);
         if(nombre.equals("Virus")){
@@ -271,11 +319,11 @@ public class AutomataCelular implements Serializable {
     }
 
     public void compilador(String[] lista, int numLinea) throws AutomataCompilador{
-        if(lista[0].equals("false") || lista[0].equals("true")) throw new AutomataCompilador(AutomataCompilador.NAME_ITS_BOOLEAN,0,lista[0]);
-        if(!verificarNumero(lista[1])) throw new AutomataCompilador(AutomataCompilador.ROW_NOT_NUMBER,1,lista[1]);
-        if(!verificarNumero(lista[2])) throw new AutomataCompilador(AutomataCompilador.COLUMN_NOT_NUMBER, 2, lista[2]);
-        if(lista[1].equals("true") || lista[1].equals("false")) throw new AutomataCompilador(AutomataCompilador.ROW_IS_BOOLEAN, 1, lista[1]);
-        if(lista[2].equals("true") || lista[2].equals("false")) throw new AutomataCompilador(AutomataCompilador.COLUMN_IS_BOOLEAN, 2, lista[2]);
+        if(lista[0].equals("false") || lista[0].equals("true")) throw new AutomataCompilador(AutomataCompilador.NAME_ITS_BOOLEAN,numLinea,lista[0]);
+        if(!verificarNumero(lista[1])) throw new AutomataCompilador(AutomataCompilador.ROW_NOT_NUMBER,numLinea,lista[1]);
+        if(!verificarNumero(lista[2])) throw new AutomataCompilador(AutomataCompilador.COLUMN_NOT_NUMBER, numLinea, lista[2]);
+        if(lista[1].equals("true") || lista[1].equals("false")) throw new AutomataCompilador(AutomataCompilador.ROW_IS_BOOLEAN, numLinea, lista[1]);
+        if(lista[2].equals("true") || lista[2].equals("false")) throw new AutomataCompilador(AutomataCompilador.COLUMN_IS_BOOLEAN, numLinea, lista[2]);
 
 
     }

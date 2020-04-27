@@ -15,7 +15,7 @@ public class pruebas {
     public void deberiaAbrir(){
         AutomataCelular automata = AutomataCelular.getAutomataCelular();
         try{
-            File file = new File("C:/Users/santi/Desktop/dosClicks.dat");
+            File file = new File("C:/Users/santi/Desktop/POOB/Lab06/automata/src/pruebas/prueba/dosClicks.dat");
             automata.abra01(file);
         }
         catch(automataExcepcion e){
@@ -30,7 +30,7 @@ public class pruebas {
     public void noDeberiaAbrir(){
         AutomataCelular automata = AutomataCelular.getAutomataCelular();
         try{
-            File file = new File("C:/Users/santi/Desktop/skere.dat");
+            File file = new File("C:/Users/santi/Desktop/POOB/Lab06/automata/src/pruebas/prueba/skere.dat");
             automata.abra01(file);
             fail("No mando excepcion");
         }
@@ -46,11 +46,11 @@ public class pruebas {
     public void deberiaSalvar(){
         AutomataCelular automata = AutomataCelular.getAutomataCelular();
         try{
-            File file = new File("C:/Users/santi/Desktop/prueba.dat");
+            File file = new File("C:/Users/santi/Desktop/POOB/Lab06/automata/src/pruebas/prueba/prueba.dat");
             automata.salve01(file);
         }
         catch(automataExcepcion e){
-            e.printStackTrace();
+            fail("Entro a la excepcion");
         }
     }
 
@@ -77,11 +77,11 @@ public class pruebas {
     public void deberiaImportar(){
         AutomataCelular automata = AutomataCelular.getAutomataCelular();
         try{
-            File file = new File("C:/Users/santi/Desktop/tresClicks.txt");
+            File file = new File("C:/Users/santi/Desktop/POOB/Lab06/automata/src/pruebas/prueba/tresClicks.txt");
             automata.importe01(file);
         }
         catch(automataExcepcion e){
-            e.printStackTrace();
+            fail("Entro a la excepcion");
         }
     }
 
@@ -109,11 +109,11 @@ public class pruebas {
     public void deberiaExportar(){
         AutomataCelular automata = AutomataCelular.getAutomataCelular();
         try{
-            File file = new File("C:/Users/santi/Desktop/prueba.txt");
+            File file = new File("C:/Users/santi/Desktop/POOB/Lab06/automata/src/pruebas/prueba/prueba.txt");
             automata.exporte01(file);
         }
         catch(automataExcepcion e){
-            e.printStackTrace();
+            fail("Entro a la excepcion");
         }
     }
 
@@ -141,7 +141,7 @@ public class pruebas {
     public void deberiaDeMandarErrorParaCompilador(){
         AutomataCelular automata = AutomataCelular.getAutomataCelular();
         try{
-            File file = new File("C:/Users/santi/Desktop/importe2.txt");
+            File file = new File("C:/Users/santi/Desktop/POOB/Lab06/automata/src/pruebas/prueba/importe2.txt");
             automata.importe02(file);
             fail("No lanzo la exception");
         }
@@ -150,5 +150,23 @@ public class pruebas {
         } catch (automataExcepcion e) {
             fail("No entro a la excepcion correcta");
         }
+    }
+
+    /**
+     * Este metodo nos prueba el importe03
+     */
+    @Test
+    public void deberiaDeMandarExcepcion(){
+        AutomataCelular automata = AutomataCelular.getAutomataCelular();
+        try{
+            File file = new File("C:/Users/santi/Desktop/POOB/Lab06/automata/src/pruebas/prueba/automataErrG.txt");
+            automata.importe03(file);
+            fail("No lanzo la exception");
+        }
+        catch(AutomataCompilador e){
+            assertEquals("En la linea 3 la palabra Hola tiene el error: "+AutomataCompilador.ELEMENT_NOT_CREATE, e.getMessage());
+        } catch (automataExcepcion e) {
+            fail("No entro a la excepcion correcta");
+        }  
     }
 }

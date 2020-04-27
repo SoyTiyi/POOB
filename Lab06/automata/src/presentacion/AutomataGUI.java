@@ -113,10 +113,12 @@ public class AutomataGUI extends JFrame{
                 fileChooser.showOpenDialog(fileChooser);
                 File file = fileChooser.getSelectedFile();
                 try {
-                    automata.importe(file);
+                    automata.importe03(file);
                     foto.actualizar();
                 } catch (automataExcepcion e1) {
                     System.out.println(e1.IMPORTE);               
+                } catch (AutomataCompilador e1) {
+                    System.out.println(e1.getMessage());
                 }
             }
         });

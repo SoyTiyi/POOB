@@ -1,0 +1,4 @@
+Barrera 1 2
+Celula 3 2
+Hola 2 5
+Virus 3 4

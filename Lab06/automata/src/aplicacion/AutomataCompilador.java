@@ -16,6 +16,7 @@ public class AutomataCompilador extends Exception{
     public static final String CLASS_NOT_FOUND="El tipo de elemento no existe";
     public static final String ROW_IS_BOOLEAN="La fila es un booleano";
     public static final String COLUMN_IS_BOOLEAN="La columna es un booleano";
+    public static final String ELEMENT_NOT_CREATE="El elemento no ha sido creado aun";
     public AutomataCompilador(String message, int numLinea, String palabra){
         super("En la linea "+numLinea+" la palabra "+palabra+" tiene el error: "+message);
     }

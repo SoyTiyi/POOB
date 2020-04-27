@@ -1,0 +1,5 @@
+Barrera false 1
+Celula 1 2
+Hola 3 2
+Celula 2 2
+true 1 8
