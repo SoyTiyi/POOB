@@ -40,6 +40,14 @@ public class Raqueta {
         
     }
 
+    public int getX(){
+        return x;
+    }
+
+    public int getY(){
+        return y;
+    }
+
     /**
      * Este metodo maneja la logica del movimiento de la raqueta2
      */

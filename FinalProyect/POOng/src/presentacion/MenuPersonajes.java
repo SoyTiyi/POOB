@@ -29,6 +29,7 @@ public class MenuPersonajes extends JFrame{
     private JLabel imageOk;
     private JRadioButton radio1, radio2, radio3, radio4, radio5, radio6, radio7, radio8, radio9, radio10, radio11, radio12;
     private ArrayList<JRadioButton> radioBotones= new ArrayList<JRadioButton>();
+    public static ArrayList<Integer> listaPersonajes = new ArrayList<Integer>();
     
     /**
      * Este es el contructor de la clase
@@ -332,6 +333,9 @@ public class MenuPersonajes extends JFrame{
                     }
                 }
                 if(cont==2){
+                    prepareNumPlayer1();
+                    System.out.println(listaPersonajes.get(0));
+                    System.out.println(listaPersonajes.get(1));
                     setVisible(false);
                     Controles controles = new Controles(tipo);
                     controles.setVisible(true);
@@ -341,6 +345,31 @@ public class MenuPersonajes extends JFrame{
                 }
             }
         });
+    }
+
+    /**
+     * Este metodo añade el numero del personaje para el jugador numero 1
+     */
+    private void prepareNumPlayer1(){
+        if(radio1.isEnabled()) listaPersonajes.add(1);
+        else if(radio2.isEnabled()) listaPersonajes.add(2);
+        else if(radio3.isEnabled()) listaPersonajes.add(3);
+        else if(radio4.isEnabled()) listaPersonajes.add(4);
+        else if(radio5.isEnabled()) listaPersonajes.add(5);
+        else if(radio6.isEnabled()) listaPersonajes.add(6);
+        prepareNumPlayer2();
+    }
+
+    /**
+     * Este metodo añade el numero del personaje para el jugador numero 2
+     */
+    private void prepareNumPlayer2(){
+        if(radio7.isEnabled())  listaPersonajes.add(1);
+        else if(radio8.isEnabled()) listaPersonajes.add(2);
+        else if(radio9.isEnabled()) listaPersonajes.add(3);
+        else if(radio10.isEnabled()) listaPersonajes.add(4);
+        else if(radio11.isEnabled()) listaPersonajes.add(5);
+        else if(radio12.isEnabled()) listaPersonajes.add(6);
     }
 
     /**

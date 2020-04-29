@@ -18,6 +18,7 @@ public class MenuMaquinas extends JFrame{
     private JLabel imageCC;
     private JLabel backGround;
     private JLabel imageAtras;
+    public static String modo;
     /**
      * Este es el constructor de la clase
      */
@@ -111,6 +112,7 @@ public class MenuMaquinas extends JFrame{
 
         playerVScpu.addActionListener( new ActionListener(){
             public void actionPerformed(ActionEvent ev){
+                modo="uno";
                 setVisible(false);
                 MenuTipoMaquina menu = new MenuTipoMaquina();
                 menu.setVisible(true);
@@ -119,6 +121,7 @@ public class MenuMaquinas extends JFrame{
 
         cpuVScpu.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ev){
+                modo="cero";
                 setVisible(false);
                 MenuTipoMaquina menu = new MenuTipoMaquina();
                 menu.setVisible(true);
@@ -135,6 +138,7 @@ public class MenuMaquinas extends JFrame{
 
         playerVSplayer.addActionListener( new ActionListener(){
             public void actionPerformed(ActionEvent ev){
+                modo="dos";
                 setVisible(false);
                 MenuPersonajes menu = new MenuPersonajes("");
                 menu.setVisible(true);
