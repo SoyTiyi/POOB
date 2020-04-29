@@ -1,7 +1,6 @@
 package src.aplicacion;
 
 import java.awt.Toolkit;
-import javax.swing.*;
 import java.awt.*;
 /**
  * Esta clase es la encargada de controlar el juego
