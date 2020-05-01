@@ -1,12 +1,14 @@
 package src.aplicacion;
 import java.awt.*;
+import java.io.Serializable;
 
 
 /**
  * Este metodo nos crea una pelota, la idea es qu extienda
  */
-public class Pelota {
+public class Pelota implements Serializable{
 
+    private static final long serialVersionUID = 1L;
     private int x;
     private int y;
     private int moveX=1;

@@ -22,15 +22,22 @@ public class TableroJuego extends JPanel{
     private String ruta2;
     private int lateral;
     private Poong poong;
-    public TableroJuego(){
-        poong = new Poong();
-        modo = MenuMaquinas.modo;
+    public TableroJuego(Poong poong){
+        this.poong=poong;
         modo();
         prepareRuta1();
         prepareRuta2();
         prepareElementos();
         prepareImagenes();
 
+    }
+
+    /**
+     * Este metodo lo que hace es settear poong
+     */
+    public void setPoong(){
+        poong=Poong.getPong();
+        repaint();
     }
 
     /**
@@ -94,8 +101,10 @@ public class TableroJuego extends JPanel{
      * Este metodo prepara el modo de juego
      */
     private void modo(){
-        if(MenuMaquinas.modo.equals("dos")){
-            listaPersonajes=MenuPersonajes.listaPersonajes;
+        if(poong.getModo().equals("dos")){
+            modo=poong.getModo();
+            listaPersonajes.add(poong.getJugadorUno());
+            listaPersonajes.add(poong.getJugadorDos());
         }
     }
     /**

@@ -6,7 +6,8 @@ import java.awt.event.*;
  */
 public class EventoTeclado extends KeyAdapter{
 
-    static boolean w, s, up, down;
+    public static boolean w, s, up, down;
+
     /**
      * Este metodo nos dice si se oprime alguna tecla
      */
@@ -51,5 +52,6 @@ public class EventoTeclado extends KeyAdapter{
         if(id == KeyEvent.VK_DOWN){
             down=false;
         }
+
     }
 }

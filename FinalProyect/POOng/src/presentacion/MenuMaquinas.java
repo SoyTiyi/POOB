@@ -2,6 +2,7 @@ package src.presentacion;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import src.aplicacion.*;
 /**
  * Esta clase es la encargada de mostrar los diferentes modos que tiene el juego
  */
@@ -112,7 +113,8 @@ public class MenuMaquinas extends JFrame{
 
         playerVScpu.addActionListener( new ActionListener(){
             public void actionPerformed(ActionEvent ev){
-                modo="uno";
+                Poong poong = Poong.getPong();
+                poong.setModo("uno");
                 setVisible(false);
                 MenuTipoMaquina menu = new MenuTipoMaquina();
                 menu.setVisible(true);
@@ -121,7 +123,8 @@ public class MenuMaquinas extends JFrame{
 
         cpuVScpu.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ev){
-                modo="cero";
+                Poong poong = Poong.getPong();
+                poong.setModo("cero");
                 setVisible(false);
                 MenuTipoMaquina menu = new MenuTipoMaquina();
                 menu.setVisible(true);
@@ -138,7 +141,8 @@ public class MenuMaquinas extends JFrame{
 
         playerVSplayer.addActionListener( new ActionListener(){
             public void actionPerformed(ActionEvent ev){
-                modo="dos";
+                Poong poong = Poong.getPong();
+                poong.setModo("dos");
                 setVisible(false);
                 MenuPersonajes menu = new MenuPersonajes("");
                 menu.setVisible(true);

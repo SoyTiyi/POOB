@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
+import src.aplicacion.Poong;
+
 /**
  * Esta clase nos permite dinujar la ventana
  */
@@ -334,8 +336,6 @@ public class MenuPersonajes extends JFrame{
                 }
                 if(cont==2){
                     prepareNumPlayer1();
-                    System.out.println(listaPersonajes.get(0));
-                    System.out.println(listaPersonajes.get(1));
                     setVisible(false);
                     Controles controles = new Controles(tipo);
                     controles.setVisible(true);
@@ -351,12 +351,13 @@ public class MenuPersonajes extends JFrame{
      * Este metodo añade el numero del personaje para el jugador numero 1
      */
     private void prepareNumPlayer1(){
-        if(radio1.isEnabled()) listaPersonajes.add(1);
-        else if(radio2.isEnabled()) listaPersonajes.add(2);
-        else if(radio3.isEnabled()) listaPersonajes.add(3);
-        else if(radio4.isEnabled()) listaPersonajes.add(4);
-        else if(radio5.isEnabled()) listaPersonajes.add(5);
-        else if(radio6.isEnabled()) listaPersonajes.add(6);
+        Poong poong = Poong.getPong();
+        if(radio1.isEnabled()) poong.setPlayerUno(1);
+        else if(radio2.isEnabled()) poong.setPlayerUno(2);
+        else if(radio3.isEnabled()) poong.setPlayerUno(3);
+        else if(radio4.isEnabled()) poong.setPlayerUno(4);
+        else if(radio5.isEnabled()) poong.setPlayerUno(5);
+        else if(radio6.isEnabled()) poong.setPlayerUno(6);
         prepareNumPlayer2();
     }
 
@@ -364,12 +365,13 @@ public class MenuPersonajes extends JFrame{
      * Este metodo añade el numero del personaje para el jugador numero 2
      */
     private void prepareNumPlayer2(){
-        if(radio7.isEnabled())  listaPersonajes.add(1);
-        else if(radio8.isEnabled()) listaPersonajes.add(2);
-        else if(radio9.isEnabled()) listaPersonajes.add(3);
-        else if(radio10.isEnabled()) listaPersonajes.add(4);
-        else if(radio11.isEnabled()) listaPersonajes.add(5);
-        else if(radio12.isEnabled()) listaPersonajes.add(6);
+        Poong poong = Poong.getPong();
+        if(radio7.isEnabled()) poong.setPlayerDos(1);
+        else if(radio8.isEnabled()) poong.setPlayerDos(2);
+        else if(radio9.isEnabled()) poong.setPlayerDos(3);
+        else if(radio10.isEnabled()) poong.setPlayerDos(4);
+        else if(radio11.isEnabled()) poong.setPlayerDos(5);
+        else if(radio12.isEnabled()) poong.setPlayerDos(6);
     }
 
     /**

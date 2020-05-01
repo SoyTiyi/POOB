@@ -3,7 +3,7 @@ package src.presentacion;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
-
+import src.aplicacion.*;
 import javax.swing.*;
 import javax.swing.ImageIcon;
 
@@ -32,13 +32,14 @@ public class MenuPOOng extends JFrame{
     private JLabel imageCerrar;
     private JLabel backGround;
     private JFileChooser fileChooser = new JFileChooser();
+
      /**
       * Esta clase es el constructor de nuestra ventana para el menu de POOng
       */
     public MenuPOOng(){
-    getContentPane().setBackground(Color.black);
-    prepareElementos();
-    prepareAcciones();
+        getContentPane().setBackground(Color.black);
+        prepareElementos();
+        prepareAcciones();
     }
 
     /**
@@ -137,6 +138,10 @@ public class MenuPOOng extends JFrame{
                 int returnVal = fileChooser.showOpenDialog(null);
                 if(returnVal == JFileChooser.APPROVE_OPTION){
                     File file = fileChooser.getSelectedFile();
+                    Poong poong = Poong.getPong();
+                    poong.abrir(file);
+                    ZonaDeJuego zona = new ZonaDeJuego("",Poong.getPong());
+                    zona.setVisible(true);
                 }
             }
         });

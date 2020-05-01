@@ -2,6 +2,7 @@ package src.presentacion;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import src.aplicacion.*;
 /**
  * Esta clase nos muestra los controles dependiendo del modo
  */
@@ -162,7 +163,7 @@ public class Controles extends JFrame{
         okButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ev){
                 setVisible(false);
-                ZonaDeJuego zona = new ZonaDeJuego(modo);
+                ZonaDeJuego zona = new ZonaDeJuego(modo,Poong.getPong());
                 zona.setVisible(true);
             }
         });
@@ -181,6 +182,7 @@ public class Controles extends JFrame{
             }
         });
     }
+    
     /**
      * Este metodo nos visualiza la ventana 
      * @param args

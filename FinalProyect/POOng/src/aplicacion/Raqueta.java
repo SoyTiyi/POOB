@@ -1,10 +1,12 @@
 package src.aplicacion;
 import java.awt.*;
+import java.io.Serializable;
 /**
  * Este clase nos crea las raquetas de juego
  */
-public class Raqueta {
+public class Raqueta implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     private int x;
     private int y;
     private final int ANCHO=25;

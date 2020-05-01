@@ -1,8 +1,11 @@
 package src.presentacion;
+
 import javax.swing.*;
+
 import src.aplicacion.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 /**
  * Esta clase nos muestra la ventana para la zona de juego 
  */
@@ -13,10 +16,13 @@ public class ZonaDeJuego extends JFrame{
     private String modo;
     private TableroJuego tablero;
     private Timer timer;
+    private Poong poong;
+    private JFileChooser fileChooser = new JFileChooser();
     /**
      * Este es el constructor para la ventana de juego
      */
-    public ZonaDeJuego(String modo){
+    public ZonaDeJuego(String modo, Poong poong){
+        this.poong=poong;
         this.modo=modo;
         prepareElementos();
         prepareAcciones();
@@ -28,8 +34,26 @@ public class ZonaDeJuego extends JFrame{
      * Este metodo nos prepara la plantilla en donde se ubicara los objetos para el juego
      */
     private void prepareTablero(){
-        tablero = new TableroJuego();
+        tablero = new TableroJuego(poong);
         backGround.add(tablero);
+    }
+
+    /**
+     * Este metodo lee el archivo 
+     */
+    public void opcionAbrir(File file){
+        poong.abrir(file);
+        poong = Poong.getPong();
+        tablero.actualizar();
+    }
+
+    /**
+     * Este metodo es el encargado de salvar el archivo
+     */
+    public void opcionSalve(){
+        fileChooser.showSaveDialog(fileChooser);
+        File file = fileChooser.getSelectedFile();
+        poong.salve(file);
     }
 
     /**
@@ -77,15 +101,37 @@ public class ZonaDeJuego extends JFrame{
             }
         });
         timer.start();
+        addKeyListener(new KeyAdapter(){
+            @Override
+            public void keyPressed(KeyEvent e){
+                int id = e.getKeyCode();
+                System.out.println(id);
+                if(id == KeyEvent.VK_G){
+                    timer.stop();
+                    opcionSalve();
+                    System.exit(0);
+                }
 
+                if(id == KeyEvent.VK_P){
+                    if(timer.isRunning()){
+                        timer.stop();
+                    }
+                    else{
+                        timer.start();
+                    }
+                }
+            }
+        }
+    );
         addKeyListener(new EventoTeclado());
     }
 
     /**
+     * 
      * Metodo principal para mostrar la ventana
      */
     public static void main(String[] args){
-        ZonaDeJuego zona = new ZonaDeJuego("");
+        ZonaDeJuego zona = new ZonaDeJuego("",Poong.getPong());
         zona.setVisible(true);
     }
 }
