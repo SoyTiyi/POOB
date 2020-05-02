@@ -121,8 +121,7 @@ public class ZonaDeJuego extends JFrame{
                     }
                 }
             }
-        }
-    );
+        });
         addKeyListener(new EventoTeclado());
     }
 
