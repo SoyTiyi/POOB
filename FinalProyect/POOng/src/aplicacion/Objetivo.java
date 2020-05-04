@@ -1,11 +1,13 @@
 package src.aplicacion;
 
 import java.awt.*;
+import java.io.Serializable;
 /**
  * Este metodo nos crea los objetivos los cuales nos dan mas puntos 
  */
-public class Objetivo{
-    
+public class Objetivo implements Serializable{
+
+    private static final long serialVersionUID = 1L;
     private int xPosition;
     private int yPosition;
     private final int ANCHO=5;

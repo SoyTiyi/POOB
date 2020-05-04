@@ -76,8 +76,14 @@ public class Poong implements Serializable{
             createPremio();
         }
         if(objetivoUno!=null && choque(objetivoUno.getObjetivo())  || contPremio==10000){
-            pelota.sumScore2();
-            objetivoUno=null;
+            if(contPremio==10000){
+                objetivoUno=null;
+            }
+            else{
+                System.out.println("Golpee raqueta 1");
+                pelota.sumScore2();
+                objetivoUno=null;
+            }
         }
         if(contObjUno == esperaObjUno){
             contObjUno=0;
@@ -85,8 +91,14 @@ public class Poong implements Serializable{
             createObjetivo(1);
         }
         if(objetivoDos!=null && choque(objetivoDos.getObjetivo()) || contPremio==10000){
-            pelota.sumScore1();
-            objetivoDos=null;
+            if(contPremio==10000){
+                objetivoDos=null;
+            }
+            else{
+                System.out.println("Golpee raqueta 2");
+                pelota.sumScore1();
+                objetivoDos=null;
+            }
         }
         if(contObjDos == esperaObjDos){
             contObjDos=0;

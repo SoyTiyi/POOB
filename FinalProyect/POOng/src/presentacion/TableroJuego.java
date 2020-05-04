@@ -171,11 +171,11 @@ public class TableroJuego extends JPanel{
      * Este metodo evalua la situacion de la imagen del objetivo dos
      */
     private void controlObjetivoDos(){
-        if(poong.getObjUno()!=null){
+        if(poong.getObjDos()!=null){
             objetivoDos.setBounds(poong.getObjDos().getX(), poong.getObjDos().getY(), 20, 20);
         }
         else{
-            objetivoUno.setBounds(600, 600, 20, 20);
+            objetivoDos.setBounds(600, 600, 20, 20);
         }  
     }
     /**

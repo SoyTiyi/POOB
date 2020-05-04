@@ -92,13 +92,21 @@ public class Pelota implements Serializable{
      * Este metodo nos sume los puntos al golpear el objetivo del jugador Uno
      */
     public void sumScore1(){
-        score1+= random.nextInt(score1/2)+2;
+        try{
+            score1+= random.nextInt(score1/2)+2;
+        } catch(Exception e){
+            score1+=2;
+        }
     }
 
     /**
      * Este metodo nos suma los puntos al golpear el objetivo del jugador Dos
      */
     public void sumScore2(){
-        score2+= random.nextInt(score2/2)+2;
+        try{
+            score2+= random.nextInt(score2/2)+2;
+        } catch(Exception e){
+            score2+=2;
+        }
     }
 }
