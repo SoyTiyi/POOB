@@ -1,6 +1,8 @@
 package src.aplicacion;
+
 import java.awt.*;
 import java.io.Serializable;
+import java.util.Random;
 
 
 /**
@@ -17,6 +19,7 @@ public class Pelota implements Serializable{
     private final int limiteY=Toolkit.getDefaultToolkit().getScreenSize().height/2+2;
     private final int ANCHO=15, ALTO=15;
     private int score1=0, score2=0;
+    private Random random = new Random();
 
     /**
      * Este es el constructor de la clase pelota
@@ -83,5 +86,19 @@ public class Pelota implements Serializable{
      */
     public void setPositionY(int y){
         this.y=y;
+    }
+
+    /**
+     * Este metodo nos sume los puntos al golpear el objetivo del jugador Uno
+     */
+    public void sumScore1(){
+        score1+= random.nextInt(score1/2)+2;
+    }
+
+    /**
+     * Este metodo nos suma los puntos al golpear el objetivo del jugador Dos
+     */
+    public void sumScore2(){
+        score2+= random.nextInt(score2/2)+2;
     }
 }

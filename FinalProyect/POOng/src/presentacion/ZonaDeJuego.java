@@ -105,7 +105,6 @@ public class ZonaDeJuego extends JFrame{
             @Override
             public void keyPressed(KeyEvent e){
                 int id = e.getKeyCode();
-                System.out.println(id);
                 if(id == KeyEvent.VK_G){
                     timer.stop();
                     opcionSalve();

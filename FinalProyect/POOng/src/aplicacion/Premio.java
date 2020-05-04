@@ -37,6 +37,19 @@ public class Premio{
      */
     public int getY(){
         return yPosition;
-    }   
+    }
 
+    /**
+     * Este metodo nos hace set a la posicion en X
+     */
+    public void setX(int xPosition){
+        this.xPosition = xPosition;
+    }
+
+    /**
+     * Este metodo nos hace set a la posicion en Y
+     */
+    public void setY(int yPosition){
+        this.yPosition = yPosition;
+    }
 }

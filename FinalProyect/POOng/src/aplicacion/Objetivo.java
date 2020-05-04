@@ -27,6 +27,12 @@ public class Objetivo{
     }
 
     /**
+     * Este metodo nos prepara el tiempo random de los objetivos
+     */
+    public void prepareObjetivos(){
+
+    }
+    /**
      * Este metodo nos retorna la posicion en X
      */
     public int getX(){

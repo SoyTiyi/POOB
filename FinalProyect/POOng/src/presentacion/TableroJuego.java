@@ -18,10 +18,15 @@ public class TableroJuego extends JPanel{
     private String modo;
     private JLabel player1;
     private JLabel player2;
+    private JLabel estrellita;
+    private JLabel objetivoUno;
+    private JLabel objetivoDos;
     private String ruta1;
     private String ruta2;
     private int lateral;
     private Poong poong;
+    private ImageIcon imgEstrellita;
+    private ImageIcon imgIcon;
     public TableroJuego(Poong poong){
         this.poong=poong;
         modo();
@@ -47,12 +52,18 @@ public class TableroJuego extends JPanel{
         if(modo.equals("dos")){
             ImageIcon imagePlaUno = new ImageIcon(ruta1);
             ImageIcon imagePlaDos = new ImageIcon(ruta2);
+            imgEstrellita = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/premio.png");
+            imgIcon = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/objetivo.png");
             player1 = new JLabel(imagePlaUno); player1.setBounds(8, 100, 61 , 80); add(player1);
             player2 = new JLabel(imagePlaDos); player2.setBounds(lateral, 100, 61, 80); add(player2);
+            estrellita = new JLabel(imgEstrellita); estrellita.setBounds(poong.getPremio().getX(), poong.getPremio().getY(), 20, 20); add(estrellita);
+            objetivoUno = new JLabel(imgIcon); objetivoUno.setBounds(poong.getObjUno().getX(), poong.getObjUno().getY(), 20, 20); add(objetivoUno);
+            objetivoDos = new JLabel(imgIcon); objetivoDos.setBounds(poong.getObjDos().getX(), poong.getObjDos().getY(), 20, 20); add(objetivoDos);
+
         }
     }
 
-    /**S
+    /**
      * Este metodo prepara las rutas para las imagenes 
      */
     private void prepareRuta1(){
@@ -138,10 +149,48 @@ public class TableroJuego extends JPanel{
         g.drawString(poong.getPelota().getScore1(), 250, 30);
         g.drawString(poong.getPelota().getScore2(), 480, 30);
         g.fill((Shape) poong.getPelota().getPelota());
+        controlEstrellita();
+        controlObjetivoUno(); controlObjetivoDos();
         //g.fill((Shape) raqueta1.getRaqueta());
         //g.fill((Shape) raqueta2.getRaqueta());
     }
     
+    /**
+     * Este metodo evalua la situacion de la imagen del objetivo uno 
+     */
+    private void controlObjetivoUno(){
+        if(poong.getObjUno()!=null){
+            objetivoUno.setBounds(poong.getObjUno().getX(), poong.getObjUno().getY(), 20, 20);
+        }
+        else{
+            objetivoUno.setBounds(500, 500, 20, 20);
+        }
+    }
+    
+    /**
+     * Este metodo evalua la situacion de la imagen del objetivo dos
+     */
+    private void controlObjetivoDos(){
+        if(poong.getObjUno()!=null){
+            objetivoDos.setBounds(poong.getObjDos().getX(), poong.getObjDos().getY(), 20, 20);
+        }
+        else{
+            objetivoUno.setBounds(600, 600, 20, 20);
+        }  
+    }
+    /**
+     * Este metodo evalua la situacion de la imagen de la estrellita 
+     */
+    private void controlEstrellita(){
+        if(poong.getPremio()!=null){
+            estrellita.enable();
+            estrellita.setBounds(poong.getPremio().getX(), poong.getPremio().getY(), 20, 20);
+        }
+        else{
+            estrellita.disable();
+        }
+    }
+
     /**
      * Este metodo actualiza la posicion de los elementos del tablero
      */
