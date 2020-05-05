@@ -159,7 +159,7 @@ public class TableroJuego extends JPanel{
      * Este metodo evalua la situacion de la imagen del objetivo uno 
      */
     private void controlObjetivoUno(){
-        if(poong.getObjUno()!=null){
+        if(poong.getObjUno().getVisible()){
             objetivoUno.setBounds(poong.getObjUno().getX(), poong.getObjUno().getY(), 20, 20);
         }
         else{
@@ -171,7 +171,7 @@ public class TableroJuego extends JPanel{
      * Este metodo evalua la situacion de la imagen del objetivo dos
      */
     private void controlObjetivoDos(){
-        if(poong.getObjDos()!=null){
+        if(poong.getObjDos().getVisible()){
             objetivoDos.setBounds(poong.getObjDos().getX(), poong.getObjDos().getY(), 20, 20);
         }
         else{
@@ -182,12 +182,13 @@ public class TableroJuego extends JPanel{
      * Este metodo evalua la situacion de la imagen de la estrellita 
      */
     private void controlEstrellita(){
-        if(poong.getPremio()!=null){
+        if(poong.getPremio().getVisible()){
             estrellita.enable();
             estrellita.setBounds(poong.getPremio().getX(), poong.getPremio().getY(), 20, 20);
         }
         else{
             estrellita.disable();
+            estrellita.setBounds(poong.getPremio().getX(), poong.getPremio().getY(), 20, 20);
         }
     }
 

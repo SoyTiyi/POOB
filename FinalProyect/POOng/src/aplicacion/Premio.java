@@ -11,11 +11,12 @@ public class Premio implements Serializable{
     private int xPosition;
     private int yPosition;
     private final int lado=20;
-
+    private boolean isVisible;
     /**
      * Este es el constructor de la clase
      */
     public Premio(int xPosition, int yPosition){
+        isVisible=true;
         this.xPosition = xPosition;
         this.yPosition = yPosition;
     }
@@ -32,6 +33,21 @@ public class Premio implements Serializable{
      */
     public int getX(){
         return xPosition;
+    }
+
+    /**
+     * Este metodo retorna si el premio es visible
+     * @return
+     */
+    public boolean getVisible(){
+        return isVisible;
+    }
+
+    /**
+     * Este metodo le hace set al parametro isVisible
+     */
+    public void setVisible(boolean isVisible){
+        this.isVisible=isVisible;
     }
 
     /**

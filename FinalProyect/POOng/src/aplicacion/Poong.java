@@ -29,8 +29,8 @@ public class Poong implements Serializable{
     private int esperaPremio, esperaObjUno, esperaObjDos;
     private Objetivo objetivoUno;
     private Objetivo objetivoDos;
+    private int yEstre, yOb1, yOb2;
     private Random random = new Random();
-
     /**
      * Esten es el constructor de la clase
      */
@@ -40,9 +40,11 @@ public class Poong implements Serializable{
         pelota = new Pelota(0,0);
         raqueta1 = new Raqueta(8,100);
         raqueta2 = new Raqueta((int)d.getWidth()/2+9,100);
-        premio = new Premio(360,random.nextInt(391-1));
-        objetivoUno = new Objetivo(20, random.nextInt(391-1));
-        objetivoDos = new Objetivo(700, random.nextInt(391-1));
+        yEstre = random.nextInt(391-1); yOb1 = random.nextInt(391-1); yOb2 = random.nextInt(391-1);
+        premio = new Premio(360,yEstre);
+        objetivoUno = new Objetivo(20, yOb1);
+        objetivoDos = new Objetivo(700, yOb2);
+        premio.setY(yEstre); objetivoUno.setY(yOb1); objetivoDos.setY(yOb2);
         esperaObjUno = (int) random.nextInt(5000)+15000; esperaObjDos = (int) random.nextInt(5000)+15000;
         System.out.println(esperaObjUno+"   "+esperaObjDos);
         esperaPremio=(int) random.nextInt(5000)+10000;
@@ -52,13 +54,9 @@ public class Poong implements Serializable{
      * Este metodo nos crea el premio
      */
     public void createPremio(){
-        if(premio == null){
-            premio = new Premio(360,random.nextInt(391-1));
-        }
-        else{
-            premio=null;
-            premio = new Premio(360,random.nextInt(391-1));
-        }
+        yEstre = random.nextInt(391-1);
+        premio.setVisible(true);
+        premio.setY(yEstre);
     }   
 
     /**
@@ -67,22 +65,23 @@ public class Poong implements Serializable{
     public void move(){
         contPremio++; contObjUno++; contObjDos++;
         pelota.mover(choque(raqueta1.getRaqueta()),choque(raqueta2.getRaqueta()));
-        if(premio!=null && choque(premio.getPremio())){
-            premio=null;
+
+        if(choque(premio.getPremio())){
+            premio.setVisible(false);
         }
         if(contPremio==esperaPremio){
             contPremio=0;
             esperaPremio = random.nextInt(5000)+10000;
             createPremio();
         }
-        if(objetivoUno!=null && choque(objetivoUno.getObjetivo())  || contPremio==10000){
+        if(objetivoUno.getVisible() && (choque(objetivoUno.getObjetivo())  || contPremio==10000)){
             if(contPremio==10000){
-                objetivoUno=null;
+                objetivoUno.setVisible(false);
             }
             else{
                 System.out.println("Golpee raqueta 1");
                 pelota.sumScore2();
-                objetivoUno=null;
+                objetivoUno.setVisible(false);;
             }
         }
         if(contObjUno == esperaObjUno){
@@ -90,14 +89,14 @@ public class Poong implements Serializable{
             esperaObjUno = random.nextInt(5000)+15000;
             createObjetivo(1);
         }
-        if(objetivoDos!=null && choque(objetivoDos.getObjetivo()) || contPremio==10000){
+        if(objetivoDos.getVisible() && (choque(objetivoDos.getObjetivo()) || contPremio==10000)){
             if(contPremio==10000){
-                objetivoDos=null;
+                objetivoDos.setVisible(false);
             }
             else{
                 System.out.println("Golpee raqueta 2");
                 pelota.sumScore1();
-                objetivoDos=null;
+                objetivoDos.setVisible(false);
             }
         }
         if(contObjDos == esperaObjDos){
@@ -115,11 +114,16 @@ public class Poong implements Serializable{
      */
     private void createObjetivo(int num){
         if(num==1){
-            objetivoUno = new Objetivo(10, random.nextInt(391-1));
+            yOb1 = random.nextInt(391-1);
+            objetivoUno.setVisible(true);
+            objetivoUno.setY(yOb1);
         }
         else{
-            objetivoDos = new Objetivo(700, random.nextInt(391-1));
+            yOb2 = random.nextInt(391-1);
+            objetivoDos.setVisible(true);
+            objetivoDos.setY(yOb2);
         }
+
     }
 
     /**
