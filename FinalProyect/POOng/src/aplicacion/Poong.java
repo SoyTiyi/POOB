@@ -31,6 +31,9 @@ public class Poong implements Serializable{
     private Objetivo objetivoDos;
     private int yEstre, yOb1, yOb2;
     private Random random = new Random();
+    private Bloque bloque;
+    private int vidaUno=100, vidaDos=100;
+    private final int limiteY=Toolkit.getDefaultToolkit().getScreenSize().height/2+2;
     /**
      * Esten es el constructor de la clase
      */
@@ -40,6 +43,7 @@ public class Poong implements Serializable{
         pelota = new Pelota(0,0);
         raqueta1 = new Raqueta(8,100);
         raqueta2 = new Raqueta((int)d.getWidth()/2+9,100);
+        bloque = new Bloque(360,360);
         yEstre = random.nextInt(391-1); yOb1 = random.nextInt(391-1); yOb2 = random.nextInt(391-1);
         premio = new Premio(360,yEstre);
         objetivoUno = new Objetivo(20, yOb1);
@@ -66,9 +70,39 @@ public class Poong implements Serializable{
         contPremio++; contObjUno++; contObjDos++;
         pelota.mover(choque(raqueta1.getRaqueta()),choque(raqueta2.getRaqueta()));
 
-        if(choque(premio.getPremio())){
+        if(premio.getVisible() && choque(premio.getPremio())){
             premio.setVisible(false);
+            bloque.setVisible(true);
+            int num = pelota.getPersonPush();
+            if(num==1){
+                bloque.setX(470); bloque.setY(random.nextInt(390-1));
+            }
+            else{
+                bloque.setX(270); bloque.setY(random.nextInt(390-1));
+            }
         }
+
+        if(bloque.getVisible()){
+            int num = pelota.getPersonPush();
+            if(num!=0){
+                if(num==1) bloque.move(1);
+                else bloque.move(2);
+            }
+            else{
+                bloque.setVisible(false);
+            }
+        }
+
+        if(bloque.getVisible() && choque(bloque.getBloque(), raqueta1.getRaqueta())){
+            bloque.setVisible(false);
+            vidaUno-=vidaUno/2;
+        }
+
+        if(bloque.getVisible() && choque(bloque.getBloque(), raqueta2.getRaqueta())){
+            bloque.setVisible(false);
+            vidaDos=vidaDos/2;
+        }
+
         if(contPremio==esperaPremio){
             contPremio=0;
             esperaPremio = random.nextInt(5000)+10000;
@@ -127,6 +161,22 @@ public class Poong implements Serializable{
     }
 
     /**
+     * Este metodo nos devuelve la vida de la primera Raqueta
+     * @return vidaUno
+     */
+    public String getVidaUno(){
+        return vidaUno+"";
+    }
+
+    /**
+     * Este metodo nos devuelve la vida de la segunda raqueta
+     * @return vidaDos
+     */
+    public String getVidaDos(){
+        return vidaDos+"";
+    }
+
+    /**
      * Este metodo retorna el objetivo del jugador 1 
      * @return objetivoUno
      */
@@ -156,6 +206,14 @@ public class Poong implements Serializable{
      */
     private boolean choque(Rectangle r){
         return pelota.getPelota().intersects(r);    
+    }
+
+    /**
+     * Este metodo evalua el choque entre dos Rectangulos
+     * @return booleano
+     */
+    private boolean choque(Rectangle r1, Rectangle r2){
+        return r1.intersects(r2);
     }
 
     /**
@@ -272,5 +330,12 @@ public class Poong implements Serializable{
      */
     public void setPlayerDos(int num){
         personajeDos=num;
+    }
+
+    /**
+     * Este metodo nos retonrla la forma del bloque
+     */
+    public Bloque getBloque(){
+        return bloque;
     }
 }

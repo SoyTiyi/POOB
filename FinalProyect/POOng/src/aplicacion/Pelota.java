@@ -20,6 +20,8 @@ public class Pelota implements Serializable{
     private final int ANCHO=15, ALTO=15;
     private int score1=0, score2=0;
     private Random random = new Random();
+    private boolean golpeRaqueta1;
+    private boolean golpeRaqueta2;
 
     /**
      * Este es el constructor de la clase pelota
@@ -44,8 +46,8 @@ public class Pelota implements Serializable{
     public void mover(boolean choqueUno, boolean choqueDos){
         x+=moveX;
         y+=moveY;
-        if(choqueUno){moveX=-moveX; x=35;}
-        if(choqueDos){moveX=-moveX; x=675;}
+        if(choqueUno){moveX=-moveX; x=35; golpeRaqueta1=true; golpeRaqueta2=false;} 
+        if(choqueDos){moveX=-moveX; x=675; golpeRaqueta2=true; golpeRaqueta1=false;}
         if(x > limiteX ){
             x=300; y=300;
             moveX=-moveX;
@@ -122,5 +124,19 @@ public class Pelota implements Serializable{
      */
     public int getX(){
         return x;
+    }
+
+    public int getPersonPush(){
+        if(golpeRaqueta1!=false || golpeRaqueta2!=false){
+            if(golpeRaqueta1){
+                return 1;
+            }
+            else{
+                return 2;
+            }
+        }
+        else{
+            return 0;
+        }
     }
 }

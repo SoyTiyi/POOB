@@ -11,11 +11,12 @@ public class Bloque implements Serializable{
     private int xPosition;
     private int yPosition;
     private boolean isVisible;
+    private final int limiteX=Toolkit.getDefaultToolkit().getScreenSize().width/2+35;
     /**
      * Este es el constructor de la clase
      */
     public Bloque(int xPosition, int yPosition){
-        isVisible=true;
+        isVisible=false;
         this.xPosition=xPosition;
         this.yPosition=yPosition;
     }
@@ -72,7 +73,22 @@ public class Bloque implements Serializable{
     /**
      * Este metodo mueve los bloques 
      */
-    public void move(){
-        
+    public void move(int num){
+        if(num==1){
+            if(xPosition<limiteX){
+                xPosition+=1;
+            }
+            else{
+                isVisible=false;
+            }
+        }
+        else{
+            if(xPosition>0){
+                xPosition-=1;
+            }
+            else{
+                isVisible=false;
+            }
+        }
     }
 }

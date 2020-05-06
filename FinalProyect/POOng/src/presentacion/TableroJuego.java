@@ -21,7 +21,6 @@ public class TableroJuego extends JPanel{
     private JLabel estrellita;
     private JLabel objetivoUno;
     private JLabel objetivoDos;
-    private JLabel backGround;
     private JLabel pelota;
     private String ruta1;
     private String ruta2;
@@ -30,7 +29,8 @@ public class TableroJuego extends JPanel{
     private ImageIcon imgEstrellita;
     private ImageIcon imgIcon;
     private ImageIcon imgPelota;
-
+    private JLabel bloque;
+    private ImageIcon imgBloque;
     /**
      * Este es el constructor de la clase
      * @param poong
@@ -63,12 +63,14 @@ public class TableroJuego extends JPanel{
             imgEstrellita = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/premio.png");
             imgIcon = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/objetivo.png");
             imgPelota = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/pelota.png");
+            imgBloque = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/bloque.png");
             player1 = new JLabel(imagePlaUno); player1.setBounds(8, 100, 61 , 80); add(player1);
             player2 = new JLabel(imagePlaDos); player2.setBounds(lateral, 100, 61, 80); add(player2);
             estrellita = new JLabel(imgEstrellita); estrellita.setBounds(poong.getPremio().getX(), poong.getPremio().getY(), 20, 20); add(estrellita);
             objetivoUno = new JLabel(imgIcon); objetivoUno.setBounds(poong.getObjUno().getX(), poong.getObjUno().getY(), 20, 20); add(objetivoUno);
             objetivoDos = new JLabel(imgIcon); objetivoDos.setBounds(poong.getObjDos().getX(), poong.getObjDos().getY(), 20, 20); add(objetivoDos);
             pelota = new JLabel(imgPelota); pelota.setBounds(poong.getPelota().getX(),poong.getPelota().getY(),20,20); add(pelota);
+            bloque = new JLabel(imgBloque); bloque.setBounds(poong.getBloque().getX(),poong.getBloque().getY(),20,20); add(bloque);
         }
     }
 
@@ -136,6 +138,10 @@ public class TableroJuego extends JPanel{
         Toolkit t = Toolkit.getDefaultToolkit();
         Dimension d = t.getScreenSize();
         setSize(d.width/2+45,d.height/2+40);
+        setLayout(null);
+        ImageIcon imgPizza = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/fortalez.png");
+        JLabel vidaUno = new JLabel(imgPizza); vidaUno.setBounds(115,13,20,20); add(vidaUno);
+        JLabel vidaDos = new JLabel(imgPizza); vidaDos.setBounds(630, 13, 20, 20); add(vidaDos);
     }
 
     /**
@@ -159,13 +165,28 @@ public class TableroJuego extends JPanel{
         g.drawString(poong.getPelota().getScore1(), 250, 30);
         g.drawString(poong.getPelota().getScore2(), 480, 30);
         pelota.setLocation(poong.getPelota().getX(), poong.getPelota().getY());
+        g.drawString(poong.getVidaUno(),150,30);
+        g.drawString(poong.getVidaDos(),580,30);
         //g.fill((Shape) poong.getPelota().getPelota());
         controlEstrellita();
         controlObjetivoUno(); controlObjetivoDos();
+        controlBloque();
         //g.fill((Shape) raqueta1.getRaqueta());
         //g.fill((Shape) raqueta2.getRaqueta());
     }
-    
+
+    /**
+     * Este metodo evalua la situacion de la imagen del bloque
+     */
+    private void controlBloque(){
+        if(poong.getBloque().getVisible()){
+            bloque.setBounds(poong.getBloque().getX(),poong.getBloque().getY(),20,20);
+        }
+        else{
+            bloque.setBounds(700,700,20,20);
+        }
+    }
+
     /**
      * Este metodo evalua la situacion de la imagen del objetivo uno 
      */
