@@ -21,12 +21,20 @@ public class TableroJuego extends JPanel{
     private JLabel estrellita;
     private JLabel objetivoUno;
     private JLabel objetivoDos;
+    private JLabel backGround;
+    private JLabel pelota;
     private String ruta1;
     private String ruta2;
     private int lateral;
     private Poong poong;
     private ImageIcon imgEstrellita;
     private ImageIcon imgIcon;
+    private ImageIcon imgPelota;
+
+    /**
+     * Este es el constructor de la clase
+     * @param poong
+     */
     public TableroJuego(Poong poong){
         this.poong=poong;
         modo();
@@ -54,12 +62,13 @@ public class TableroJuego extends JPanel{
             ImageIcon imagePlaDos = new ImageIcon(ruta2);
             imgEstrellita = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/premio.png");
             imgIcon = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/objetivo.png");
+            imgPelota = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/pelota.png");
             player1 = new JLabel(imagePlaUno); player1.setBounds(8, 100, 61 , 80); add(player1);
             player2 = new JLabel(imagePlaDos); player2.setBounds(lateral, 100, 61, 80); add(player2);
             estrellita = new JLabel(imgEstrellita); estrellita.setBounds(poong.getPremio().getX(), poong.getPremio().getY(), 20, 20); add(estrellita);
             objetivoUno = new JLabel(imgIcon); objetivoUno.setBounds(poong.getObjUno().getX(), poong.getObjUno().getY(), 20, 20); add(objetivoUno);
             objetivoDos = new JLabel(imgIcon); objetivoDos.setBounds(poong.getObjDos().getX(), poong.getObjDos().getY(), 20, 20); add(objetivoDos);
-
+            pelota = new JLabel(imgPelota); pelota.setBounds(poong.getPelota().getX(),poong.getPelota().getY(),20,20); add(pelota);
         }
     }
 
@@ -122,10 +131,11 @@ public class TableroJuego extends JPanel{
      * Este metodo nos permite preparar los elemntos los cuales seran las raquetas y las pelotas
      */
     private void prepareElementos(){
-        setBackground(Color.black);
+        Color colorBack= new Color(115,230,190);
+        setBackground(colorBack);
         Toolkit t = Toolkit.getDefaultToolkit();
         Dimension d = t.getScreenSize();
-        setSize(d.width/2+50,d.height/2+50);
+        setSize(d.width/2+45,d.height/2+40);
     }
 
     /**
@@ -148,7 +158,8 @@ public class TableroJuego extends JPanel{
         g.drawLine(370, 0, 370, 700);
         g.drawString(poong.getPelota().getScore1(), 250, 30);
         g.drawString(poong.getPelota().getScore2(), 480, 30);
-        g.fill((Shape) poong.getPelota().getPelota());
+        pelota.setLocation(poong.getPelota().getX(), poong.getPelota().getY());
+        //g.fill((Shape) poong.getPelota().getPelota());
         controlEstrellita();
         controlObjetivoUno(); controlObjetivoDos();
         //g.fill((Shape) raqueta1.getRaqueta());

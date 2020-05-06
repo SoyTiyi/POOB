@@ -164,6 +164,7 @@ public class AutomataGUI extends JFrame{
     }
 
     private void botonRelojAccion() {
+        automata = AutomataCelular.getAutomataCelular();
         automata.ticTac();
         foto.repaint();
     }

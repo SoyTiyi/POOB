@@ -109,4 +109,18 @@ public class Pelota implements Serializable{
             score2+=2;
         }
     }
+
+    /**
+     * Este metodo retorn la posicion Y
+     */
+    public int getY(){
+        return y;
+    }
+
+    /**
+     * Este metodo retorna la posicion X
+     */
+    public int getX(){
+        return x;
+    }
 }
