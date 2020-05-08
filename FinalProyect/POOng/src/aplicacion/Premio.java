@@ -83,7 +83,28 @@ public class Premio implements Serializable{
     /**
      * Este metodo reacciona al tener un choque 
      */
-    public void choque(){
+    public void choque(int velocidad, int vida){
         
+    }
+
+    /**
+     * Este metodo devuelve la nueva velocidad
+     */
+    public int getVelocidad(){
+        return 5;
+    }
+
+    /**
+     * Este metodo devuelve la nueva vida de la raqueta
+     */
+    public int getVida(){
+        return 50;
+    }
+
+    /**
+     * Este metodo devuelve la nueva resgtriccion al enemigo
+     */
+    public boolean getRestriccionEnemigo(){
+        return true;
     }
 }

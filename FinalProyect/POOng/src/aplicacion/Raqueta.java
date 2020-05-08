@@ -11,13 +11,16 @@ public class Raqueta implements Serializable {
     private int y;
     private final int ANCHO=25;
     private final int ALTO=80;
+    private boolean canMove;
     private final int limiteY=Toolkit.getDefaultToolkit().getScreenSize().height/2-58;
     private int vida=100;
     private int cont=0;
+    private int espera=0;
     /**
      * Este es el constructor de muestra clase raqueta
      */
     public Raqueta(int x, int y){
+        canMove=true;
         this.x=x;
         this.y=y;
     }
@@ -34,27 +37,44 @@ public class Raqueta implements Serializable {
      * Este metodo maneja la logica del movimiento de la raqueta1
      */
     public void moveR1(){
-        if(cont==20){
-            vida--;
-            cont=0;
+        if(canMove){
+            if(cont==20){
+                vida--;
+                cont=0;
+            }
+    
+            if(EventoTeclado.w && y>0){
+                cont++;
+                y--;
+            }
+    
+            if(EventoTeclado.s && y<limiteY){
+                cont++;
+                y++;
+            }
         }
-
-        if(EventoTeclado.w && y>0){
-            cont++;
-            y--;
+        else{
+            if(espera==2000){
+                espera=0; canMove=true;
+            }
+            else{
+                espera++;
+            }
         }
-
-        if(EventoTeclado.s && y<limiteY){
-            cont++;
-            y++;
-        }
-        
     }
 
+    /**
+     * Este metodo devuelve la posicion en X de la raqueta
+     * @return x
+     */
     public int getX(){
         return x;
     }
 
+    /**
+     * Este metodo devuelve la posicion en Y de la raqueta
+     * @return y
+     */
     public int getY(){
         return y;
     }
@@ -64,20 +84,44 @@ public class Raqueta implements Serializable {
      */
     public void moveR2(){
 
-        if(cont==40){
-            vida--;
-            cont=0;
+        if(canMove){
+            if(cont==40){
+                vida--;
+                cont=0;
+            }
+    
+            if(EventoTeclado.up && y>0){
+                cont++;
+                y--;
+            }
+    
+            if(EventoTeclado.down && y<limiteY){
+                cont++;
+                y++;
+            }
         }
+        else{
+            if(espera==2000){
+                espera=0; canMove=true;
+            }
+            else{
+                espera++;
+            }
+        }
+    }
 
-        if(EventoTeclado.up && y>0){
-            cont++;
-            y--;
-        }
+    /**
+     * Este metodo nos dice si es posible que la raqueta que se mueva
+     */
+    public boolean getMove(){
+        return canMove;
+    }
 
-        if(EventoTeclado.down && y<limiteY){
-            cont++;
-            y++;
-        }
+    /**
+     * Este metodo le hace set a la variable canMove
+     */
+    public void setMove(boolean canMove){
+        this.canMove=canMove;
     }
 
     /**
@@ -85,6 +129,13 @@ public class Raqueta implements Serializable {
      */
     public int getVida(){
         return vida;
+    }
+
+    /**
+     * Este metodo le hace set a la vida
+     */
+    public void setVida(int vida){
+        this.vida=vida;
     }
 
     /**

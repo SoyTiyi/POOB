@@ -8,9 +8,9 @@ import javax.swing.ImageIcon;
 public class Energy extends Premio{
 
     private static final long serialVersionUID = 1L;
-    private boolean cambiaVel;
-    private boolean cambiaRaUno;
     private boolean cambiaRaDos;
+    private int velocidad;
+    private int vida;
 
     public Energy(int xPosition, int yPosition) {
         super(xPosition, yPosition);
@@ -29,7 +29,45 @@ public class Energy extends Premio{
      * Este metodo nos evalua las ventajas de golpear el premio
      */
     @Override 
-    public void choque(){
+    public void choque(int velocidad, int vida){
+        this.velocidad = velocidad;
+        this.vida = vida;
+        actualizar();
+    }
 
+    /**
+     * Este metodo actualiza los valores dependiendo del premio
+     */
+    private void actualizar(){
+        if(vida<=50){
+            vida+=vida/2;
+        }
+        else{
+            vida=100;
+        }
+    }
+
+    /**
+     * Este metodo retorna la velocidad
+     */
+    @Override
+    public int getVelocidad(){
+        return velocidad;
+    }
+
+    /**
+     * Este metodo retorna la nueva vida del jugador que la golpio
+     */
+    @Override
+    public int getVida(){
+        return vida;
+    }
+
+    /**
+     * Este metodo devuelve un booleao que dice si el contricante puede moverse despues
+     */
+    @Override
+    public boolean getRestriccionEnemigo(){
+        return cambiaRaDos;
     }
 }

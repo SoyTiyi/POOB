@@ -51,7 +51,7 @@ public class Poong implements Serializable{
         preparePremios();
         int index = (int) random.nextInt(7)+0;
         System.out.println(index);
-        premio = premios.get(index);
+        premio = premios.get(1);
         objetivoUno = new Objetivo(20, yOb1);
         objetivoDos = new Objetivo(700, yOb2);
         premio.setY(yEstre); objetivoUno.setY(yOb1); objetivoDos.setY(yOb2);
@@ -89,6 +89,7 @@ public class Poong implements Serializable{
      */
     public void createPremio(){
         yEstre = random.nextInt(391-1);
+        premio = premios.get(random.nextInt(7)+0);
         premio.setVisible(true);
         premio.setY(yEstre);
     }   
@@ -106,9 +107,13 @@ public class Poong implements Serializable{
             bloque.setVisible(true);
             int num = pelota.getPersonPush();
             if(num==1){
+                premio.choque(pelota.getVelocidad(), raqueta1.getVida());
+                actualizar(1);
                 bloque.setX(470); bloque.setY(random.nextInt(390-1));
             }
             else{
+                premio.choque(pelota.getVelocidad(), raqueta2.getVida());
+                actualizar(2);
                 bloque.setX(270); bloque.setY(random.nextInt(390-1));
             }
         }
@@ -192,6 +197,22 @@ public class Poong implements Serializable{
             objetivoDos.setY(yOb2);
         }
 
+    }
+
+    /**
+     * Este metodo actualiza los valores dependiendo del premio 
+     */
+    private void actualizar(int player){
+        if(player==1){
+            velocidad=premio.getVelocidad();
+            raqueta1.setVida(premio.getVida());
+            raqueta2.setMove(premio.getRestriccionEnemigo());
+        }
+        else{
+            velocidad=premio.getVelocidad();
+            raqueta2.setVida(premio.getVida());
+            raqueta1.setMove(premio.getRestriccionEnemigo());
+        }
     }
 
     /**

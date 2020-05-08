@@ -63,6 +63,20 @@ public class Pelota implements Serializable{
     }
 
     /**
+     * Este metodo retorna la velocidad en la se mueve la pelota
+     */
+    public int getVelocidad(){
+        return moveX;
+    }
+
+    /**
+     * Este metodo cambia la variable que se le suma al cambio de la posicion x y y 
+     */
+    public void cambiarEjes(){
+        moveX++; moveY++;
+    }
+
+    /**
      * Este metodo devuelve el puntaje del primer jugador
      */
     public String getScore1(){
