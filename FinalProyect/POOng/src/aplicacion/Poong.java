@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Random;
 import java.awt.*;
 /**
@@ -34,6 +35,8 @@ public class Poong implements Serializable{
     private Bloque bloque;
     private int vidaUno=100, vidaDos=100;
     private final int limiteY=Toolkit.getDefaultToolkit().getScreenSize().height/2+2;
+    private int velocidad=5;
+    private ArrayList<Premio> premios = new ArrayList<Premio>();
     /**
      * Esten es el constructor de la clase
      */
@@ -45,7 +48,10 @@ public class Poong implements Serializable{
         raqueta2 = new Raqueta((int)d.getWidth()/2+9,100);
         bloque = new Bloque(360,360);
         yEstre = random.nextInt(391-1); yOb1 = random.nextInt(391-1); yOb2 = random.nextInt(391-1);
-        premio = new Premio(360,yEstre);
+        preparePremios();
+        int index = (int) random.nextInt(7)+0;
+        System.out.println(index);
+        premio = premios.get(index);
         objetivoUno = new Objetivo(20, yOb1);
         objetivoDos = new Objetivo(700, yOb2);
         premio.setY(yEstre); objetivoUno.setY(yOb1); objetivoDos.setY(yOb2);
@@ -54,6 +60,30 @@ public class Poong implements Serializable{
         esperaPremio=(int) random.nextInt(5000)+10000;
     }
 
+    private void preparePremios(){
+        premios.add(new Fastball(360, 700));
+        premios.add(new Freezer(360, 720));
+        premios.add(new Flash(360, 740));
+        premios.add(new Turtle(360, 760));
+        premios.add(new ColdRacket(360, 780));
+        premios.add(new Phantom(360, 800));
+        premios.add(new Energy(360, 820));
+    }
+
+    /**
+     * Este metodo le hace set al parametro velocidad
+     */
+    public void setVelocidad(int velocidad){
+        this.velocidad=velocidad;
+    }
+
+    /**
+     * Este metodo devuelve la velocidad del juego
+     * @return
+     */
+    public int getVelocidad(){
+        return velocidad;
+    }
     /**
      * Este metodo nos crea el premio
      */
@@ -71,6 +101,7 @@ public class Poong implements Serializable{
         pelota.mover(choque(raqueta1.getRaqueta()),choque(raqueta2.getRaqueta()));
 
         if(premio.getVisible() && choque(premio.getPremio())){
+            System.out.println("Choque");
             premio.setVisible(false);
             bloque.setVisible(true);
             int num = pelota.getPersonPush();
@@ -95,15 +126,18 @@ public class Poong implements Serializable{
 
         if(bloque.getVisible() && choque(bloque.getBloque(), raqueta1.getRaqueta())){
             bloque.setVisible(false);
-            vidaUno-=vidaUno/2;
+            int vida = raqueta1.getVida()/2;
+            raqueta1.sumVida(-vida);
         }
 
         if(bloque.getVisible() && choque(bloque.getBloque(), raqueta2.getRaqueta())){
             bloque.setVisible(false);
-            vidaDos=vidaDos/2;
+            int vida = raqueta2.getVida()/2;
+            raqueta2.sumVida(-vida);
         }
 
         if(contPremio==esperaPremio){
+            System.out.println("Entre");
             contPremio=0;
             esperaPremio = random.nextInt(5000)+10000;
             createPremio();

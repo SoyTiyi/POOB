@@ -2,6 +2,8 @@ package src.aplicacion;
 
 import java.awt.*;
 import java.io.Serializable;
+
+import javax.swing.ImageIcon;
 /**
  * Este metodo nos crea los premios para el juego
  */
@@ -69,5 +71,19 @@ public class Premio implements Serializable{
      */
     public void setY(int yPosition){
         this.yPosition = yPosition;
+    }
+
+    /**
+     * Este metodo nos devuelve la imagen
+     */
+    public ImageIcon getImage(){
+        return null;
+    }
+
+    /**
+     * Este metodo reacciona al tener un choque 
+     */
+    public void choque(){
+        
     }
 }

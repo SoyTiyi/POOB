@@ -94,7 +94,7 @@ public class ZonaDeJuego extends JFrame{
                 }
             }
         });
-        timer = new Timer(5,new ActionListener(){
+        timer = new Timer(poong.getVelocidad(),new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 tablero.actualizar();
                 tablero.repaint();

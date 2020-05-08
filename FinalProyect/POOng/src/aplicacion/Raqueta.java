@@ -12,6 +12,8 @@ public class Raqueta implements Serializable {
     private final int ANCHO=25;
     private final int ALTO=80;
     private final int limiteY=Toolkit.getDefaultToolkit().getScreenSize().height/2-58;
+    private int vida=100;
+    private int cont=0;
     /**
      * Este es el constructor de muestra clase raqueta
      */
@@ -32,11 +34,18 @@ public class Raqueta implements Serializable {
      * Este metodo maneja la logica del movimiento de la raqueta1
      */
     public void moveR1(){
+        if(cont==20){
+            vida--;
+            cont=0;
+        }
+
         if(EventoTeclado.w && y>0){
+            cont++;
             y--;
         }
 
         if(EventoTeclado.s && y<limiteY){
+            cont++;
             y++;
         }
         
@@ -54,12 +63,34 @@ public class Raqueta implements Serializable {
      * Este metodo maneja la logica del movimiento de la raqueta2
      */
     public void moveR2(){
+
+        if(cont==40){
+            vida--;
+            cont=0;
+        }
+
         if(EventoTeclado.up && y>0){
+            cont++;
             y--;
         }
 
         if(EventoTeclado.down && y<limiteY){
+            cont++;
             y++;
         }
+    }
+
+    /**
+     * Este metodo devuelve la vida de la primera raqueta
+     */
+    public int getVida(){
+        return vida;
+    }
+
+    /**
+     * Este metodo le resta o suma vida a la raqueta
+     */
+    public void sumVida(int vida){
+        this.vida+=vida;
     }
 }

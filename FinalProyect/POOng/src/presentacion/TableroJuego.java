@@ -66,7 +66,7 @@ public class TableroJuego extends JPanel{
             imgBloque = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/bloque.png");
             player1 = new JLabel(imagePlaUno); player1.setBounds(8, 100, 61 , 80); add(player1);
             player2 = new JLabel(imagePlaDos); player2.setBounds(lateral, 100, 61, 80); add(player2);
-            estrellita = new JLabel(imgEstrellita); estrellita.setBounds(poong.getPremio().getX(), poong.getPremio().getY(), 20, 20); add(estrellita);
+            estrellita = new JLabel(poong.getPremio().getImage()); estrellita.setBounds(poong.getPremio().getX(), poong.getPremio().getY(), 20, 20); add(estrellita);
             objetivoUno = new JLabel(imgIcon); objetivoUno.setBounds(poong.getObjUno().getX(), poong.getObjUno().getY(), 20, 20); add(objetivoUno);
             objetivoDos = new JLabel(imgIcon); objetivoDos.setBounds(poong.getObjDos().getX(), poong.getObjDos().getY(), 20, 20); add(objetivoDos);
             pelota = new JLabel(imgPelota); pelota.setBounds(poong.getPelota().getX(),poong.getPelota().getY(),20,20); add(pelota);
@@ -165,8 +165,8 @@ public class TableroJuego extends JPanel{
         g.drawString(poong.getPelota().getScore1(), 250, 30);
         g.drawString(poong.getPelota().getScore2(), 480, 30);
         pelota.setLocation(poong.getPelota().getX(), poong.getPelota().getY());
-        g.drawString(poong.getVidaUno(),150,30);
-        g.drawString(poong.getVidaDos(),580,30);
+        g.drawString(poong.getRaquetaUno().getVida()+"",150,30);
+        g.drawString(poong.getRaquetaDos().getVida()+"",580,30);
         //g.fill((Shape) poong.getPelota().getPelota());
         controlEstrellita();
         controlObjetivoUno(); controlObjetivoDos();
@@ -215,13 +215,13 @@ public class TableroJuego extends JPanel{
      */
     private void controlEstrellita(){
         if(poong.getPremio().getVisible()){
-            estrellita.enable();
+            estrellita.setVisible(true);
+            estrellita.setIcon(poong.getPremio().getImage());
             estrellita.setBounds(poong.getPremio().getX(), poong.getPremio().getY(), 20, 20);
         }
         else{
-            estrellita.disable();
-            estrellita.setBounds(poong.getPremio().getX(), poong.getPremio().getY(), 20, 20);
-        }
+            estrellita.setVisible(false);
+        }   
     }
 
     /**
