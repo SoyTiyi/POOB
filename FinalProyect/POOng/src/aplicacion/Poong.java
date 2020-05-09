@@ -50,13 +50,11 @@ public class Poong implements Serializable{
         yEstre = random.nextInt(391-1); yOb1 = random.nextInt(391-1); yOb2 = random.nextInt(391-1);
         preparePremios();
         int index = (int) random.nextInt(7)+0;
-        System.out.println(index);
-        premio = premios.get(1);
+        premio = premios.get(index);
         objetivoUno = new Objetivo(20, yOb1);
         objetivoDos = new Objetivo(700, yOb2);
         premio.setY(yEstre); objetivoUno.setY(yOb1); objetivoDos.setY(yOb2);
         esperaObjUno = (int) random.nextInt(5000)+15000; esperaObjDos = (int) random.nextInt(5000)+15000;
-        System.out.println(esperaObjUno+"   "+esperaObjDos);
         esperaPremio=(int) random.nextInt(5000)+10000;
     }
 
@@ -102,7 +100,6 @@ public class Poong implements Serializable{
         pelota.mover(choque(raqueta1.getRaqueta()),choque(raqueta2.getRaqueta()));
 
         if(premio.getVisible() && choque(premio.getPremio())){
-            System.out.println("Choque");
             premio.setVisible(false);
             bloque.setVisible(true);
             int num = pelota.getPersonPush();
@@ -142,7 +139,6 @@ public class Poong implements Serializable{
         }
 
         if(contPremio==esperaPremio){
-            System.out.println("Entre");
             contPremio=0;
             esperaPremio = random.nextInt(5000)+10000;
             createPremio();
@@ -152,7 +148,6 @@ public class Poong implements Serializable{
                 objetivoUno.setVisible(false);
             }
             else{
-                System.out.println("Golpee raqueta 1");
                 pelota.sumScore2();
                 objetivoUno.setVisible(false);;
             }
@@ -167,7 +162,6 @@ public class Poong implements Serializable{
                 objetivoDos.setVisible(false);
             }
             else{
-                System.out.println("Golpee raqueta 2");
                 pelota.sumScore1();
                 objetivoDos.setVisible(false);
             }
@@ -315,7 +309,6 @@ public class Poong implements Serializable{
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
             out.writeObject(this);
             out.close();
-            System.out.println(modo+" "+personajeUno+" "+personajeDos);
         }
         catch(Exception e){
             System.out.println(e.toString());
@@ -333,7 +326,6 @@ public class Poong implements Serializable{
             }
             ObjectInputStream inp = new ObjectInputStream(new FileInputStream(file));
             poong = (Poong) inp.readObject();
-            System.out.println(poong.modo);
         }
         catch(Exception e){
             System.out.println("ERROR");

@@ -9,7 +9,7 @@ public class Freezer extends Premio{
 
     private static final long serialVersionUID = 1L;
     private boolean cambiaRaDos;
-    private int velocidad;
+    private int velocidad=5;
     private int vida;
 
     public Freezer(int xPosition, int yPosition) {

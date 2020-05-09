@@ -9,7 +9,7 @@ public class Energy extends Premio{
 
     private static final long serialVersionUID = 1L;
     private boolean cambiaRaDos;
-    private int velocidad;
+    private int velocidad=5;
     private int vida;
 
     public Energy(int xPosition, int yPosition) {
