@@ -35,8 +35,9 @@ public class Poong implements Serializable{
     private Bloque bloque;
     private int vidaUno=100, vidaDos=100;
     private final int limiteY=Toolkit.getDefaultToolkit().getScreenSize().height/2+2;
-    private int velocidad=5;
+    private int velocidad=9;
     private ArrayList<Premio> premios = new ArrayList<Premio>();
+    private int puntoMax;
     /**
      * Esten es el constructor de la clase
      */
@@ -58,6 +59,9 @@ public class Poong implements Serializable{
         esperaPremio=(int) random.nextInt(5000)+10000;
     }
 
+    /**
+     * Este metodo prepara los premios 
+     */
     private void preparePremios(){
         premios.add(new Fastball(360, 700));
         premios.add(new Freezer(360, 720));
@@ -70,6 +74,7 @@ public class Poong implements Serializable{
 
     /**
      * Este metodo le hace set al parametro velocidad
+     * @param velocidad
      */
     public void setVelocidad(int velocidad){
         this.velocidad=velocidad;
@@ -95,7 +100,8 @@ public class Poong implements Serializable{
     /**
      * Este metodo es el encargado en el movimiento de los objetos y te los choques
      */
-    public void move(){
+    public void move(){  
+        System.out.println(velocidad);   
         contPremio++; contObjUno++; contObjDos++;
         pelota.mover(choque(raqueta1.getRaqueta()),choque(raqueta2.getRaqueta()));
 
@@ -194,7 +200,24 @@ public class Poong implements Serializable{
     }
 
     /**
+     * Este metodo retorna los puntos maximos
+     * @return puntoMax
+     */
+    public int getPuntos(){
+        return puntoMax;
+    }
+
+    /**
+     * Este metodo nos hace set a la variable puntosMax
+     * @param puntoMax
+     */
+    public void setPuntos(int puntoMax){
+        this.puntoMax=puntoMax;
+    }
+
+    /**
      * Este metodo actualiza los valores dependiendo del premio 
+     * @param player
      */
     private void actualizar(int player){
         if(player==1){

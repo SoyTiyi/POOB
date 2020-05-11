@@ -32,6 +32,8 @@ public class MenuPersonajes extends JFrame{
     private JRadioButton radio1, radio2, radio3, radio4, radio5, radio6, radio7, radio8, radio9, radio10, radio11, radio12;
     private ArrayList<JRadioButton> radioBotones= new ArrayList<JRadioButton>();
     public static ArrayList<Integer> listaPersonajes = new ArrayList<Integer>();
+    private JTextField puntoMax;
+    private JComboBox<String> velocidades;
     
     /**
      * Este es el contructor de la clase
@@ -85,9 +87,32 @@ public class MenuPersonajes extends JFrame{
         backGround = new JLabel(back);
         backGround.setBounds(0,0,d.width/2+50,d.height/2+50);
         backGround.setLayout(null);
+        prepareTextField();
+        prepareComboBox();
         add(backGround);
     }
 
+    /**
+     * 
+     */
+    private void prepareTextField(){
+        JLabel tituloPuntos = new JLabel("puntos");
+        tituloPuntos.setBounds(340, 30, 40, 30); tituloPuntos.setForeground(Color.pink);
+        puntoMax = new JTextField();
+        puntoMax.setBounds(340,60,40,20);
+        backGround.add(tituloPuntos); backGround.add(puntoMax);
+    }
+    /**
+     * Este metodo nos prepara el combo box de las velocidades
+     */
+    private void prepareComboBox(){
+        JLabel tituloVelocidades = new JLabel("Velocidad");
+        tituloVelocidades.setBounds(335, 90, 70, 20); tituloVelocidades.setForeground(Color.pink);
+        velocidades = new JComboBox<String>();
+        velocidades.setBounds(330, 120, 70, 20);
+        velocidades.addItem("Bajo"); velocidades.addItem("Medio"); velocidades.addItem("Alto");
+        backGround.add(tituloVelocidades); backGround.add(velocidades);
+    }
     /**
      * Este metodo nos prepara el menu de eleccion para dos jugadores
      */
@@ -334,7 +359,10 @@ public class MenuPersonajes extends JFrame{
                         cont+=1;
                     }
                 }
-                if(cont==2){
+                if(cont==2 && !puntoMax.getText().equals("") && !velocidades.getSelectedItem().equals("")){
+                    Poong poong = Poong.getPong();
+                    poong.setPuntos(Integer.parseInt(puntoMax.getText()));
+                    setVelocidad();
                     prepareNumPlayer1();
                     setVisible(false);
                     Controles controles = new Controles(tipo);
@@ -345,6 +373,22 @@ public class MenuPersonajes extends JFrame{
                 }
             }
         });
+    }
+
+    /**
+     * Este metodo nos evalua la velocidad y le hace set a la velocidad en poong dependiendo de las siglas del JComboBox
+     */
+    private void setVelocidad(){
+        Poong poong = Poong.getPong();
+        if(velocidades.getSelectedItem().equals("Bajo")){
+            poong.setVelocidad(15);
+        }
+        else if(velocidades.getSelectedItem().equals("Medio")){
+            poong.setVelocidad(9);
+        }
+        else {
+            poong.setVelocidad(3);
+        }
     }
 
     /**

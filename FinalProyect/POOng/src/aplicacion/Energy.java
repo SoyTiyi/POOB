@@ -40,9 +40,11 @@ public class Energy extends Premio{
      */
     private void actualizar(){
         if(vida<=50){
+            cambiaRaDos=true;
             vida+=vida/2;
         }
         else{
+            cambiaRaDos=true;
             vida=100;
         }
     }

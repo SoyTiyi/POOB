@@ -18,6 +18,7 @@ public class ZonaDeJuego extends JFrame{
     private Timer timer;
     private Poong poong;
     private JFileChooser fileChooser = new JFileChooser();
+    private boolean terminar;
     /**
      * Este es el constructor para la ventana de juego
      */
@@ -97,6 +98,7 @@ public class ZonaDeJuego extends JFrame{
         timer = new Timer(poong.getVelocidad(),new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 tablero.actualizar();
+                evalPuntos();
                 tablero.repaint();
             }
         });
@@ -116,12 +118,42 @@ public class ZonaDeJuego extends JFrame{
                         timer.stop();
                     }
                     else{
-                        timer.start();
+                        if(terminar==false){
+                            timer.start();
+                        }
                     }
                 }
             }
         });
         addKeyListener(new EventoTeclado());
+    }
+
+    /**
+     * Este metodo nos evalua si se llego al limite de puntos
+     */
+    private void evalPuntos(){
+        if(poong.getPuntos()<=Integer.parseInt(poong.getPelota().getScore1())){
+            timer.stop();
+            terminar=true;
+            JOptionPane.showMessageDialog(null, "Gano el jugador Uno");
+        }
+        else if(poong.getPuntos()<=Integer.parseInt(poong.getPelota().getScore1())){
+            timer.stop();
+            terminar=true;
+            JOptionPane.showMessageDialog(null, "Gano el jugador Dos");
+        }
+        else if(poong.getRaquetaUno().getVida()==0){
+            timer.stop();
+            terminar=true;
+            JOptionPane.showMessageDialog(null, "Gano el jugador Dos");
+        }
+        else if(poong.getRaquetaDos().getVida()==0){
+            timer.stop();
+            terminar=true;
+            JOptionPane.showMessageDialog(null, "Gano el jugador Uno");
+        }
+
+        
     }
 
     /**
