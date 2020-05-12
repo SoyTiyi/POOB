@@ -1,7 +1,7 @@
 package src.aplicacion;
 
 import javax.swing.ImageIcon;
-
+import src.presentacion.*;
 /**
  * Permite que la raqueta del jugador que le pegó al poder convertir a la bola
  * en congeladora. De esta forma cuando golpee al jugador rival, este se
@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 public class ColdRacket extends Premio{
 
     private static final long serialVersionUID = 1L;
+    private TenerImagen imagen = new TenerImagen();
 
     public ColdRacket(int xPosition, int yPosition) {
         super(xPosition, yPosition);
@@ -20,7 +21,7 @@ public class ColdRacket extends Premio{
      */
     @Override
     public ImageIcon getImage(){
-        ImageIcon image = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/cold.png");
+        ImageIcon image = new ImageIcon(imagen.getClass().getResource("images/cold.png"));
         return image;
     }
 }

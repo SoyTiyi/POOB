@@ -1,7 +1,7 @@
 package src.aplicacion;
 
 import javax.swing.ImageIcon;
-
+import src.presentacion.*;
 /**
  * Acela la pelota hasta que el jugador contrario la devuelva o la deje ir.
  * Luego de eso seguirá teniendo la velocidad que tenia antesde ser ralentizada
@@ -9,7 +9,7 @@ import javax.swing.ImageIcon;
 public class Flash extends Premio{
 
     private static final long serialVersionUID = 1L;
-
+    private TenerImagen imagen = new TenerImagen();
     public Flash(int xPosition, int yPosition) {
         super(xPosition, yPosition);
     }
@@ -19,7 +19,7 @@ public class Flash extends Premio{
      */
     @Override
     public ImageIcon getImage(){
-        ImageIcon image = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/flash.png");
+        ImageIcon image = new ImageIcon(imagen.getClass().getResource("images/flash.png"));
         return image;
     }
 }

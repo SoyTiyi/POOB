@@ -1,7 +1,7 @@
 package src.aplicacion;
 
 import javax.swing.ImageIcon;
-
+import src.presentacion.*;
 /**
  * Otroga al jugador el 50% de la fortaleza perdida.
  */
@@ -11,6 +11,7 @@ public class Energy extends Premio{
     private boolean cambiaRaDos;
     private int velocidad=5;
     private int vida;
+    private TenerImagen imagen = new TenerImagen();
 
     public Energy(int xPosition, int yPosition) {
         super(xPosition, yPosition);
@@ -21,7 +22,7 @@ public class Energy extends Premio{
      */
     @Override
     public ImageIcon getImage(){
-        ImageIcon image = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/energy.png");
+        ImageIcon image = new ImageIcon(imagen.getClass().getResource("images/energy.png"));
         return image;
     }
 

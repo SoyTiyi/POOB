@@ -100,8 +100,7 @@ public class Poong implements Serializable{
     /**
      * Este metodo es el encargado en el movimiento de los objetos y te los choques
      */
-    public void move(){  
-        System.out.println(velocidad);   
+    public void move(){    
         contPremio++; contObjUno++; contObjDos++;
         pelota.mover(choque(raqueta1.getRaqueta()),choque(raqueta2.getRaqueta()));
 

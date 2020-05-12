@@ -54,7 +54,7 @@ public class MenuPOOng extends JFrame{
         setBounds(0,0,d.width/2+50,d.height/2+50);
         setLocationRelativeTo(null);
         setResizable(false);
-        ImageIcon back = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/background.jpg");
+        ImageIcon back = new ImageIcon(getClass().getResource("images/background.jpg"));
         backGround = new JLabel(back);
         backGround.setBounds(0,0,d.width/2+50,d.height/2+50);
         backGround.setLayout(null);
@@ -66,26 +66,26 @@ public class MenuPOOng extends JFrame{
      * Este metodo nos prepara los objetos con los que interactua el usuario
      */
     private void prepareBotones(){
-        ImageIcon imagen = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/poong.png");
+        ImageIcon imagen = new ImageIcon(getClass().getResource("images/poong.png"));
         logoPong = new JLabel(imagen);
         logoPong.setBounds(90,5,550,170);
         backGround.add(logoPong);
         botonJugar = new JButton();
         botonJugar.setBounds(300, 180, 130, 50);
         botonJugar.setOpaque(false); botonJugar.setContentAreaFilled(false); botonJugar.setBorderPainted(false);;
-        ImageIcon imagenJugar = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/Jugar.png");
+        ImageIcon imagenJugar = new ImageIcon(getClass().getResource("images/Jugar.png"));
         imageJugar = new JLabel(imagenJugar);
         imageJugar.setBounds(300,180,130,50);
         botonAbrir= new JButton();
         botonAbrir.setBounds(300, 250, 130, 50);
         botonAbrir.setOpaque(false); botonAbrir.setContentAreaFilled(false); botonAbrir.setBorderPainted(false);
-        ImageIcon imagenAbrir = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/Abrir.png");
+        ImageIcon imagenAbrir = new ImageIcon(getClass().getResource("images/Abrir.png"));
         imageAbrir = new JLabel(imagenAbrir);
         imageAbrir.setBounds(300, 250, 130, 50);
         botonSalir = new JButton();
         botonSalir.setBounds(300, 320, 130, 50);
         botonSalir.setOpaque(false); botonSalir.setContentAreaFilled(false); botonSalir.setBorderPainted(false);
-        ImageIcon imagenSalir = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/Cerrar.png");
+        ImageIcon imagenSalir = new ImageIcon(getClass().getResource("images/Cerrar.png"));
         imageCerrar = new JLabel(imagenSalir);
         imageCerrar.setBounds(300, 320, 130, 50);
         backGround.add(botonJugar); backGround.add(imageJugar); backGround.add(botonAbrir); backGround.add(imageAbrir); backGround.add(botonSalir); backGround.add(imageCerrar);

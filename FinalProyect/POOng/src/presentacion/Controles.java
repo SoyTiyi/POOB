@@ -46,7 +46,7 @@ public class Controles extends JFrame{
         okButton.setOpaque(false); okButton.setContentAreaFilled(false); okButton.setBorderPainted(false);
         okButton.setBounds(570, 330, 140,60);
         backGround.add(okButton);
-        ImageIcon imagenOk = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/Ok.png");
+        ImageIcon imagenOk = new ImageIcon(getClass().getResource("images/Ok.png"));
         imageOk = new JLabel(imagenOk);
         imageOk.setBounds(570, 330, 135, 60);
         backGround.add(imageOk);
@@ -63,11 +63,11 @@ public class Controles extends JFrame{
         setBounds(0,0,d.width/2+50,d.height/2+50);
         setLocationRelativeTo(null);
         setResizable(false);
-        ImageIcon back = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/background.jpg");
+        ImageIcon back = new ImageIcon(getClass().getResource("images/background.jpg"));
         backGround = new JLabel(back);
         backGround.setBounds(0,0,d.width/2+50,d.height/2+50);
         backGround.setLayout(null);
-        ImageIcon imagen = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/Controles.png");
+        ImageIcon imagen = new ImageIcon(getClass().getResource("images/Controles.png"));
         logoControles = new JLabel(imagen);
         logoControles.setBounds(90,5,550,150);
         backGround.add(logoControles);
@@ -78,19 +78,19 @@ public class Controles extends JFrame{
      * Este metodo nos prepara las imagenes para cuando juega un solo jugador 
      */
     private void prepareElementosUno(){
-        ImageIcon imagePlaUno = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/Player1G.png");
+        ImageIcon imagePlaUno = new ImageIcon(getClass().getResource("images/Player1G.png"));
         playerUno = new JLabel(imagePlaUno);
         playerUno.setBounds(110, 170, 220, 70);
         backGround.add(playerUno);
-        ImageIcon imageA = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/A.png");
-        ImageIcon imageD = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/D.png");
+        ImageIcon imageA = new ImageIcon(getClass().getResource("images/A.png"));
+        ImageIcon imageD = new ImageIcon(getClass().getResource("images/D.png"));
         JLabel teclaA = new JLabel(imageA); JLabel teclaD = new JLabel(imageD);
         teclaA.setBounds(130, 250, 60, 60); teclaD.setBounds(230, 250, 60, 60);
         backGround.add(teclaA); backGround.add(teclaD);
-        ImageIcon imageP = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/Pausa.png");
+        ImageIcon imageP = new ImageIcon(getClass().getResource("images/Pausa.png"));
         JLabel pausa = new JLabel(imageP);
         pausa.setBounds(450, 170, 160, 60);
-        ImageIcon imageTeclaP = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/P.png");
+        ImageIcon imageTeclaP = new ImageIcon(getClass().getResource("images/P.png"));
         JLabel teclaP = new JLabel(imageTeclaP);
         teclaP.setBounds(500, 250, 45, 60);
         backGround.add(pausa); backGround.add(teclaP);
@@ -103,7 +103,7 @@ public class Controles extends JFrame{
         atras = new JButton();
         atras.setOpaque(false); atras.setContentAreaFilled(false); atras.setBorderPainted(false);
         atras.setBounds(20, 20 , 50 , 50);
-        ImageIcon imagenAtras = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/Atras.png");
+        ImageIcon imagenAtras = new ImageIcon(getClass().getResource("images/Atras.png"));
         imageAtras = new JLabel(imagenAtras);
         imageAtras.setBounds(20, 20, 50, 50);
         backGround.add(atras); backGround.add(imageAtras);
@@ -113,28 +113,28 @@ public class Controles extends JFrame{
      * Este metodo nos prepara las imagenes cuando van a jugar dos jugadores
      */
     private void prepareElementosDos(){
-        ImageIcon imagePlaUno = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/Player1.png");
+        ImageIcon imagePlaUno = new ImageIcon(getClass().getResource("images/Player1.png"));
         playerUno = new JLabel(imagePlaUno);
         playerUno.setBounds(40, 170, 220, 70);
         backGround.add(playerUno);
-        ImageIcon imageA = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/A.png");
-        ImageIcon imageD = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/D.png");
+        ImageIcon imageA = new ImageIcon(getClass().getResource("images/A.png"));
+        ImageIcon imageD = new ImageIcon(getClass().getResource("images/D.png"));
         JLabel teclaA = new JLabel(imageA); JLabel teclaD = new JLabel(imageD);
         teclaA.setBounds(70, 260, 60, 60); teclaD.setBounds(170, 260, 60, 60);
         backGround.add(teclaA); backGround.add(teclaD);
-        ImageIcon imagePlaDos = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/Player2.png");
+        ImageIcon imagePlaDos = new ImageIcon(getClass().getResource("images/Player2.png"));
         playerDos = new JLabel(imagePlaDos);
         playerDos.setBounds(240, 170, 220, 70);
         backGround.add(playerDos);
-        ImageIcon imageDer = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/Izquierda.png");
-        ImageIcon imageIzq = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/Derecha.png");
+        ImageIcon imageDer = new ImageIcon(getClass().getResource("images/Izquierda.png"));
+        ImageIcon imageIzq = new ImageIcon(getClass().getResource("images/Derecha.png"));
         JLabel teclaDer = new JLabel(imageDer); JLabel teclaIzq = new JLabel(imageIzq);
         teclaDer.setBounds(270, 260, 60, 60); teclaIzq.setBounds(370, 260, 60, 60);
         backGround.add(teclaDer); backGround.add(teclaIzq);
-        ImageIcon imageP = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/Pausa.png");
+        ImageIcon imageP = new ImageIcon(getClass().getResource("images/Pausa.png"));
         JLabel pausa = new JLabel(imageP);
         pausa.setBounds(450, 170, 160, 60);
-        ImageIcon imageTeclaP = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/P.png");
+        ImageIcon imageTeclaP = new ImageIcon(getClass().getResource("images/P.png"));
         JLabel teclaP = new JLabel(imageTeclaP);
         teclaP.setBounds(500, 260, 45, 60);
         backGround.add(pausa); backGround.add(teclaP);

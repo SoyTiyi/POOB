@@ -1,7 +1,7 @@
 package src.aplicacion;
 
 import javax.swing.ImageIcon;
-
+import src.presentacion.*;
 /**
  * Congela al jugador rival por un tiempo de 2s
  */
@@ -11,6 +11,7 @@ public class Freezer extends Premio{
     private boolean cambiaRaDos;
     private int velocidad=5;
     private int vida;
+    private TenerImagen imagen = new TenerImagen();
 
     public Freezer(int xPosition, int yPosition) {
         super(xPosition, yPosition);
@@ -21,7 +22,7 @@ public class Freezer extends Premio{
      */
     @Override
     public ImageIcon getImage(){
-        ImageIcon image = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/freezer.png");
+        ImageIcon image = new ImageIcon(imagen.getClass().getResource("images/freezer.png"));
         return image;
     }
 

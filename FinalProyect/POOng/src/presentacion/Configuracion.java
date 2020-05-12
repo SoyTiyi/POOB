@@ -22,6 +22,7 @@ public class Configuracion extends JFrame{
         prepareAcciones();
     }
 
+
     /**
      * Este metodo nos prepara el boton ok para la configuracion
      */
@@ -30,7 +31,7 @@ public class Configuracion extends JFrame{
         okButton.setOpaque(false); okButton.setContentAreaFilled(false); okButton.setBorderPainted(false);
         okButton.setBounds(570, 330, 140,60);
         backGround.add(okButton);
-        ImageIcon imagenOk = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/Ok.png");
+        ImageIcon imagenOk = new ImageIcon(getClass().getResource("images/Ok.png"));
         imageOk = new JLabel(imagenOk);
         imageOk.setBounds(570, 330, 135, 60);
         backGround.add(imageOk);
@@ -48,11 +49,11 @@ public class Configuracion extends JFrame{
         setBounds(0,0,d.width/2+50,d.height/2+50);
         setLocationRelativeTo(null);
         setResizable(false);
-        ImageIcon back = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/background.jpg");
+        ImageIcon back = new ImageIcon(getClass().getResource("images/background.jpg"));
         backGround = new JLabel(back);
         backGround.setBounds(0,0,d.width/2+50,d.height/2+50);
         backGround.setLayout(null);
-        ImageIcon imageLogo = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/Opciones.png");
+        ImageIcon imageLogo = new ImageIcon(getClass().getResource("images/Opciones.png"));
         logoOpciones = new JLabel(imageLogo);
         logoOpciones.setBounds(150,-10,410,170);
         backGround.add(logoOpciones);

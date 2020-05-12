@@ -83,7 +83,7 @@ public class MenuPersonajes extends JFrame{
         setBounds(0,0,d.width/2+50,d.height/2+50);
         setLocationRelativeTo(null);
         setResizable(false);
-        ImageIcon back = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/background.jpg");
+        ImageIcon back = new ImageIcon(getClass().getResource("images/background.jpg"));
         backGround = new JLabel(back);
         backGround.setBounds(0,0,d.width/2+50,d.height/2+50);
         backGround.setLayout(null);
@@ -117,11 +117,11 @@ public class MenuPersonajes extends JFrame{
      * Este metodo nos prepara el menu de eleccion para dos jugadores
      */
     private void dosPlayers(){
-        ImageIcon imgPla1 = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/Player1.png");
+        ImageIcon imgPla1 = new ImageIcon(getClass().getResource("images/Player1.png"));
         player1 = new JLabel(imgPla1);
         player1.setBounds(70,20,160,40);
         backGround.add(player1);
-        ImageIcon imgPla2 = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/Player2.png");
+        ImageIcon imgPla2 = new ImageIcon(getClass().getResource("images/Player2.png"));
         player2 = new JLabel(imgPla2);
         player2.setBounds(500, 20, 160, 40);
         preparePersonajesDos();
@@ -133,27 +133,27 @@ public class MenuPersonajes extends JFrame{
      * Este metodo nos añade las imagenes de los personajes
      */
     private void preparePersonajesDos(){
-        ImageIcon imageBat = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/goku.png");
+        ImageIcon imageBat = new ImageIcon(getClass().getResource("images/goku.png"));
         goku1 = new JLabel(imageBat); goku2 = new JLabel(imageBat);
         goku1.setBounds(50, 70, 61, 80); goku2.setBounds(480,70,61,80); radio1.setBounds(120, 100, 16, 16); radio7.setBounds(550, 100, 16, 16);
         backGround.add(goku1); backGround.add(goku2); backGround.add(radio1); backGround.add(radio7);
-        ImageIcon imageDead = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/deadpool.png");
+        ImageIcon imageDead = new ImageIcon(getClass().getResource("images/deadpool.png"));
         deadpool1 = new JLabel(imageDead); deadpool2 = new JLabel(imageDead);
         deadpool1.setBounds(50,160,61,80); deadpool2.setBounds(480, 160, 61, 80); radio2.setBounds(120, 190, 16, 16); radio8.setBounds(550, 190, 16, 16);
         backGround.add(deadpool1); backGround.add(deadpool2); backGround.add(radio2); backGround.add(radio8);
-        ImageIcon imageJok = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/joker.png");
+        ImageIcon imageJok = new ImageIcon(getClass().getResource("images/joker.png"));
         joker1 = new JLabel(imageJok); joker2 = new JLabel(imageJok);
         joker1.setBounds(50, 250, 61, 80); joker2.setBounds(480, 250, 61, 80); radio3.setBounds(120,280,16,16); radio9.setBounds(550,280,16,16);
         backGround.add(joker1); backGround.add(joker2); backGround.add(radio3); backGround.add(radio9);
-        ImageIcon imageJe = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/jesus.png");
+        ImageIcon imageJe = new ImageIcon(getClass().getResource("images/jesus.png"));
         jesus2 = new JLabel(imageJe); jesus1 = new JLabel(imageJe);
         jesus2.setBounds(600,70,61,80); jesus1.setBounds(150, 70, 61, 80); radio4.setBounds(220,100,16,16); radio10.setBounds(670,100,16,16);
         backGround.add(jesus2); backGround.add(jesus1); backGround.add(radio4); backGround.add(radio10);
-        ImageIcon imageSp = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/spiderman.png");
+        ImageIcon imageSp = new ImageIcon(getClass().getResource("images/spiderman.png"));
         spiderman2 = new JLabel(imageSp); spiderman1 = new JLabel(imageSp);
         spiderman2.setBounds(600, 160, 61, 80); spiderman1.setBounds(150,160,61,80); radio5.setBounds(220,190,16,16); radio11.setBounds(670,190,16,16);
         backGround.add(spiderman2); backGround.add(spiderman1); backGround.add(radio5); backGround.add(radio11);
-        ImageIcon imageNa = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/naruto.png");
+        ImageIcon imageNa = new ImageIcon(getClass().getResource("images/naruto.png"));
         naruto2 = new JLabel(imageNa); naruto1 = new JLabel(imageNa);
         naruto2.setBounds(600, 250, 61, 80); naruto1.setBounds(150, 250, 61, 80); radio6.setBounds(220,280,16,16); radio12.setBounds(670,280,16,16);
         backGround.add(naruto2); backGround.add(naruto1); backGround.add(radio6); backGround.add(radio12);
@@ -168,7 +168,7 @@ public class MenuPersonajes extends JFrame{
         okButton.setOpaque(false); okButton.setContentAreaFilled(false); okButton.setBorderPainted(false);
         okButton.setBounds(300, 330, 140,60);
         backGround.add(okButton);
-        ImageIcon imagenOk = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/Ok.png");
+        ImageIcon imagenOk = new ImageIcon(getClass().getResource("images/Ok.png"));
         imageOk = new JLabel(imagenOk);
         imageOk.setBounds(300, 330, 135, 60);
         backGround.add(imageOk);

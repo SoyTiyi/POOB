@@ -58,12 +58,12 @@ public class TableroJuego extends JPanel{
      */
     private void prepareImagenes(){
         if(modo.equals("dos")){
-            ImageIcon imagePlaUno = new ImageIcon(ruta1);
-            ImageIcon imagePlaDos = new ImageIcon(ruta2);
-            imgEstrellita = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/premio.png");
-            imgIcon = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/objetivo.png");
-            imgPelota = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/pelota.png");
-            imgBloque = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/bloque.png");
+            ImageIcon imagePlaUno = new ImageIcon(getClass().getResource(ruta1));
+            ImageIcon imagePlaDos = new ImageIcon(getClass().getResource(ruta2));
+            imgEstrellita = new ImageIcon(getClass().getResource("images/premio.png"));
+            imgIcon = new ImageIcon(getClass().getResource("images/objetivo.png"));
+            imgPelota = new ImageIcon(getClass().getResource("images/pelota.png"));
+            imgBloque = new ImageIcon(getClass().getResource("images/bloque.png"));
             player1 = new JLabel(imagePlaUno); player1.setBounds(8, 100, 61 , 80); add(player1);
             player2 = new JLabel(imagePlaDos); player2.setBounds(lateral, 100, 61, 80); add(player2);
             estrellita = new JLabel(poong.getPremio().getImage()); estrellita.setBounds(poong.getPremio().getX(), poong.getPremio().getY(), 20, 20); add(estrellita);
@@ -79,43 +79,43 @@ public class TableroJuego extends JPanel{
      */
     private void prepareRuta1(){
         if(listaPersonajes.get(0)==1){
-            ruta1="C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/goku.png";
+            ruta1="images/goku.png";
         }
         else if(listaPersonajes.get(0)==2){
-            ruta1="C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/deadpool.png";
+            ruta1="images/deadpool.png";
         }
         else if(listaPersonajes.get(0)==3){
-            ruta1="C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/joker.png";
+            ruta1="images/joker.png";
         }
         else if(listaPersonajes.get(0)==4){
-            ruta1="C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/jesus.png";
+            ruta1="images/jesus.png";
         }
         else if(listaPersonajes.get(0)==5){
-            ruta1="C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/spiderman.png";
+            ruta1="images/spiderman.png";
         }
         else if(listaPersonajes.get(0)==6){
-            ruta1="C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/naruto.png";
+            ruta1="images/naruto.png";
         }
     }
 
     private void prepareRuta2(){
         if(listaPersonajes.get(1)==1){
-            ruta2="C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/goku.png";
+            ruta2="images/goku.png";
         }
         else if(listaPersonajes.get(1)==2){
-            ruta2="C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/deadpool.png";
+            ruta2="images/deadpool.png";
         }
         else if(listaPersonajes.get(1)==3){
-            ruta2="C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/joker.png";
+            ruta2="images/joker.png";
         }
         else if(listaPersonajes.get(1)==4){
-            ruta2="C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/jesus.png";
+            ruta2="images/jesus.png";
         }
         else if(listaPersonajes.get(1)==5){
-            ruta2="C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/spiderman.png";
+            ruta2="images/spiderman.png";
         }
         else if(listaPersonajes.get(1)==6){
-            ruta2="C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/naruto.png";
+            ruta2="images/naruto.png";
         }
     }
 
@@ -139,7 +139,7 @@ public class TableroJuego extends JPanel{
         Dimension d = t.getScreenSize();
         setSize(d.width/2+45,d.height/2+40);
         setLayout(null);
-        ImageIcon imgPizza = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/fortalez.png");
+        ImageIcon imgPizza = new ImageIcon(getClass().getResource("images/fortalez.png"));
         JLabel vidaUno = new JLabel(imgPizza); vidaUno.setBounds(115,13,20,20); add(vidaUno);
         JLabel vidaDos = new JLabel(imgPizza); vidaDos.setBounds(630, 13, 20, 20); add(vidaDos);
     }

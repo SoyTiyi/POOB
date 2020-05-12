@@ -1,7 +1,7 @@
 package src.aplicacion;
 
 import javax.swing.ImageIcon;
-
+import src.presentacion.*;
 /**
  * Permite a la raqueta del jugador que le pegó al poder que en su siguiente
  * golpe a la pelota envie dos pelotas. Una pelota fantasma que será falsa y
@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 public class Phantom extends Premio{
 
     private static final long serialVersionUID = 1L;
+    private TenerImagen imagen = new TenerImagen();
 
     public Phantom(int xPosition, int yPosition) {
         super(xPosition, yPosition);
@@ -21,7 +22,7 @@ public class Phantom extends Premio{
      */
     @Override
     public ImageIcon getImage(){
-        ImageIcon image = new ImageIcon("C:/Users/santi/Desktop/POOB/FinalProyect/POOng/src/presentacion/images/phantom.png");
+        ImageIcon image = new ImageIcon(imagen.getClass().getResource("images/phantom.png"));
         return image;
     }
     
