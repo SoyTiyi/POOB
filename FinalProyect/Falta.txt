@@ -3,3 +3,4 @@ Falta:
 Velocidad vaya aumentando 
 Implementar sorpresas que faltan 
 Modo maquinas 
+Solucionar problema con las imagenes 
