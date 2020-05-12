@@ -15,7 +15,7 @@ public class ZonaDeJuego extends JFrame{
     private JLabel backGround;
     private String modo;
     private TableroJuego tablero;
-    private Timer timer;
+    private Timer timer, actualizarVelocidad;
     private Poong poong;
     private JFileChooser fileChooser = new JFileChooser();
     private boolean terminar;
@@ -103,6 +103,14 @@ public class ZonaDeJuego extends JFrame{
             }
         });
         timer.start();
+
+        actualizarVelocidad = new Timer(5, new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                timer.setDelay(poong.getVelocidad());
+            }
+        });
+        actualizarVelocidad.start();
+
         addKeyListener(new KeyAdapter(){
             @Override
             public void keyPressed(KeyEvent e){

@@ -110,7 +110,7 @@ public class MenuPersonajes extends JFrame{
         tituloVelocidades.setBounds(335, 90, 70, 20); tituloVelocidades.setForeground(Color.pink);
         velocidades = new JComboBox<String>();
         velocidades.setBounds(330, 120, 70, 20);
-        velocidades.addItem("Bajo"); velocidades.addItem("Medio"); velocidades.addItem("Alto");
+        velocidades.addItem("Bajo"); velocidades.addItem("Alto"); velocidades.addItem("Progresivo");
         backGround.add(tituloVelocidades); backGround.add(velocidades);
     }
     /**
@@ -383,11 +383,12 @@ public class MenuPersonajes extends JFrame{
         if(velocidades.getSelectedItem().equals("Bajo")){
             poong.setVelocidad(15);
         }
-        else if(velocidades.getSelectedItem().equals("Medio")){
+        else if(velocidades.getSelectedItem().equals("Alto")){
             poong.setVelocidad(9);
         }
         else {
-            poong.setVelocidad(3);
+            poong.setVelocidad(20);
+            poong.setVelProgresiva(true);
         }
     }
 

@@ -26,7 +26,7 @@ public class Poong implements Serializable{
     private int personajeDos;
     private String modo;
     private Premio premio;
-    private int contPremio=0, contObjUno, contObjDos;
+    private int contPremio=0, contObjUno, contObjDos, contPro;
     private int esperaPremio, esperaObjUno, esperaObjDos;
     private Objetivo objetivoUno;
     private Objetivo objetivoDos;
@@ -38,6 +38,7 @@ public class Poong implements Serializable{
     private int velocidad=9;
     private ArrayList<Premio> premios = new ArrayList<Premio>();
     private int puntoMax;
+    private boolean velProgresiva;
     /**
      * Esten es el constructor de la clase
      */
@@ -101,7 +102,7 @@ public class Poong implements Serializable{
      * Este metodo es el encargado en el movimiento de los objetos y te los choques
      */
     public void move(){    
-        contPremio++; contObjUno++; contObjDos++;
+        contPremio++; contObjUno++; contObjDos++; contPro++;
         pelota.mover(choque(raqueta1.getRaqueta()),choque(raqueta2.getRaqueta()));
 
         if(premio.getVisible() && choque(premio.getPremio())){
@@ -178,6 +179,19 @@ public class Poong implements Serializable{
         }
         raqueta1.moveR1();
         raqueta2.moveR2();
+        veloProgresiva();
+    }
+
+    /**
+     * Este metodo nos gestiona la velocidad progresiva 
+     */
+    private void veloProgresiva(){
+        if(contPro==1000 && velProgresiva){
+            if(velocidad>1){
+                contPro=0;
+                velocidad--;
+            }
+        }
     }
 
     /**
@@ -352,6 +366,13 @@ public class Poong implements Serializable{
         catch(Exception e){
             System.out.println("ERROR");
         }
+    }  
+
+    /**
+     * Este metodo nos hace set al booleano que nos indica si la velocidad es progresiva
+     */
+    public void setVelProgresiva(boolean bool){
+        velProgresiva=bool;
     }
 
     /**
