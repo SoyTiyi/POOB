@@ -61,7 +61,7 @@ public class Pelota implements Serializable{
         if(y > limiteY){moveY=-moveY;}
         if(y == 0){moveY=-moveY;}
     }
-
+    
     /**
      * Este metodo retorna la velocidad en la se mueve la pelota
      */

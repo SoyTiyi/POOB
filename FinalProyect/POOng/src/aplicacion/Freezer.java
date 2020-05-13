@@ -27,7 +27,7 @@ public class Freezer extends Premio{
     }
 
     /**
-     * Este metodo nos evalua las ventajas de golperar el premio
+     * Este metodo nos evalua las ventajas de golpear el premio
      */
     @Override
     public void choque(int velocidad, int vida){
@@ -44,7 +44,7 @@ public class Freezer extends Premio{
     }
 
     /**
-     * Este merodo retorna la velocidad 
+     * Este metodo retorna la velocidad 
      */
     @Override
     public int getVelocidad(){
@@ -52,7 +52,7 @@ public class Freezer extends Premio{
     }
 
     /**
-     * Este metodo retorna la nueva vida del jugador que la golpio
+     * Este metodo retorna la nueva vida del jugador que la golpeo
      */
     @Override
     public int getVida(){
@@ -60,7 +60,7 @@ public class Freezer extends Premio{
     }
 
     /**
-     * Este metodo devuelve un booleano que dice si el contricante puede moverse
+     * Este metodo devuelve un booleano que dice si el contricante puede inmovilizado
      */
     @Override
     public boolean getRestriccionEnemigo(){

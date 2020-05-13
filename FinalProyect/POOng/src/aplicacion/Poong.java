@@ -26,7 +26,7 @@ public class Poong implements Serializable{
     private int personajeDos;
     private String modo;
     private Premio premio;
-    private int contPremio=0, contObjUno, contObjDos, contPro;
+    private int contPremio=0, contObjUno, contObjDos, contPro, contTres;
     private int esperaPremio, esperaObjUno, esperaObjDos;
     private Objetivo objetivoUno;
     private Objetivo objetivoDos;
@@ -34,11 +34,13 @@ public class Poong implements Serializable{
     private Random random = new Random();
     private Bloque bloque;
     private int vidaUno=100, vidaDos=100;
-    private final int limiteY=Toolkit.getDefaultToolkit().getScreenSize().height/2+2;
     private int velocidad=9;
     private ArrayList<Premio> premios = new ArrayList<Premio>();
     private int puntoMax;
     private boolean velProgresiva;
+    private boolean velProgre;
+    private int veloAnterior;
+    private boolean act1, act2;
     /**
      * Esten es el constructor de la clase
      */
@@ -52,7 +54,7 @@ public class Poong implements Serializable{
         yEstre = random.nextInt(391-1); yOb1 = random.nextInt(391-1); yOb2 = random.nextInt(391-1);
         preparePremios();
         int index = (int) random.nextInt(7)+0;
-        premio = premios.get(index);
+        premio = premios.get(0);
         objetivoUno = new Objetivo(20, yOb1);
         objetivoDos = new Objetivo(700, yOb2);
         premio.setY(yEstre); objetivoUno.setY(yOb1); objetivoDos.setY(yOb2);
@@ -102,20 +104,29 @@ public class Poong implements Serializable{
      * Este metodo es el encargado en el movimiento de los objetos y te los choques
      */
     public void move(){    
-        contPremio++; contObjUno++; contObjDos++; contPro++;
+        contPremio++; contObjUno++; contObjDos++; contPro++; contTres++;
         pelota.mover(choque(raqueta1.getRaqueta()),choque(raqueta2.getRaqueta()));
-
+        if(pelota.getPersonPush()==1 && act2){
+            act2=false;
+            velProgre=false;
+            velocidad=veloAnterior;
+        }
+        if(pelota.getPersonPush()==2 && act1){
+            act1=false;
+            velProgre=false;
+            velocidad=veloAnterior;
+        }
         if(premio.getVisible() && choque(premio.getPremio())){
             premio.setVisible(false);
             bloque.setVisible(true);
             int num = pelota.getPersonPush();
             if(num==1){
-                premio.choque(pelota.getVelocidad(), raqueta1.getVida());
+                premio.choque(velocidad, raqueta1.getVida());
                 actualizar(1);
                 bloque.setX(470); bloque.setY(random.nextInt(390-1));
             }
             else{
-                premio.choque(pelota.getVelocidad(), raqueta2.getVida());
+                premio.choque(velocidad, raqueta2.getVida());
                 actualizar(2);
                 bloque.setX(270); bloque.setY(random.nextInt(390-1));
             }
@@ -192,6 +203,12 @@ public class Poong implements Serializable{
                 velocidad--;
             }
         }
+        if(contTres==300 && velProgre){
+            if(velocidad>1){
+                contTres=0;
+                velocidad--;
+            }
+        }
     }
 
     /**
@@ -237,11 +254,18 @@ public class Poong implements Serializable{
             velocidad=premio.getVelocidad();
             raqueta1.setVida(premio.getVida());
             raqueta2.setMove(premio.getRestriccionEnemigo());
+            velProgre = premio.getVelocidadProgresiva(); if(velProgre){ 
+                veloAnterior = velocidad; act1=true; contTres=0;
+            }
         }
         else{
             velocidad=premio.getVelocidad();
             raqueta2.setVida(premio.getVida());
             raqueta1.setMove(premio.getRestriccionEnemigo());
+            velProgre = premio.getVelocidadProgresiva(); if(velProgre){ 
+                veloAnterior = velocidad; act2=true; contTres=0;
+            }
+
         }
     }
 

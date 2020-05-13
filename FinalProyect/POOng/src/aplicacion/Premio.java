@@ -107,4 +107,12 @@ public class Premio implements Serializable{
     public boolean getRestriccionEnemigo(){
         return true;
     }
+
+    /**
+     * Este metodo se encarga de hacernos saber si la velocidad sera progesiva
+     * despues del choque con el premio
+     */
+    public boolean getVelocidadProgresiva(){
+        return false;
+    }
 }
