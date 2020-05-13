@@ -115,4 +115,11 @@ public class Premio implements Serializable{
     public boolean getVelocidadProgresiva(){
         return false;
     }
+
+    /**
+     * Este metodo nos dice si el enemigo tendra el movimiento lento
+     */
+    public boolean getRestriccionMovilidad(){
+        return false;
+    }
 }

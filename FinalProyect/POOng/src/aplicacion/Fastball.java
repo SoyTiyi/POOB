@@ -36,7 +36,7 @@ public class Fastball extends Premio{
         actualizar();
     }
     /**
-     * Este metodo nos actualiza los valores dependiendo delp premio
+     * Este metodo nos actualiza los valores dependiendo del premio
      */
     private void actualizar(){
         velocidad-=velocidad*0.2;    
@@ -59,7 +59,7 @@ public class Fastball extends Premio{
     }
 
     /**
-     * Este metodo devuelve un vooleano que dice si el contricante esta inmovilizado
+     * Este metodo devuelve un booleano que dice si el contricante esta inmovilizado
      */
     @Override
     public boolean getRestriccionEnemigo(){

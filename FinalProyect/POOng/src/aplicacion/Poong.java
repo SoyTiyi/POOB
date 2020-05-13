@@ -54,7 +54,7 @@ public class Poong implements Serializable{
         yEstre = random.nextInt(391-1); yOb1 = random.nextInt(391-1); yOb2 = random.nextInt(391-1);
         preparePremios();
         int index = (int) random.nextInt(7)+0;
-        premio = premios.get(0);
+        premio = premios.get(3);
         objetivoUno = new Objetivo(20, yOb1);
         objetivoDos = new Objetivo(700, yOb2);
         premio.setY(yEstre); objetivoUno.setY(yOb1); objetivoDos.setY(yOb2);
@@ -257,6 +257,8 @@ public class Poong implements Serializable{
             velProgre = premio.getVelocidadProgresiva(); if(velProgre){ 
                 veloAnterior = velocidad; act1=true; contTres=0;
             }
+            System.out.println("Restriccion movilidad 2: "+ premio.getRestriccionMovilidad());
+            raqueta2.setMovilidad(premio.getRestriccionMovilidad());
         }
         else{
             velocidad=premio.getVelocidad();
@@ -265,6 +267,8 @@ public class Poong implements Serializable{
             velProgre = premio.getVelocidadProgresiva(); if(velProgre){ 
                 veloAnterior = velocidad; act2=true; contTres=0;
             }
+            System.out.println("Restriccion movilidad 1: "+ premio.getRestriccionMovilidad());
+            raqueta1.setMovilidad(premio.getRestriccionMovilidad());
 
         }
     }

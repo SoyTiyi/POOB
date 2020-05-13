@@ -16,6 +16,8 @@ public class Raqueta implements Serializable {
     private int vida=100;
     private int cont=0;
     private int espera=0;
+    private boolean restMovilidad;
+    private int contMovilidad=1;
     /**
      * Este es el constructor de muestra clase raqueta
      */
@@ -42,15 +44,22 @@ public class Raqueta implements Serializable {
                 vida--;
                 cont=0;
             }
-    
-            if(EventoTeclado.w && y>0){
-                cont++;
-                y--;
+            if(restMovilidad){
+                System.out.println(contMovilidad);
+                if(contMovilidad%3==0){
+                    if(contMovilidad==3000){System.out.println("Sali"); restMovilidad=false; contMovilidad=0;}
+                    else{
+                        System.out.println("Entre");
+                        contMovilidad++;
+                        if(EventoTeclado.w && y>0){cont++; y--;}
+                        if(EventoTeclado.s && y<limiteY){cont++; y++;}
+                    }
+                }
+                else{System.out.println("Contando"); contMovilidad++;}
             }
-    
-            if(EventoTeclado.s && y<limiteY){
-                cont++;
-                y++;
+            else{
+                if(EventoTeclado.w && y>0){cont++; y--;}
+                if(EventoTeclado.s && y<limiteY){cont++; y++;}
             }
         }
         else{
@@ -61,6 +70,20 @@ public class Raqueta implements Serializable {
                 espera++;
             }
         }
+    }
+
+    /**
+     * Este metodo nos hace set en el parametro restMovilidad
+     */
+    public void setMovilidad(boolean restMovilidad){
+        this.restMovilidad=restMovilidad;
+    }
+
+    /**
+     * Este metodo nos da el valor del parametro restMovilidad
+     */
+    public boolean getMovilidad(){
+        return restMovilidad;
     }
 
     /**
@@ -89,15 +112,22 @@ public class Raqueta implements Serializable {
                 vida--;
                 cont=0;
             }
-    
-            if(EventoTeclado.up && y>0){
-                cont++;
-                y--;
+            if(restMovilidad){
+                System.out.println(contMovilidad);
+                if(contMovilidad%3==0){
+                    if(contMovilidad==3000){System.out.println("Sali"); contMovilidad=0;restMovilidad=false;}
+                    else{
+                        System.out.println("Entre");
+                        contMovilidad++;
+                        if(EventoTeclado.up && y>0){cont++;y--;}
+                        if(EventoTeclado.down && y<limiteY){cont++;y++;}
+                    }
+                }
+                else{System.out.println("Contando"); contMovilidad++;}
             }
-    
-            if(EventoTeclado.down && y<limiteY){
-                cont++;
-                y++;
+            else{
+                if(EventoTeclado.up && y>0){cont++;y--;}
+                if(EventoTeclado.down && y<limiteY){cont++;y++;}
             }
         }
         else{
