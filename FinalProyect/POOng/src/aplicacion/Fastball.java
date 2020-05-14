@@ -13,12 +13,18 @@ public class Fastball extends Premio{
     private boolean cambioRaDos=true;
     private TenerImagen imagen = new TenerImagen();
 
+    /**
+     * Este es el constructor de la clase FastBall
+     * @param xPosition
+     * @param yPosition
+     */
     public Fastball(int xPosition, int yPosition) {
         super(xPosition, yPosition);
     }
     
     /**
      * Este metodo nos retorna la imagen del premio
+     * @eturn ImageIcon es la imagen del objeto
      */
     @Override
     public ImageIcon getImage(){
@@ -28,6 +34,8 @@ public class Fastball extends Premio{
 
     /**
      * Este metodo nos evalua las ventajas de golpear el premio
+     * @param velocidad
+     * @param vida
      */
     @Override
     public void choque(int velocidad, int vida){
@@ -45,6 +53,7 @@ public class Fastball extends Premio{
 
     /**
      * Este metodo nos retorna la velocidad
+     * @return velocidad
      */
     @Override
     public int getVelocidad(){
@@ -53,6 +62,7 @@ public class Fastball extends Premio{
 
     /**
      * Este metodo nos retorna la nueva vida del jugador que la golpio
+     * @return vida
      */
     @Override
     public int getVida(){
@@ -61,6 +71,7 @@ public class Fastball extends Premio{
 
     /**
      * Este metodo devuelve un booleano que dice si el contricante esta inmovilizado
+     * @return cambiaRaDos
      */
     @Override
     public boolean getRestriccionEnemigo(){

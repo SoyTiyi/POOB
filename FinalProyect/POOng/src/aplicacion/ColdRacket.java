@@ -14,6 +14,11 @@ public class ColdRacket extends Premio {
     private static final long serialVersionUID = 1L;
     private TenerImagen imagen = new TenerImagen();
 
+    /**
+     * Este es el constructor de la clase ColdRacket
+     * @param xPosition
+     * @param yPosition
+     */
     public ColdRacket(int xPosition, int yPosition) {
         super(xPosition, yPosition);
     }

@@ -14,12 +14,19 @@ public class Flash extends Premio{
     private int velocidad=5;
     private boolean veloPro;
     private boolean cambiaRaDos=true;
+
+    /**
+     * Este es el constructor del objeto Flash
+     * @param xPosition
+     * @param yPosition
+     */
     public Flash(int xPosition, int yPosition) {
         super(xPosition, yPosition);
     }
     
     /**
      * Este metodo nos retorna la imagen del premio
+     * @return ImageIcon es la imagen del objeto
      */
     @Override
     public ImageIcon getImage(){
@@ -29,6 +36,8 @@ public class Flash extends Premio{
 
     /**
      * Este netodo nos evalua las ventajas de golpear el premio
+     * @param  velocidad
+     * @param vida
      */
     @Override
     public void choque(int velocidad, int vida){
@@ -47,6 +56,7 @@ public class Flash extends Premio{
 
     /**
      * Este metodo retorna la velocidad
+     * @return velocidad
      */
     @Override
     public int getVelocidad(){
@@ -55,6 +65,7 @@ public class Flash extends Premio{
 
     /**
      * Este metodo retorna la nueva vida del jugador que la polpeo
+     * @return vida
      */
     @Override
     public int getVida(){
@@ -62,6 +73,7 @@ public class Flash extends Premio{
     }
     /**
      * Este metodo debuelve un booleano que dice si el contricante puede moverse
+     * @return cambiaRaDos
      */
     @Override
     public boolean getRestriccionEnemigo(){
@@ -71,6 +83,7 @@ public class Flash extends Premio{
     /**
      * Este metodo se encarga de hacernos saber si la velocidad sera progresiva
      * despues del choque con el premio
+     * @return velPro
      */
     @Override
     public boolean getVelocidadProgresiva(){

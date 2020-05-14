@@ -20,6 +20,8 @@ public class Raqueta implements Serializable {
     private int contMovilidad=1;
     /**
      * Este es el constructor de muestra clase raqueta
+     * @param x
+     * @param y
      */
     public Raqueta(int x, int y){
         canMove=true;
@@ -29,7 +31,7 @@ public class Raqueta implements Serializable {
 
     /**
      * Este metodo detorna un elemento de tipo raqueta
-     * @return
+     * @return Rectangle
      */
     public Rectangle getRaqueta(){
         return new Rectangle(x,y,ANCHO,ALTO);
@@ -73,6 +75,7 @@ public class Raqueta implements Serializable {
 
     /**
      * Este metodo nos hace set en el parametro restMovilidad
+     * @param restMovilidad
      */
     public void setMovilidad(boolean restMovilidad){
         this.restMovilidad=restMovilidad;
@@ -80,6 +83,7 @@ public class Raqueta implements Serializable {
 
     /**
      * Este metodo nos da el valor del parametro restMovilidad
+     * @return restMovilidad
      */
     public boolean getMovilidad(){
         return restMovilidad;
@@ -140,6 +144,7 @@ public class Raqueta implements Serializable {
 
     /**
      * Este metodo nos dice si es posible que la raqueta que se mueva
+     * @return canMove
      */
     public boolean getMove(){
         return canMove;
@@ -147,6 +152,7 @@ public class Raqueta implements Serializable {
 
     /**
      * Este metodo le hace set a la variable canMove
+     * @param canMove
      */
     public void setMove(boolean canMove){
         this.canMove=canMove;
@@ -154,6 +160,7 @@ public class Raqueta implements Serializable {
 
     /**
      * Este metodo devuelve la vida de la primera raqueta
+     * @return vida
      */
     public int getVida(){
         return vida;
@@ -161,6 +168,7 @@ public class Raqueta implements Serializable {
 
     /**
      * Este metodo le hace set a la vida
+     * @param vida
      */
     public void setVida(int vida){
         this.vida=vida;
@@ -168,6 +176,7 @@ public class Raqueta implements Serializable {
 
     /**
      * Este metodo le resta o suma vida a la raqueta
+     * @param vida
      */
     public void sumVida(int vida){
         this.vida+=vida;

@@ -16,6 +16,8 @@ public class Premio implements Serializable{
     private boolean isVisible;
     /**
      * Este es el constructor de la clase
+     * @param xPosition
+     * @param yPosition
      */
     public Premio(int xPosition, int yPosition){
         isVisible=true;
@@ -25,6 +27,7 @@ public class Premio implements Serializable{
 
     /**
      * Este metodo retorna el premio
+     * @return Rectangle
      */
     public Rectangle getPremio(){
         return new Rectangle(xPosition,yPosition,lado,lado);
@@ -32,6 +35,7 @@ public class Premio implements Serializable{
 
     /**
      * Este metodo nos retorna la posicion en X
+     * @param xPosition
      */
     public int getX(){
         return xPosition;
@@ -39,7 +43,7 @@ public class Premio implements Serializable{
 
     /**
      * Este metodo retorna si el premio es visible
-     * @return
+     * @return isVisible
      */
     public boolean getVisible(){
         return isVisible;
@@ -47,6 +51,7 @@ public class Premio implements Serializable{
 
     /**
      * Este metodo le hace set al parametro isVisible
+     * @param isVisible
      */
     public void setVisible(boolean isVisible){
         this.isVisible=isVisible;
@@ -54,6 +59,7 @@ public class Premio implements Serializable{
 
     /**
      * Este metodo nos retorna la posicion en Y 
+     * @return yPosition
      */
     public int getY(){
         return yPosition;
@@ -61,6 +67,7 @@ public class Premio implements Serializable{
 
     /**
      * Este metodo nos hace set a la posicion en X
+     * @param xPosition
      */
     public void setX(int xPosition){
         this.xPosition = xPosition;
@@ -68,6 +75,7 @@ public class Premio implements Serializable{
 
     /**
      * Este metodo nos hace set a la posicion en Y
+     * @param yPosition
      */
     public void setY(int yPosition){
         this.yPosition = yPosition;
@@ -75,6 +83,7 @@ public class Premio implements Serializable{
 
     /**
      * Este metodo nos devuelve la imagen
+     * @return ImageIcon es la imagen del objeto
      */
     public ImageIcon getImage(){
         return null;
@@ -82,6 +91,8 @@ public class Premio implements Serializable{
 
     /**
      * Este metodo reacciona al tener un choque 
+     * @param velocidad
+     * @param vida
      */
     public void choque(int velocidad, int vida){
         
@@ -89,6 +100,7 @@ public class Premio implements Serializable{
 
     /**
      * Este metodo devuelve la nueva velocidad
+     * @return velocidad
      */
     public int getVelocidad(){
         return 5;
@@ -96,6 +108,7 @@ public class Premio implements Serializable{
 
     /**
      * Este metodo devuelve la nueva vida de la raqueta
+     * @return vida
      */
     public int getVida(){
         return 50;
@@ -103,6 +116,7 @@ public class Premio implements Serializable{
 
     /**
      * Este metodo devuelve la nueva resgtriccion al enemigo
+     * @return true
      */
     public boolean getRestriccionEnemigo(){
         return true;
@@ -111,6 +125,7 @@ public class Premio implements Serializable{
     /**
      * Este metodo se encarga de hacernos saber si la velocidad sera progesiva
      * despues del choque con el premio
+     * @return velPro
      */
     public boolean getVelocidadProgresiva(){
         return false;
@@ -118,6 +133,7 @@ public class Premio implements Serializable{
 
     /**
      * Este metodo nos dice si el enemigo tendra el movimiento lento
+     * @return cambiaRaDos
      */
     public boolean getRestriccionMovilidad(){
         return false;

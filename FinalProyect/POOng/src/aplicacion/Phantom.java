@@ -13,12 +13,18 @@ public class Phantom extends Premio{
     private static final long serialVersionUID = 1L;
     private TenerImagen imagen = new TenerImagen();
 
+    /**
+     * Este es el constructor del Objeto Phantom
+     * @param xPosition
+     * @param yPosition
+     */
     public Phantom(int xPosition, int yPosition) {
         super(xPosition, yPosition);
     }
 
     /**
      * Este metodo nos retorna la imagen del premio
+     * @return ImageIcon es la imagen del objeto
      */
     @Override
     public ImageIcon getImage(){

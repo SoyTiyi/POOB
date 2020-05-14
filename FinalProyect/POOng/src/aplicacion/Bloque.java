@@ -14,6 +14,8 @@ public class Bloque implements Serializable{
     private final int limiteX=Toolkit.getDefaultToolkit().getScreenSize().width/2+35;
     /**
      * Este es el constructor de la clase
+     * @param xPosition
+     * @param yPosition
      */
     public Bloque(int xPosition, int yPosition){
         isVisible=false;
@@ -23,6 +25,7 @@ public class Bloque implements Serializable{
 
     /**
      * Este metodo nos retorna el rectangulo del bloque
+     * @return Rectangle
      */
     public Rectangle getBloque(){
         return new Rectangle(xPosition,yPosition,10,20);
@@ -30,6 +33,7 @@ public class Bloque implements Serializable{
 
     /**
      * Este metodo retorna la posicion en X
+     * @return la posicion en X
      */
     public int getX(){
         return xPosition;
@@ -37,6 +41,7 @@ public class Bloque implements Serializable{
 
     /**
      * Este metodo retorna la posicion en Y
+     * @return la posicion en Y
      */
     public int getY(){
         return yPosition;
@@ -44,6 +49,7 @@ public class Bloque implements Serializable{
 
     /**
      * Este metodo le hace set en la posicion X
+     * @param xPosition
      */
     public void setX(int xPosition){
         this.xPosition=xPosition;
@@ -51,6 +57,7 @@ public class Bloque implements Serializable{
 
     /**
      * Este metodo le hace set en la posicion Y
+     * @param yPosition
      */
     public void setY(int yPosition){
         this.yPosition=yPosition;
@@ -58,6 +65,7 @@ public class Bloque implements Serializable{
 
     /**
      * Este metodo retorna si el objeto es visible
+     * @return si el objeto es visible
      */
     public boolean getVisible(){
         return isVisible;
@@ -65,6 +73,7 @@ public class Bloque implements Serializable{
 
     /**
      * Este metodo le hace set a la variable isVisible
+     * @param isVisible
      */
     public void setVisible(boolean isVisible){
         this.isVisible=isVisible;
@@ -72,6 +81,7 @@ public class Bloque implements Serializable{
 
     /**
      * Este metodo mueve los bloques 
+     * @param num
      */
     public void move(int num){
         if(num==1){

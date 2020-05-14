@@ -13,12 +13,19 @@ public class Turtle extends Premio{
     private int velocidad=5;
     private boolean cambioRaDos=true;
     private boolean restMovilidad;
+
+    /**
+     * Este es el constructor de la clase Turtle
+     * @param xPosition
+     * @param yPosition
+     */
     public Turtle(int xPosition, int yPosition) {
         super(xPosition, yPosition);
     }
     
     /**
      * Este metodo nos retorna la imagen del premio
+     * @return ImageIcon es la imagen dle objeto
      */
     @Override
     public ImageIcon getImage(){
@@ -28,6 +35,8 @@ public class Turtle extends Premio{
 
     /**
      * Este metodo nos evalua las ventajas de golpear el premio
+     * @param velocidad
+     * @param vida
      */
     @Override
     public void choque(int velocidad, int vida){
@@ -46,6 +55,7 @@ public class Turtle extends Premio{
 
     /**
      * Este metodo nos retorna la velocidad
+     * @return velocidad
      */
     @Override
     public int getVelocidad(){
@@ -54,6 +64,7 @@ public class Turtle extends Premio{
 
     /**
      * Este metodo nos retorna la nueva vida del jugador que la golpeo
+     * @return vida
      */
     @Override
     public int getVida(){
@@ -62,6 +73,7 @@ public class Turtle extends Premio{
 
     /**
      * Este metodo devuelve un boolrano que dice si el contricante esta inmoviliado
+     * @return cambiaRaDos
      */
     @Override
     public boolean getRestriccionEnemigo(){
@@ -70,6 +82,7 @@ public class Turtle extends Premio{
 
     /**
      * Este metodo nos dice si el enemigo tendra el movimiento lento
+     * @return restMovilidad
      */
     @Override
     public boolean getRestriccionMovilidad(){

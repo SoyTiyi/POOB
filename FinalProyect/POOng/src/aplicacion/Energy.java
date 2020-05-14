@@ -13,12 +13,19 @@ public class Energy extends Premio{
     private int vida;
     private TenerImagen imagen = new TenerImagen();
 
+    
+    /**
+     * Este es el constructor de la Clase Energy 
+     * @param xPosition
+     * @param yPosition
+     */
     public Energy(int xPosition, int yPosition) {
         super(xPosition, yPosition);
     }
     
     /**
      * Este metodo nos retorna la imagen del premio
+     * @return ImageIcon, que es la imagen del objeto
      */
     @Override
     public ImageIcon getImage(){
@@ -28,6 +35,8 @@ public class Energy extends Premio{
 
     /**
      * Este metodo nos evalua las ventajas de golpear el premio
+     * @param velocidad
+     * @param vida
      */
     @Override 
     public void choque(int velocidad, int vida){
@@ -53,6 +62,7 @@ public class Energy extends Premio{
 
     /**
      * Este metodo retorna la velocidad
+     * @return velocidad nueva
      */
     @Override
     public int getVelocidad(){
@@ -61,6 +71,7 @@ public class Energy extends Premio{
 
     /**
      * Este metodo retorna la nueva vida del jugador que la golpio
+     * @return vida nueva
      */
     @Override
     public int getVida(){
@@ -69,6 +80,7 @@ public class Energy extends Premio{
 
     /**
      * Este metodo devuelve un booleao que dice si el contricante puede moverse despues
+     * @retrun cambiaRaDos
      */
     @Override
     public boolean getRestriccionEnemigo(){

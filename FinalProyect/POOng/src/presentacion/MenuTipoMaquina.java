@@ -34,6 +34,9 @@ public class MenuTipoMaquina extends JFrame{
         prepareAcciones(); 
     }
 
+    /**
+     * Este metodo nos prepara el boton que nos devuelve a la ventana anterior
+     */
     private void prepareAtras(){
         atras = new JButton();
         atras.setOpaque(false); atras.setContentAreaFilled(false); atras.setBorderPainted(false);

@@ -10,6 +10,7 @@ public class EventoTeclado extends KeyAdapter{
 
     /**
      * Este metodo nos dice si se oprime alguna tecla
+     * @param e
      */
     @Override
     public void keyPressed(KeyEvent e){
@@ -33,6 +34,7 @@ public class EventoTeclado extends KeyAdapter{
 
     /**
      * Este metodo nos dice si una tecla se dejo de oprimir y cambia su estado
+     * @param e 
      */
     @Override
     public void keyReleased(KeyEvent e){

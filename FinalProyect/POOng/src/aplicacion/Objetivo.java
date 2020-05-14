@@ -16,6 +16,8 @@ public class Objetivo implements Serializable{
 
     /**
      * Este es el constructor de la clase
+     * @param xPosition
+     * @param yPosition
      */
     public Objetivo(int xPosition, int yPosition){
         isVisible=true;
@@ -33,6 +35,7 @@ public class Objetivo implements Serializable{
 
     /**
      * Este metodo le hace set al parametro isVisible
+     * @param isVisible
      */
     public void setVisible(boolean isVisible){
         this.isVisible=isVisible;
@@ -40,6 +43,7 @@ public class Objetivo implements Serializable{
 
     /**
      * Este metodono nos retorna el objetivo
+     * @return Rectangle
      */
     public Rectangle getObjetivo(){
         return new Rectangle(xPosition,yPosition,ANCHO,ALTO);
@@ -53,6 +57,7 @@ public class Objetivo implements Serializable{
     }
     /**
      * Este metodo nos retorna la posicion en X
+     * @return xPosition
      */
     public int getX(){
         return xPosition;
@@ -60,6 +65,7 @@ public class Objetivo implements Serializable{
 
     /**
      * Este metodo nos retorna la posicion en Y
+     * @return yPosition
      */
     public int getY(){
         return yPosition;
@@ -67,6 +73,7 @@ public class Objetivo implements Serializable{
 
     /**
      * Este emetodo hace set a la posicion en Y
+     * @param yPosition
      */
     public void setY(int yPosition){
         this.yPosition=yPosition;
@@ -74,6 +81,7 @@ public class Objetivo implements Serializable{
 
     /**
      * Estre metodo hace set a la posicion en X
+     * @param xPosition
      */
     public void setX(int xPosition){
         this.xPosition=xPosition;

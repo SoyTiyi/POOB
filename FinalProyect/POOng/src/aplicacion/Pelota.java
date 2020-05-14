@@ -35,6 +35,7 @@ public class Pelota implements Serializable{
 
     /**
      * Este metodo retorna la pelota
+     * @return Rectangle
      */
     public Rectangle getPelota(){
         return  new Rectangle(x,y,ANCHO,ALTO);
@@ -42,6 +43,8 @@ public class Pelota implements Serializable{
 
     /**
      * Este metodo gestiona el movimiento de la pelota
+     * @param choqueUno
+     * @param choqueDos
      */
     public void mover(boolean choqueUno, boolean choqueDos){
         x+=moveX;
@@ -64,6 +67,7 @@ public class Pelota implements Serializable{
     
     /**
      * Este metodo retorna la velocidad en la se mueve la pelota
+     * @return moveX
      */
     public int getVelocidad(){
         return moveX;
@@ -78,6 +82,7 @@ public class Pelota implements Serializable{
 
     /**
      * Este metodo devuelve el puntaje del primer jugador
+     * @return String score1
      */
     public String getScore1(){
         return score1+"";
@@ -85,6 +90,7 @@ public class Pelota implements Serializable{
 
     /**
      * Este metodo devuelve el puntaje del segundo jugador
+     * @return String score2
      */
     public String getScore2(){
         return score2+"";
@@ -92,6 +98,7 @@ public class Pelota implements Serializable{
 
     /**
      * Este metodo retorna la posicion x de la pelota
+     * @param x
      */
     public void setPositionX(int x){
         this.x=x;
@@ -99,6 +106,7 @@ public class Pelota implements Serializable{
 
     /**
      * Este metodo devuelve la posicion y de la pelota
+     * @param y
      */
     public void setPositionY(int y){
         this.y=y;
@@ -128,6 +136,7 @@ public class Pelota implements Serializable{
 
     /**
      * Este metodo retorn la posicion Y
+     * @return y
      */
     public int getY(){
         return y;
@@ -135,11 +144,16 @@ public class Pelota implements Serializable{
 
     /**
      * Este metodo retorna la posicion X
+     * @return x
      */
     public int getX(){
         return x;
     }
 
+    /**
+     * Este metodo nos indica que jugador golpeo la pelota
+     * @return numero del player
+     */
     public int getPersonPush(){
         if(golpeRaqueta1!=false || golpeRaqueta2!=false){
             if(golpeRaqueta1){

@@ -13,12 +13,18 @@ public class Freezer extends Premio{
     private int vida;
     private TenerImagen imagen = new TenerImagen();
 
+    /**
+     * Este es el constructor de la clase Freezer
+     * @param xPosition
+     * @param yPosition
+     */
     public Freezer(int xPosition, int yPosition) {
         super(xPosition, yPosition);
     }
 
     /**
-     * Este metodo nos retorna la imagen del premio
+     * Este metodo nos retorna la imagen del premio}
+     * @return ImageIcon es la imagen del objeto
      */
     @Override
     public ImageIcon getImage(){
@@ -28,6 +34,8 @@ public class Freezer extends Premio{
 
     /**
      * Este metodo nos evalua las ventajas de golpear el premio
+     * @param velocidad
+     * @param vida
      */
     @Override
     public void choque(int velocidad, int vida){
@@ -46,6 +54,7 @@ public class Freezer extends Premio{
 
     /**
      * Este metodo retorna la velocidad 
+     * @return velocidad
      */
     @Override
     public int getVelocidad(){
@@ -54,6 +63,7 @@ public class Freezer extends Premio{
 
     /**
      * Este metodo retorna la nueva vida del jugador que la golpeo
+     * @return vida
      */
     @Override
     public int getVida(){
@@ -62,6 +72,7 @@ public class Freezer extends Premio{
 
     /**
      * Este metodo devuelve un booleano que dice si el contricante puede inmovilizado
+     * @return cambiaRaDos
      */
     @Override
     public boolean getRestriccionEnemigo(){

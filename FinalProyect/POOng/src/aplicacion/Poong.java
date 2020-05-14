@@ -15,9 +15,6 @@ import java.awt.*;
  */
 public class Poong implements Serializable{
     private static final long serialVersionUID = 1L;
-    /**
-     * Este es el constructor de la clase
-     */
     private Pelota pelota;
     private Raqueta raqueta1;
     private Raqueta raqueta2;
@@ -85,7 +82,7 @@ public class Poong implements Serializable{
 
     /**
      * Este metodo devuelve la velocidad del juego
-     * @return
+     * @return velocidad
      */
     public int getVelocidad(){
         return velocidad;
@@ -214,7 +211,7 @@ public class Poong implements Serializable{
 
     /**
      * Este metodo crea el objetivo
-     * @return
+     * @param numero del objeto 
      */
     private void createObjetivo(int num){
         if(num==1){
@@ -397,6 +394,7 @@ public class Poong implements Serializable{
 
     /**
      * Este metodo nos hace set al booleano que nos indica si la velocidad es progresiva
+     * @param bool 
      */
     public void setVelProgresiva(boolean bool){
         velProgresiva=bool;
@@ -444,6 +442,7 @@ public class Poong implements Serializable{
 
     /**
      * Este metodo hace set al numero del segundo jugador
+     * @param num
      */
     public void setPlayerDos(int num){
         personajeDos=num;
@@ -451,6 +450,7 @@ public class Poong implements Serializable{
 
     /**
      * Este metodo nos retonrla la forma del bloque
+     * @return bloque
      */
     public Bloque getBloque(){
         return bloque;
