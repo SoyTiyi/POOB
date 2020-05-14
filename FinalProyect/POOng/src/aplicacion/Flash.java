@@ -11,7 +11,7 @@ public class Flash extends Premio{
     private static final long serialVersionUID = 1L;
     private TenerImagen imagen = new TenerImagen();
     private int vida;
-    private int velocidad;
+    private int velocidad=5;
     private boolean veloPro;
     private boolean cambiaRaDos=true;
     public Flash(int xPosition, int yPosition) {

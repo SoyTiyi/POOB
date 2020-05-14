@@ -47,15 +47,14 @@ public class Raqueta implements Serializable {
             if(restMovilidad){
                 System.out.println(contMovilidad);
                 if(contMovilidad%3==0){
-                    if(contMovilidad==3000){System.out.println("Sali"); restMovilidad=false; contMovilidad=0;}
+                    if(contMovilidad==3000){restMovilidad=false; contMovilidad=0;}
                     else{
-                        System.out.println("Entre");
                         contMovilidad++;
                         if(EventoTeclado.w && y>0){cont++; y--;}
                         if(EventoTeclado.s && y<limiteY){cont++; y++;}
                     }
                 }
-                else{System.out.println("Contando"); contMovilidad++;}
+                else{contMovilidad++;}
             }
             else{
                 if(EventoTeclado.w && y>0){cont++; y--;}
@@ -115,15 +114,14 @@ public class Raqueta implements Serializable {
             if(restMovilidad){
                 System.out.println(contMovilidad);
                 if(contMovilidad%3==0){
-                    if(contMovilidad==3000){System.out.println("Sali"); contMovilidad=0;restMovilidad=false;}
+                    if(contMovilidad==3000){contMovilidad=0;restMovilidad=false;}
                     else{
-                        System.out.println("Entre");
                         contMovilidad++;
                         if(EventoTeclado.up && y>0){cont++;y--;}
                         if(EventoTeclado.down && y<limiteY){cont++;y++;}
                     }
                 }
-                else{System.out.println("Contando"); contMovilidad++;}
+                else{ contMovilidad++;}
             }
             else{
                 if(EventoTeclado.up && y>0){cont++;y--;}

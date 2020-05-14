@@ -1,8 +1,15 @@
 package src.presentacion;
 
-public class TenerImagen {
+import java.io.Serializable;
 
-    public TenerImagen(){
+public class TenerImagen implements Serializable{
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
+    public TenerImagen() {
         
     }
     

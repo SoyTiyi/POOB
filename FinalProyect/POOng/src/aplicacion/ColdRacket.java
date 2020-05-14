@@ -1,5 +1,7 @@
 package src.aplicacion;
 
+import java.io.Serializable;
+
 import javax.swing.ImageIcon;
 import src.presentacion.*;
 /**
@@ -7,7 +9,7 @@ import src.presentacion.*;
  * en congeladora. De esta forma cuando golpee al jugador rival, este se
  * congelara por 3s
  */
-public class ColdRacket extends Premio{
+public class ColdRacket extends Premio {
 
     private static final long serialVersionUID = 1L;
     private TenerImagen imagen = new TenerImagen();
