@@ -122,4 +122,11 @@ public class Premio implements Serializable{
     public boolean getRestriccionMovilidad(){
         return false;
     }
+
+    /**
+     * Este metodo nos actualiza los valores dependiendo del premio golpeado
+     */
+    public void actualizar(){
+
+    }
 }

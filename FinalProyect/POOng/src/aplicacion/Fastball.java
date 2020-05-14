@@ -38,7 +38,8 @@ public class Fastball extends Premio{
     /**
      * Este metodo nos actualiza los valores dependiendo del premio
      */
-    private void actualizar(){
+    @Override
+    public void actualizar(){
         velocidad-=velocidad*0.2;    
     }
 

@@ -40,7 +40,8 @@ public class Flash extends Premio{
     /**
      * Este metodo actualiza los valores dependiendo del premio
      */
-    private void actualizar(){
+    @Override
+    public void actualizar(){
         veloPro=true;
     }
 

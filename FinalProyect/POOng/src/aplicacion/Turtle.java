@@ -39,7 +39,8 @@ public class Turtle extends Premio{
     /**
      * Este metodo nos actualiza los valores dependiendo del premio
      */
-    private void actualizar(){
+    @Override
+    public void actualizar(){
         restMovilidad=true;
     }
 

@@ -39,7 +39,8 @@ public class Freezer extends Premio{
     /**
      * Este metodo actualiza los valores dependiendo del premio
      */
-    private void actualizar(){
+    @Override
+    public void actualizar(){
         cambiaRaDos=false;
     }
 
