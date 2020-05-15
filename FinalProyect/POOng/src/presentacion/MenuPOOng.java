@@ -146,6 +146,7 @@ public class MenuPOOng extends JFrame{
             }
         });
     }
+    
      /**
       * Este metodo nos permite arrancar el programa y visualizar la pantalla
       */
