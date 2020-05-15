@@ -1,7 +1,4 @@
 package src.aplicacion;
-
-import java.io.Serializable;
-
 import javax.swing.ImageIcon;
 import src.presentacion.*;
 /**
