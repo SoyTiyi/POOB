@@ -18,6 +18,7 @@ public class Raqueta implements Serializable {
     private int espera=0;
     private boolean restMovilidad;
     private int contMovilidad=1;
+    private boolean inmunidad;
     /**
      * Este es el constructor de muestra clase raqueta
      * @param x
@@ -47,7 +48,6 @@ public class Raqueta implements Serializable {
                 cont=0;
             }
             if(restMovilidad){
-                System.out.println(contMovilidad);
                 if(contMovilidad%3==0){
                     if(contMovilidad==3000){restMovilidad=false; contMovilidad=0;}
                     else{
@@ -179,6 +179,31 @@ public class Raqueta implements Serializable {
      * @param vida
      */
     public void sumVida(int vida){
-        this.vida+=vida;
+        if(vida<0){
+            if(inmunidad){
+                inmunidad=false;
+            }
+            else{
+                this.vida+=vida;
+            }
+        }
+        else{
+            this.vida+=vida;
+        }
+    }
+
+    /**
+     * Este metodono nos retorna el booleano que dice si la raqueta tiene inmunidad
+     * @return inmunidad
+     */
+    public boolean getInmunidad(){
+        return inmunidad;
+    }
+
+    /**
+     * Este metodo nos hace set a la variable inmunidad
+     */
+    public void setInmunidad(boolean inmunidad){
+        this.inmunidad=inmunidad;
     }
 }

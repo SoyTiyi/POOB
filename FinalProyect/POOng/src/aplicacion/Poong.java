@@ -46,17 +46,21 @@ public class Poong implements Serializable{
         Dimension d = t.getScreenSize();
         pelota = new Pelota(0,0);
         raqueta1 = new Raqueta(8,100);
+        //Este para que la inmunidad de la rauqueta Uno sirva al principio Profe
+        raqueta1.setInmunidad(true);
         raqueta2 = new Raqueta((int)d.getWidth()/2+9,100);
+        //Este para que la inmunidad de la raqueta Dos sirva la princio Profe
+        raqueta2.setInmunidad(true);
         bloque = new Bloque(360,360);
         yEstre = random.nextInt(391-1); yOb1 = random.nextInt(391-1); yOb2 = random.nextInt(391-1);
         preparePremios();
-        int index = (int) random.nextInt(7)+0;
+        int index = (int) random.nextInt(8)+0;
         premio = premios.get(index);
         objetivoUno = new Objetivo(20, yOb1);
         objetivoDos = new Objetivo(700, yOb2);
         premio.setY(yEstre); objetivoUno.setY(yOb1); objetivoDos.setY(yOb2);
         esperaObjUno = (int) random.nextInt(5000)+10000; esperaObjDos = (int) random.nextInt(5000)+10000;
-        esperaPremio=(int) random.nextInt(5000)+10000;
+        esperaPremio=(int) random.nextInt(5000)+5000;
     }
 
     /**
@@ -70,6 +74,7 @@ public class Poong implements Serializable{
         premios.add(new ColdRacket(360, 780));
         premios.add(new Phantom(360, 800));
         premios.add(new Energy(360, 820));
+        premios.add(new ExamSorpresa(360,840));
     }
 
     /**
@@ -104,6 +109,125 @@ public class Poong implements Serializable{
     public void move(){    
         contPremio++; contObjUno++; contObjDos++; contPro++; contTres++;
         pelota.mover(choque(raqueta1.getRaqueta()),choque(raqueta2.getRaqueta()));
+        removeProgesive();
+        pushPremio();
+        pushBloque();
+        hitPlayerOne();
+        hitPlayerTwo();
+        premioTime();
+        hitObjetivoOne();
+        timeObjetoUno();
+        hitObjetivoDos();
+        timeObjetivoDos();
+        raqueta1.moveR1();
+        raqueta2.moveR2();
+        veloProgresiva();
+    }
+
+    /**
+     * Este metodo nos decitbe que pasa cuando el tiempo del ObjetivoDos es igual a su contador
+     */
+    public void timeObjetivoDos(){
+        if(contObjDos == esperaObjDos){
+            contObjDos=0;
+            esperaObjDos = random.nextInt(5000)+15000;
+            createObjetivo(2);
+        }
+    }
+
+    /**
+     * Este metodo nos describe que pasa cuando el tiempo del ObjetivoDos llega a su fin o es golpeado por el jugador
+     */
+    public void hitObjetivoDos(){
+        if(objetivoDos.getVisible() && (choque(objetivoDos.getObjetivo()) || contPremio==10000)){
+            if(contPremio==10000){
+                objetivoDos.setVisible(false);
+            }
+            else{
+                pelota.sumScore1();
+                objetivoDos.setVisible(false);
+            }
+        }
+    }
+
+    /**
+     * Este metodo nos describa que pasa cuando el tiempo del ObjetivoUno es igual a su contador
+     */
+    public void timeObjetoUno(){
+        if(contObjUno == esperaObjUno){
+            contObjUno=0;
+            esperaObjUno = random.nextInt(5000)+15000;
+            createObjetivo(1);
+        }
+    }
+
+    /**
+     * Este metodo nos describe que pasa cuando el tiempo del ObjetivoUno llega a su fin o es golpeado por el jugador
+     */
+    public void hitObjetivoOne(){
+        if(objetivoUno.getVisible() && (choque(objetivoUno.getObjetivo())  || contPremio==10000)){
+            if(contPremio==10000){
+                objetivoUno.setVisible(false);
+            }
+            else{
+                pelota.sumScore2();
+                objetivoUno.setVisible(false);;
+            }
+        }
+    }
+
+    /**
+     * Este metodo nos dice que pasa cuando el tiempo del premio es igual al contador
+     */
+    public void premioTime(){
+        if(contPremio==esperaPremio){
+            contPremio=0;
+            esperaPremio = random.nextInt(5000)+10000;
+            createPremio();
+        }
+    }
+
+    /**
+     * Este metodo nos describe que pasa cuando el segundo jugador es golpeado por un bloque
+     */
+    private void hitPlayerTwo(){
+        if(bloque.getVisible() && choque(bloque.getBloque(), raqueta2.getRaqueta())){
+            bloque.setVisible(false);
+            int vida = raqueta2.getVida()/2;
+            raqueta2.sumVida(-vida);
+        }
+    }
+
+    /**
+     * Este metodo nos describe que pasa cuando el primer jugador es golpeado por un bloque 
+     */
+    private void hitPlayerOne(){
+        if(bloque.getVisible() && choque(bloque.getBloque(), raqueta1.getRaqueta())){
+            bloque.setVisible(false);
+            int vida = raqueta1.getVida()/2;
+            raqueta1.sumVida(-vida);
+        }
+    }
+    /**
+     * Este metodo nos indica el movimiento del bloque cuando es golpado por un jugador 
+     */
+    private void pushBloque(){
+        if(bloque.getVisible()){
+            int num = pelota.getPersonPush();
+            if(num!=0){
+                if(num==1) bloque.move(1);
+                else bloque.move(2);
+            }
+            else{
+                bloque.setVisible(false);
+            }
+        }
+    }
+
+    /**
+     * Este metodo nos reinicia la velocidad cuando ya se choca al otro jugador despues de haber golpeado el premio Flash, el cual acelera la pelota
+     */
+    private void removeProgesive(){
         if(pelota.getPersonPush()==1 && act2){
             act2=false;
             velProgre=false;
@@ -114,6 +238,12 @@ public class Poong implements Serializable{
             velProgre=false;
             velocidad=veloAnterior;
         }
+    }
+
+    /**
+     * Este metedo nos actualiza los valores al golpear el premio dependiendo del jugador que la golpeo
+     */
+    private void pushPremio(){
         if(premio.getVisible() && choque(premio.getPremio())){
             premio.setVisible(false);
             bloque.setVisible(true);
@@ -129,68 +259,7 @@ public class Poong implements Serializable{
                 bloque.setX(270); bloque.setY(random.nextInt(390-1));
             }
         }
-
-        if(bloque.getVisible()){
-            int num = pelota.getPersonPush();
-            if(num!=0){
-                if(num==1) bloque.move(1);
-                else bloque.move(2);
-            }
-            else{
-                bloque.setVisible(false);
-            }
-        }
-
-        if(bloque.getVisible() && choque(bloque.getBloque(), raqueta1.getRaqueta())){
-            bloque.setVisible(false);
-            int vida = raqueta1.getVida()/2;
-            raqueta1.sumVida(-vida);
-        }
-
-        if(bloque.getVisible() && choque(bloque.getBloque(), raqueta2.getRaqueta())){
-            bloque.setVisible(false);
-            int vida = raqueta2.getVida()/2;
-            raqueta2.sumVida(-vida);
-        }
-
-        if(contPremio==esperaPremio){
-            contPremio=0;
-            esperaPremio = random.nextInt(5000)+10000;
-            createPremio();
-        }
-        if(objetivoUno.getVisible() && (choque(objetivoUno.getObjetivo())  || contPremio==10000)){
-            if(contPremio==10000){
-                objetivoUno.setVisible(false);
-            }
-            else{
-                pelota.sumScore2();
-                objetivoUno.setVisible(false);;
-            }
-        }
-        if(contObjUno == esperaObjUno){
-            contObjUno=0;
-            esperaObjUno = random.nextInt(5000)+15000;
-            createObjetivo(1);
-        }
-        if(objetivoDos.getVisible() && (choque(objetivoDos.getObjetivo()) || contPremio==10000)){
-            if(contPremio==10000){
-                objetivoDos.setVisible(false);
-            }
-            else{
-                pelota.sumScore1();
-                objetivoDos.setVisible(false);
-            }
-        }
-        if(contObjDos == esperaObjDos){
-            contObjDos=0;
-            esperaObjDos = random.nextInt(5000)+15000;
-            createObjetivo(2);
-        }
-        raqueta1.moveR1();
-        raqueta2.moveR2();
-        veloProgresiva();
     }
-
     /**
      * Este metodo nos gestiona la velocidad progresiva 
      */
@@ -256,6 +325,7 @@ public class Poong implements Serializable{
                 veloAnterior = velocidad; act1=true; contTres=0;
             }
             raqueta2.setMovilidad(premio.getRestriccionMovilidad());
+            raqueta1.setInmunidad(premio.getInmunidad());
         }
         else{
             velocidad=premio.getVelocidad();
@@ -265,6 +335,7 @@ public class Poong implements Serializable{
                 veloAnterior = velocidad; act2=true; contTres=0;
             }
             raqueta1.setMovilidad(premio.getRestriccionMovilidad());
+            raqueta2.setInmunidad(premio.getInmunidad());
 
         }
     }

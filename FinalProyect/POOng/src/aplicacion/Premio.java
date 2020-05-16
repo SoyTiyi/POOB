@@ -145,4 +145,11 @@ public class Premio implements Serializable{
     public void actualizar(){
 
     }
+
+    /**
+     *  Este metodo nos retorna si la raqueta gana inmunidad al golperar el premio
+     */
+    public boolean getInmunidad(){
+        return false;
+    }
 }
