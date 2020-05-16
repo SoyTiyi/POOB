@@ -90,6 +90,7 @@ public class MenuPOOng extends JFrame{
         imageCerrar.setBounds(300, 320, 130, 50);
         backGround.add(botonJugar); backGround.add(imageJugar); backGround.add(botonAbrir); backGround.add(imageAbrir); backGround.add(botonSalir); backGround.add(imageCerrar);
     }
+    
     /**
      * Este metodo prepara las acciones para los objetos con los que se interactua 
      * 
