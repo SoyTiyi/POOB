@@ -51,7 +51,7 @@ public class Poong implements Serializable{
         yEstre = random.nextInt(391-1); yOb1 = random.nextInt(391-1); yOb2 = random.nextInt(391-1);
         preparePremios();
         int index = (int) random.nextInt(8)+0;
-        premio = premios.get(4);
+        premio = premios.get(index);
         objetivoUno = new Objetivo(20, yOb1);
         objetivoDos = new Objetivo(700, yOb2);
         premio.setY(yEstre); objetivoUno.setY(yOb1); objetivoDos.setY(yOb2);
@@ -475,6 +475,7 @@ public class Poong implements Serializable{
             }
             ObjectInputStream inp = new ObjectInputStream(new FileInputStream(file));
             poong = (Poong) inp.readObject();
+            inp.close();
         }
         catch(Exception e){
             throw new PoongException(PoongException.ERROR_AL_ABRIR);
