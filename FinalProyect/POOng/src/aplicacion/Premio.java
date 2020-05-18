@@ -152,4 +152,11 @@ public class Premio implements Serializable{
     public boolean getInmunidad(){
         return false;
     }
+
+    /**
+     * Este metodo nos retorna si la pelota puede congelar al jugador contrario
+     */
+    public boolean getCongelacion(){
+        return false;
+    }
 }

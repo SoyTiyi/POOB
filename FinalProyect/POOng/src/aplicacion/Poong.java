@@ -46,16 +46,12 @@ public class Poong implements Serializable{
         Dimension d = t.getScreenSize();
         pelota = new Pelota(0,0);
         raqueta1 = new Raqueta(8,100);
-        //Este para que la inmunidad de la rauqueta Uno sirva al principio Profe
-        raqueta1.setInmunidad(true);
         raqueta2 = new Raqueta((int)d.getWidth()/2+9,100);
-        //Este para que la inmunidad de la raqueta Dos sirva la princio Profe
-        raqueta2.setInmunidad(true);
         bloque = new Bloque(360,360);
         yEstre = random.nextInt(391-1); yOb1 = random.nextInt(391-1); yOb2 = random.nextInt(391-1);
         preparePremios();
         int index = (int) random.nextInt(8)+0;
-        premio = premios.get(index);
+        premio = premios.get(4);
         objetivoUno = new Objetivo(20, yOb1);
         objetivoDos = new Objetivo(700, yOb2);
         premio.setY(yEstre); objetivoUno.setY(yOb1); objetivoDos.setY(yOb2);
@@ -122,6 +118,26 @@ public class Poong implements Serializable{
         raqueta1.moveR1();
         raqueta2.moveR2();
         veloProgresiva();
+        evalCongelacion();
+    }
+
+    /**
+     * Este metodo nos evalua si alguna de las dos raquetas debe de estar golpeada
+     */
+    private void evalCongelacion(){
+        if(pelota.getCongelacion()){
+            if(pelota.getPlayerCong()==1 && pelota.getGolpeada1()){
+                raqueta1.setMove(false);
+                pelota.setCongelacion(false);
+                pelota.numberCongelacion(0);
+            }
+
+            if(pelota.getPlayerCong()==2 && pelota.getGolpeada2()){
+                raqueta2.setMove(false);
+                pelota.setCongelacion(false);
+                pelota.numberCongelacion(0);
+            }
+        }
     }
 
     /**
@@ -326,6 +342,7 @@ public class Poong implements Serializable{
             }
             raqueta2.setMovilidad(premio.getRestriccionMovilidad());
             raqueta1.setInmunidad(premio.getInmunidad());
+            pelota.setCongelacion(premio.getCongelacion()); if(premio.getCongelacion()){pelota.numberCongelacion(2);}
         }
         else{
             velocidad=premio.getVelocidad();
@@ -336,6 +353,7 @@ public class Poong implements Serializable{
             }
             raqueta1.setMovilidad(premio.getRestriccionMovilidad());
             raqueta2.setInmunidad(premio.getInmunidad());
+            pelota.setCongelacion(premio.getCongelacion()); if(premio.getCongelacion()){pelota.numberCongelacion(1);}
 
         }
     }

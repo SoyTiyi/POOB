@@ -22,6 +22,10 @@ public class Pelota implements Serializable{
     private Random random = new Random();
     private boolean golpeRaqueta1;
     private boolean golpeRaqueta2;
+    private boolean peloCong;
+    private boolean golpeadaRa1;
+    private boolean golpeadaRa2;
+    private int playerCong;
 
     /**
      * Este es el constructor de la clase pelota
@@ -49,8 +53,8 @@ public class Pelota implements Serializable{
     public void mover(boolean choqueUno, boolean choqueDos){
         x+=moveX;
         y+=moveY;
-        if(choqueUno){moveX=-moveX; x=35; golpeRaqueta1=true; golpeRaqueta2=false;} 
-        if(choqueDos){moveX=-moveX; x=675; golpeRaqueta2=true; golpeRaqueta1=false;}
+        if(choqueUno){moveX=-moveX; x=35; golpeRaqueta1=true; golpeRaqueta2=false; if(peloCong && playerCong==1) {golpeadaRa1=true;}} 
+        if(choqueDos){moveX=-moveX; x=675; golpeRaqueta2=true; golpeRaqueta1=false;if(peloCong && playerCong==2) {golpeadaRa2=true;}}
         if(x > limiteX ){
             x=300; y=300;
             moveX=-moveX;
@@ -166,5 +170,51 @@ public class Pelota implements Serializable{
         else{
             return 0;
         }
+    }
+
+    /**
+     * Este metodono nos devuelve el atributo que nos indica si la pelota puede congelar
+     * @return peloCong
+     */
+    public boolean getCongelacion(){
+        return peloCong;
+    }
+
+    /**
+     * Este metodo le hace set a la variable peloCong
+     */
+    public void setCongelacion(boolean peloCong){
+        this.peloCong=peloCong;
+    }
+
+    /**
+     * Este metodo retorna el jugador que debe de ser congelado
+     * @return playerCong
+     */
+    public int getPlayerCong(){
+        return playerCong;
+    }
+
+    /**
+     * Este metodo nos indica que raqueta debe de ser congelada al ser chocada 
+     * @param playerCong
+     */
+    public void numberCongelacion(int playerCong){
+        this.playerCong=playerCong;
+    }
+
+    /**
+     * Este metodo nos devuelve el booleano que nos indica si la raqueta uno debe de estar congelada 
+     * @return golpeadaRa1
+     */
+    public boolean getGolpeada1(){
+        return golpeadaRa1;
+    }
+
+    /**
+     * Este metodono nos devuelve el booleano que nos infica si la raqueta dps debe de estar congelada
+     */
+    public boolean getGolpeada2(){
+        return golpeadaRa2;
     }
 }

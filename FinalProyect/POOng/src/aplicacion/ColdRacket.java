@@ -10,6 +10,10 @@ public class ColdRacket extends Premio {
 
     private static final long serialVersionUID = 1L;
     private TenerImagen imagen = new TenerImagen();
+    private int velocidad;
+    private int vida;
+    private boolean peloCong;
+    private boolean cambiaRaDos=true;
 
     /**
      * Este es el constructor de la clase ColdRacket
@@ -27,5 +31,60 @@ public class ColdRacket extends Premio {
     public ImageIcon getImage(){
         ImageIcon image = new ImageIcon(imagen.getClass().getResource("images/cold.png"));
         return image;
+    }
+
+    /**
+     *  Este metodo nos evalua las ventajas de golperar el premio
+     * @param velocidad
+     * @param vida
+     */
+    @Override
+    public void choque(int velocidad, int vida){
+        this.velocidad=velocidad;
+        this.vida=vida;
+        actualizar();
+    }
+
+    /**
+     * Este metodo actualiza los valores dependiendo del premio
+     */
+    @Override
+    public void actualizar(){
+        peloCong=true;
+    }
+
+    /**
+     * Este metodono retorna la velocidad
+     * @return velocidad
+     */
+    @Override
+    public int getVelocidad(){
+        return velocidad;
+    }
+
+    /**
+     * Este metodo retorna la nueva vida del jugador que la golpeo
+     * @return vida
+     */
+    @Override
+    public int getVida(){
+        return vida;
+    }
+
+    /**
+     * Este metodo devuevle un booleano que dice si el contricante puede moverse
+     * @return cambiaRaDos
+     */
+    @Override
+    public boolean getRestriccionEnemigo(){
+        return cambiaRaDos;
+    }
+
+    /**
+     * Este metodo nos retorna si la pelota puede congelar al jugador
+     */
+    @Override
+    public boolean getCongelacion(){
+        return peloCong;
     }
 }

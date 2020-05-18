@@ -72,7 +72,7 @@ public class Flash extends Premio{
         return vida;
     }
     /**
-     * Este metodo debuelve un booleano que dice si el contricante puede moverse
+     * Este metodo devuelve un booleano que dice si el contricante puede moverse
      * @return cambiaRaDos
      */
     @Override
