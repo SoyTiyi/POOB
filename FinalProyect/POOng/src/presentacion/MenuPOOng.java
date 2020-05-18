@@ -8,13 +8,12 @@ import javax.swing.*;
 import javax.swing.ImageIcon;
 
 /**
- * Esta clase nos crea el menu principal en donde
- * tenemos las opciones de juego
+ * Esta clase nos crea el menu principal en donde tenemos las opciones de juego
  * 
  * @author Santiago Martinez
  * @version 1.0
  */
-public class MenuPOOng extends JFrame{
+public class MenuPOOng extends JFrame {
     /**
      *
      */
@@ -33,10 +32,10 @@ public class MenuPOOng extends JFrame{
     private JLabel backGround;
     private JFileChooser fileChooser = new JFileChooser();
 
-     /**
-      * Esta clase es el constructor de nuestra ventana para el menu de POOng
-      */
-    public MenuPOOng(){
+    /**
+     * Esta clase es el constructor de nuestra ventana para el menu de POOng
+     */
+    public MenuPOOng() {
         getContentPane().setBackground(Color.black);
         prepareElementos();
         prepareAcciones();
@@ -44,19 +43,19 @@ public class MenuPOOng extends JFrame{
 
     /**
      * Este metodo nos prepara los elementos de la ventana
-    */
-    private void prepareElementos(){
+     */
+    private void prepareElementos() {
         setLayout(null);
         setTitle("Menu");
         setIconImage(new ImageIcon(getClass().getResource("images/icon2.png")).getImage());
         Toolkit t = Toolkit.getDefaultToolkit();
         Dimension d = t.getScreenSize();
-        setBounds(0,0,d.width/2+50,d.height/2+50);
+        setBounds(0, 0, d.width / 2 + 50, d.height / 2 + 50);
         setLocationRelativeTo(null);
         setResizable(false);
         ImageIcon back = new ImageIcon(getClass().getResource("images/background.jpg"));
         backGround = new JLabel(back);
-        backGround.setBounds(0,0,d.width/2+50,d.height/2+50);
+        backGround.setBounds(0, 0, d.width / 2 + 50, d.height / 2 + 50);
         backGround.setLayout(null);
         prepareBotones();
         add(backGround);
@@ -65,46 +64,57 @@ public class MenuPOOng extends JFrame{
     /**
      * Este metodo nos prepara los objetos con los que interactua el usuario
      */
-    private void prepareBotones(){
+    private void prepareBotones() {
         ImageIcon imagen = new ImageIcon(getClass().getResource("images/poong.png"));
         logoPong = new JLabel(imagen);
-        logoPong.setBounds(90,5,550,170);
+        logoPong.setBounds(90, 5, 550, 170);
         backGround.add(logoPong);
         botonJugar = new JButton();
         botonJugar.setBounds(300, 180, 130, 50);
-        botonJugar.setOpaque(false); botonJugar.setContentAreaFilled(false); botonJugar.setBorderPainted(false);;
+        botonJugar.setOpaque(false);
+        botonJugar.setContentAreaFilled(false);
+        botonJugar.setBorderPainted(false);
+        ;
         ImageIcon imagenJugar = new ImageIcon(getClass().getResource("images/Jugar.png"));
         imageJugar = new JLabel(imagenJugar);
-        imageJugar.setBounds(300,180,130,50);
-        botonAbrir= new JButton();
+        imageJugar.setBounds(300, 180, 130, 50);
+        botonAbrir = new JButton();
         botonAbrir.setBounds(300, 250, 130, 50);
-        botonAbrir.setOpaque(false); botonAbrir.setContentAreaFilled(false); botonAbrir.setBorderPainted(false);
+        botonAbrir.setOpaque(false);
+        botonAbrir.setContentAreaFilled(false);
+        botonAbrir.setBorderPainted(false);
         ImageIcon imagenAbrir = new ImageIcon(getClass().getResource("images/Abrir.png"));
         imageAbrir = new JLabel(imagenAbrir);
         imageAbrir.setBounds(300, 250, 130, 50);
         botonSalir = new JButton();
         botonSalir.setBounds(300, 320, 130, 50);
-        botonSalir.setOpaque(false); botonSalir.setContentAreaFilled(false); botonSalir.setBorderPainted(false);
+        botonSalir.setOpaque(false);
+        botonSalir.setContentAreaFilled(false);
+        botonSalir.setBorderPainted(false);
         ImageIcon imagenSalir = new ImageIcon(getClass().getResource("images/Cerrar.png"));
         imageCerrar = new JLabel(imagenSalir);
         imageCerrar.setBounds(300, 320, 130, 50);
-        backGround.add(botonJugar); backGround.add(imageJugar); backGround.add(botonAbrir); backGround.add(imageAbrir); backGround.add(botonSalir); backGround.add(imageCerrar);
+        backGround.add(botonJugar);
+        backGround.add(imageJugar);
+        backGround.add(botonAbrir);
+        backGround.add(imageAbrir);
+        backGround.add(botonSalir);
+        backGround.add(imageCerrar);
     }
-    
+
     /**
-     * Este metodo prepara las acciones para los objetos con los que se interactua 
+     * Este metodo prepara las acciones para los objetos con los que se interactua
      * 
      */
-    private void prepareAcciones(){
+    private void prepareAcciones() {
         addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent ev){
+            public void windowClosing(WindowEvent ev) {
                 int dialogButton = JOptionPane.YES_NO_OPTION;
-                JOptionPane.showConfirmDialog(null,"Esta seguro?","Alerta!",dialogButton);
-                if(dialogButton == JOptionPane.YES_OPTION){
+                JOptionPane.showConfirmDialog(null, "Esta seguro?", "Alerta!", dialogButton);
+                if (dialogButton == JOptionPane.YES_OPTION) {
                     setVisible(false);
                     setDefaultCloseOperation(EXIT_ON_CLOSE);
-                }
-                else if(dialogButton == JOptionPane.NO_OPTION){
+                } else if (dialogButton == JOptionPane.NO_OPTION) {
                     setVisible(true);
                     remove(dialogButton);
                     setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -112,35 +122,38 @@ public class MenuPOOng extends JFrame{
             }
         });
 
-        botonSalir.addActionListener( new ActionListener(){
-            public void actionPerformed(ActionEvent ev){
+        botonSalir.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ev) {
                 int dialogButton = JOptionPane.YES_NO_OPTION;
-                JOptionPane.showConfirmDialog(null,"Esta seguro?","Alerta!",dialogButton);
-                if(dialogButton == JOptionPane.YES_OPTION){
+                JOptionPane.showConfirmDialog(null, "Esta seguro?", "Alerta!", dialogButton);
+                if (dialogButton == JOptionPane.YES_OPTION) {
                     setVisible(false);
                     System.exit(0);
-                }
-                else if(dialogButton == JOptionPane.NO_OPTION){
+                } else if (dialogButton == JOptionPane.NO_OPTION) {
                     remove(dialogButton);
                 }
             }
         });
 
-        botonJugar.addActionListener( new ActionListener(){
-            public void actionPerformed(ActionEvent ev){
+        botonJugar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ev) {
                 setVisible(false);
                 MenuMaquinas menu = new MenuMaquinas();
                 menu.setVisible(true);
             }
         });
 
-        botonAbrir.addActionListener( new ActionListener(){
-            public void actionPerformed(ActionEvent ev){
+        botonAbrir.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ev) {
                 int returnVal = fileChooser.showOpenDialog(null);
-                if(returnVal == JFileChooser.APPROVE_OPTION){
+                if (returnVal == JFileChooser.APPROVE_OPTION) {
                     File file = fileChooser.getSelectedFile();
                     Poong poong = Poong.getPong();
-                    poong.abrir(file);
+                    try {
+                        poong.abrir(file);
+                    } catch (PoongException e) {
+                        System.out.println(e.getMessage());
+                    }
                     ZonaDeJuego zona = new ZonaDeJuego("",Poong.getPong());
                     zona.setVisible(true);
                 }

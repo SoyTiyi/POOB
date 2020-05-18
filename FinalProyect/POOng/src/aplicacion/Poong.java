@@ -432,7 +432,7 @@ public class Poong implements Serializable{
      * Este metodo es el encargado de guardar el juego en un archivo
      * @param file
      */
-    public void salve(File file){
+    public void salve(File file) throws PoongException{
         try{
             if(!file.exists()){
                 file.createNewFile();
@@ -442,7 +442,7 @@ public class Poong implements Serializable{
             out.close();
         }
         catch(Exception e){
-            System.out.println(e.toString());
+            throw new PoongException(PoongException.ERROR_AL_SALVAR);
         }
     }
 
@@ -450,7 +450,7 @@ public class Poong implements Serializable{
      * Este metodo es el encargado de abrir el juego
      * @param file
      */
-    public void abrir(File file){
+    public void abrir(File file) throws PoongException{
         try{
             if(!file.exists()){
                 file.createNewFile();
@@ -459,7 +459,7 @@ public class Poong implements Serializable{
             poong = (Poong) inp.readObject();
         }
         catch(Exception e){
-            System.out.println(e.getMessage());
+            throw new PoongException(PoongException.ERROR_AL_ABRIR);
         }
     }  
 
