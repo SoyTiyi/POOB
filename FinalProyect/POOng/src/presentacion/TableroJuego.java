@@ -26,7 +26,6 @@ public class TableroJuego extends JPanel{
     private String ruta2;
     private int lateral;
     private Poong poong;
-    private ImageIcon imgEstrellita;
     private ImageIcon imgIcon;
     private ImageIcon imgPelota;
     private JLabel bloque;
@@ -60,7 +59,6 @@ public class TableroJuego extends JPanel{
         if(modo.equals("dos")){
             ImageIcon imagePlaUno = new ImageIcon(getClass().getResource(ruta1));
             ImageIcon imagePlaDos = new ImageIcon(getClass().getResource(ruta2));
-            imgEstrellita = new ImageIcon(getClass().getResource("images/premio.png"));
             imgIcon = new ImageIcon(getClass().getResource("images/objetivo.png"));
             imgPelota = new ImageIcon(getClass().getResource("images/pelota.png"));
             imgBloque = new ImageIcon(getClass().getResource("images/bloque.png"));
