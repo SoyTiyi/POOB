@@ -83,6 +83,7 @@ public class Phantom extends Premio{
 
     /**
      * Este metodo nos indica si tiene la pelota la ventaja de fantasma
+     * @return phantom
      */
     @Override
     public boolean getPhantom(){

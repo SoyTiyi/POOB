@@ -216,6 +216,7 @@ public class Pelota implements Serializable{
 
     /**
      * Este metodono nos devuelve el booleano que nos infica si la raqueta dps debe de estar congelada
+     * @return golpeadaRa2
      */
     public boolean getGolpeada2(){
         return golpeadaRa2;
@@ -231,6 +232,7 @@ public class Pelota implements Serializable{
 
     /**
      * Este metodo nos hace set en la variable phantom
+     * @param phantom
      */
     public void setPhantom(boolean phantom){
         this.phantom=phantom;
@@ -238,6 +240,7 @@ public class Pelota implements Serializable{
 
     /**
      * Este metodo nos devuevle si la raqueta uno tiene el poder de phantom
+     * @return firstPhantom
      */
     public boolean getFirstPhan(){
         return firstPhantom;
@@ -245,6 +248,7 @@ public class Pelota implements Serializable{
 
     /**
      * Este metodo nos devuelve si la raqueta dos tiene el poder de phantom
+     * @return secondPhantom
      */
     public boolean getSecondPhan(){
         return secondPhantom;
@@ -252,6 +256,7 @@ public class Pelota implements Serializable{
 
     /**
      * Este metodo nos hace set a la varible firstPhantom
+     * @param firstPhantom
      */
     public void setFirstPhantom(boolean firstPhantom){
         this.firstPhantom=firstPhantom;
@@ -259,6 +264,7 @@ public class Pelota implements Serializable{
 
     /**
      * Este metodo nos hace set a la variable secondPhantom
+     * @param secondPhantom
      */
     public void setSecondPhantom(boolean secondPhantom){
         this.secondPhantom=secondPhantom;

@@ -201,6 +201,7 @@ public class Raqueta implements Serializable {
 
     /**
      * Este metodo nos hace set a la variable inmunidad
+     * @param inmunidad
      */
     public void setInmunidad(boolean inmunidad){
         this.inmunidad=inmunidad;
