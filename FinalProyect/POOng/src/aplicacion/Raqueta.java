@@ -116,7 +116,6 @@ public class Raqueta implements Serializable {
                 cont=0;
             }
             if(restMovilidad){
-                System.out.println(contMovilidad);
                 if(contMovilidad%3==0){
                     if(contMovilidad==3000){contMovilidad=0;restMovilidad=false;}
                     else{

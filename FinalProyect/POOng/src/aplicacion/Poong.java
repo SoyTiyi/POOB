@@ -46,7 +46,9 @@ public class Poong implements Serializable{
         Dimension d = t.getScreenSize();
         pelota = new Pelota(0,0);
         raqueta1 = new Raqueta(8,100);
+        raqueta1.setInmunidad(true);
         raqueta2 = new Raqueta((int)d.getWidth()/2+9,100);
+        raqueta2.setInmunidad(true);
         bloque = new Bloque(360,360);
         yEstre = random.nextInt(391-1); yOb1 = random.nextInt(391-1); yOb2 = random.nextInt(391-1);
         preparePremios();
@@ -54,7 +56,7 @@ public class Poong implements Serializable{
         premio = premios.get(index);
         objetivoUno = new Objetivo(20, yOb1);
         objetivoDos = new Objetivo(700, yOb2);
-        premio.setY(yEstre); objetivoUno.setY(yOb1); objetivoDos.setY(yOb2);
+        premio.setY(yEstre);
         esperaObjUno = (int) random.nextInt(5000)+10000; esperaObjDos = (int) random.nextInt(5000)+10000;
         esperaPremio=(int) random.nextInt(5000)+5000;
     }
@@ -103,6 +105,7 @@ public class Poong implements Serializable{
      * Este metodo es el encargado en el movimiento de los objetos y te los choques
      */
     public void move(){    
+        System.out.println(velocidad);
         contPremio++; contObjUno++; contObjDos++; contPro++; contTres++;
         pelota.mover(choque(raqueta1.getRaqueta()),choque(raqueta2.getRaqueta()));
         removeProgesive();
