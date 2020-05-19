@@ -14,7 +14,6 @@ public class ZonaDeJuego extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JLabel backGround;
-    private String modo;
     private TableroJuego tablero;
     private Timer timer, actualizarVelocidad;
     private Poong poong;
@@ -26,7 +25,6 @@ public class ZonaDeJuego extends JFrame {
      */
     public ZonaDeJuego(String modo, Poong poong) {
         this.poong = poong;
-        this.modo = modo;
         prepareElementos();
         prepareAcciones();
         prepareTablero();
