@@ -26,6 +26,9 @@ public class Pelota implements Serializable{
     private boolean golpeadaRa1;
     private boolean golpeadaRa2;
     private int playerCong;
+    private boolean phantom;
+    private boolean firstPhantom;
+    private boolean secondPhantom;
 
     /**
      * Este es el constructor de la clase pelota
@@ -216,5 +219,65 @@ public class Pelota implements Serializable{
      */
     public boolean getGolpeada2(){
         return golpeadaRa2;
+    }
+
+    /**
+     * Este metodo nos retorna si la pelota tiene la habilidad de phantom
+     * @return phantom
+     */
+    public boolean getPhantom(){
+        return phantom;
+    }
+
+    /**
+     * Este metodo nos hace set en la variable phantom
+     */
+    public void setPhantom(boolean phantom){
+        this.phantom=phantom;
+    }
+
+    /**
+     * Este metodo nos devuevle si la raqueta uno tiene el poder de phantom
+     */
+    public boolean getFirstPhan(){
+        return firstPhantom;
+    }
+
+    /**
+     * Este metodo nos devuelve si la raqueta dos tiene el poder de phantom
+     */
+    public boolean getSecondPhan(){
+        return secondPhantom;
+    }
+
+    /**
+     * Este metodo nos hace set a la varible firstPhantom
+     */
+    public void setFirstPhantom(boolean firstPhantom){
+        this.firstPhantom=firstPhantom;
+    }
+
+    /**
+     * Este metodo nos hace set a la variable secondPhantom
+     */
+    public void setSecondPhantom(boolean secondPhantom){
+        this.secondPhantom=secondPhantom;
+    }
+
+    /**
+     * Este metodo evalua la habilidad phantom
+     */
+    public void phantom(){
+        if(secondPhantom || firstPhantom){
+            if(firstPhantom && getPersonPush()==1 && x==340){
+                setPositionY(random.nextInt(390-1));
+                firstPhantom=false;
+            }
+
+            if(secondPhantom && getPersonPush()==2 && x==390){
+                setPositionY(random.nextInt(390-1));
+                secondPhantom=false;
+            }
+        }
     }
 }

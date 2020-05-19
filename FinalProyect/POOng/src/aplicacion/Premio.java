@@ -159,4 +159,11 @@ public class Premio implements Serializable{
     public boolean getCongelacion(){
         return false;
     }
+
+    /**
+     * Este metodo nos indica si tiene la pelota la ventaja de fantasma
+     */
+    public boolean getPhantom(){
+        return false;
+    }
 }

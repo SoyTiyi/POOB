@@ -53,7 +53,7 @@ public class Poong implements Serializable{
         yEstre = random.nextInt(391-1); yOb1 = random.nextInt(391-1); yOb2 = random.nextInt(391-1);
         preparePremios();
         int index = (int) random.nextInt(8)+0;
-        premio = premios.get(index);
+        premio = premios.get(5);
         objetivoUno = new Objetivo(20, yOb1);
         objetivoDos = new Objetivo(700, yOb2);
         premio.setY(yEstre);
@@ -122,6 +122,7 @@ public class Poong implements Serializable{
         raqueta2.moveR2();
         veloProgresiva();
         evalCongelacion();
+        pelota.phantom();
     }
 
     /**
@@ -207,6 +208,7 @@ public class Poong implements Serializable{
     }
 
     /**
+     * 
      * Este metodo nos describe que pasa cuando el segundo jugador es golpeado por un bloque
      */
     private void hitPlayerTwo(){
@@ -346,6 +348,7 @@ public class Poong implements Serializable{
             raqueta2.setMovilidad(premio.getRestriccionMovilidad());
             raqueta1.setInmunidad(premio.getInmunidad());
             pelota.setCongelacion(premio.getCongelacion()); if(premio.getCongelacion()){pelota.numberCongelacion(2);}
+            pelota.setPhantom(premio.getPhantom()); if(pelota.getPhantom()) pelota.setFirstPhantom(true);
         }
         else{
             velocidad=premio.getVelocidad();
@@ -357,7 +360,7 @@ public class Poong implements Serializable{
             raqueta1.setMovilidad(premio.getRestriccionMovilidad());
             raqueta2.setInmunidad(premio.getInmunidad());
             pelota.setCongelacion(premio.getCongelacion()); if(premio.getCongelacion()){pelota.numberCongelacion(1);}
-
+            pelota.setPhantom(premio.getPhantom()); if(pelota.getPhantom()) pelota.setSecondPhantom(true);
         }
     }
 

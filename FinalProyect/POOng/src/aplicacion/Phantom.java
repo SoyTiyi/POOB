@@ -12,6 +12,9 @@ public class Phantom extends Premio{
 
     private static final long serialVersionUID = 1L;
     private TenerImagen imagen = new TenerImagen();
+    private int velocidad;
+    private int vida;
+    private boolean phantom;
 
     /**
      * Este es el constructor del Objeto Phantom
@@ -31,5 +34,58 @@ public class Phantom extends Premio{
         ImageIcon image = new ImageIcon(imagen.getClass().getResource("images/phantom.png"));
         return image;
     }
+
+    /**
+     * Este metodo nos evalua las ventajas de golpear el premio
+     * @param velocidad
+     * @param vida
+     */
+    @Override 
+    public void choque(int velocidad, int vida){
+        this.velocidad=velocidad;
+        this.vida=vida;
+        actualizar();
+    }
+
+    /**
+     * Este metodo nos actualiza los valores dependiendo del premio
+     */
+    @Override
+    public void actualizar(){
+        phantom=true;
+    }
     
+    /**
+     * Este metodo nos retorna la velocidad
+     * @return velocidad
+     */
+    @Override
+    public int getVelocidad(){
+        return velocidad;
+    }
+
+    /**
+     * Este metodo nos retorna la nueva vida del jugador que la polpeo
+     * @return vida
+     */
+    @Override
+    public int getVida(){
+        return vida;
+    }
+
+    /**
+     * Este metodo devuelve un booleano que dice si el contricante esta inmovilizado
+     * @return cambiaRaDos
+     */
+    public boolean getRestriccionEnemigo(){
+        return true;
+    }
+
+    /**
+     * Este metodo nos indica si tiene la pelota la ventaja de fantasma
+     */
+    @Override
+    public boolean getPhantom(){
+        return phantom;
+    }
 }
