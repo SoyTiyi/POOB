@@ -56,20 +56,18 @@ public class TableroJuego extends JPanel{
      * Este metodo prepara las imagenes
      */
     private void prepareImagenes(){
-        if(modo.equals("dos")){
-            ImageIcon imagePlaUno = new ImageIcon(getClass().getResource(ruta1));
-            ImageIcon imagePlaDos = new ImageIcon(getClass().getResource(ruta2));
-            imgIcon = new ImageIcon(getClass().getResource("images/objetivo.png"));
-            imgPelota = new ImageIcon(getClass().getResource("images/pelota.png"));
-            imgBloque = new ImageIcon(getClass().getResource("images/bloque.png"));
-            player1 = new JLabel(imagePlaUno); player1.setBounds(8, 100, 61 , 80); add(player1);
-            player2 = new JLabel(imagePlaDos); player2.setBounds(lateral, 100, 61, 80); add(player2);
-            estrellita = new JLabel(poong.getPremio().getImage()); estrellita.setBounds(poong.getPremio().getX(), poong.getPremio().getY(), 20, 20); add(estrellita);
-            objetivoUno = new JLabel(imgIcon); objetivoUno.setBounds(poong.getObjUno().getX(), poong.getObjUno().getY(), 20, 20); add(objetivoUno);
-            objetivoDos = new JLabel(imgIcon); objetivoDos.setBounds(poong.getObjDos().getX(), poong.getObjDos().getY(), 20, 20); add(objetivoDos);
-            pelota = new JLabel(imgPelota); pelota.setBounds(poong.getPelota().getX(),poong.getPelota().getY(),20,20); add(pelota);
-            bloque = new JLabel(imgBloque); bloque.setBounds(poong.getBloque().getX(),poong.getBloque().getY(),20,20); add(bloque);
-        }
+        ImageIcon imagePlaUno = new ImageIcon(getClass().getResource(ruta1));
+        ImageIcon imagePlaDos = new ImageIcon(getClass().getResource(ruta2));
+        imgIcon = new ImageIcon(getClass().getResource("images/objetivo.png"));
+        imgPelota = new ImageIcon(getClass().getResource("images/pelota.png"));
+        imgBloque = new ImageIcon(getClass().getResource("images/bloque.png"));
+        player1 = new JLabel(imagePlaUno); player1.setBounds(8, 100, 61 , 80); add(player1);
+        player2 = new JLabel(imagePlaDos); player2.setBounds(lateral, 100, 61, 80); add(player2);
+        estrellita = new JLabel(poong.getPremio().getImage()); estrellita.setBounds(poong.getPremio().getX(), poong.getPremio().getY(), 20, 20); add(estrellita);
+        objetivoUno = new JLabel(imgIcon); objetivoUno.setBounds(poong.getObjUno().getX(), poong.getObjUno().getY(), 20, 20); add(objetivoUno);
+        objetivoDos = new JLabel(imgIcon); objetivoDos.setBounds(poong.getObjDos().getX(), poong.getObjDos().getY(), 20, 20); add(objetivoDos);
+        pelota = new JLabel(imgPelota); pelota.setBounds(poong.getPelota().getX(),poong.getPelota().getY(),20,20); add(pelota);
+        bloque = new JLabel(imgBloque); bloque.setBounds(poong.getBloque().getX(),poong.getBloque().getY(),20,20); add(bloque);
     }
 
     /**
@@ -121,11 +119,9 @@ public class TableroJuego extends JPanel{
      * Este metodo prepara el modo de juego
      */
     private void modo(){
-        if(poong.getModo().equals("dos")){
-            modo=poong.getModo();
-            listaPersonajes.add(poong.getJugadorUno());
-            listaPersonajes.add(poong.getJugadorDos());
-        }
+        modo=poong.getModo();
+        listaPersonajes.add(poong.getJugadorUno());
+        listaPersonajes.add(poong.getJugadorDos());
     }
     /**
      * Este metodo nos permite preparar los elemntos los cuales seran las raquetas y las pelotas

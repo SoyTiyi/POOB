@@ -44,12 +44,7 @@ public class MenuPersonajes extends JFrame{
         prepareBotones();
         prepareElementos();
         prepareOk();
-        if(tipo.equals("")){
-            dosPlayers();
-        }
-        else{
-
-        }
+        dosPlayers();
         prepareAcciones();
     }
 
@@ -365,8 +360,14 @@ public class MenuPersonajes extends JFrame{
                     setVelocidad();
                     prepareNumPlayer1();
                     setVisible(false);
-                    Controles controles = new Controles(tipo);
-                    controles.setVisible(true);
+                    if(tipo=="dos" || tipo=="uno"){
+                        Controles controles = new Controles(tipo);
+                        controles.setVisible(true);
+                    }
+                    else{
+                        ZonaDeJuego zona = new ZonaDeJuego(tipo,Poong.getPong());
+                        zona.setVisible(true);
+                    }
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Error");
@@ -423,7 +424,7 @@ public class MenuPersonajes extends JFrame{
      * Metodo principal
      */
     public static void main(String[] args){
-        MenuPersonajes menu = new MenuPersonajes("");
+        MenuPersonajes menu = new MenuPersonajes("dos");
         menu.setVisible(true);
     }
 

@@ -117,8 +117,9 @@ public class MenuMaquinas extends JFrame{
             public void actionPerformed(ActionEvent ev){
                 Poong poong = Poong.getPong();
                 poong.setModo("uno");
+                poong.setModoRaquetas();
                 setVisible(false);
-                MenuTipoMaquina menu = new MenuTipoMaquina();
+                MenuPersonajes menu = new MenuPersonajes("uno");
                 menu.setVisible(true);
             }
         });
@@ -127,8 +128,9 @@ public class MenuMaquinas extends JFrame{
             public void actionPerformed(ActionEvent ev){
                 Poong poong = Poong.getPong();
                 poong.setModo("cero");
+                poong.setModoRaquetas();
                 setVisible(false);
-                MenuTipoMaquina menu = new MenuTipoMaquina();
+                MenuPersonajes menu = new MenuPersonajes("cero");
                 menu.setVisible(true);
             }
         });
@@ -145,8 +147,9 @@ public class MenuMaquinas extends JFrame{
             public void actionPerformed(ActionEvent ev){
                 Poong poong = Poong.getPong();
                 poong.setModo("dos");
+                poong.setModoRaquetas();
                 setVisible(false);
-                MenuPersonajes menu = new MenuPersonajes("");
+                MenuPersonajes menu = new MenuPersonajes("dos");
                 menu.setVisible(true);
             }
         });

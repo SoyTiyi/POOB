@@ -46,9 +46,7 @@ public class Poong implements Serializable{
         Dimension d = t.getScreenSize();
         pelota = new Pelota(0,0);
         raqueta1 = new Raqueta(8,100);
-        raqueta1.setInmunidad(true);
         raqueta2 = new Raqueta((int)d.getWidth()/2+9,100);
-        raqueta2.setInmunidad(true);
         bloque = new Bloque(360,360);
         yEstre = random.nextInt(391-1); yOb1 = random.nextInt(391-1); yOb2 = random.nextInt(391-1);
         preparePremios();
@@ -59,6 +57,21 @@ public class Poong implements Serializable{
         premio.setY(yEstre);
         esperaObjUno = (int) random.nextInt(5000)+10000; esperaObjDos = (int) random.nextInt(5000)+10000;
         esperaPremio=(int) random.nextInt(5000)+5000;
+    }
+
+    /**
+     * Este metodo nos hace set en los modos de cada raqueta segun el modo de juego
+     */
+    public void setModoRaquetas(){
+        if(modo.equals("uno")){
+            raqueta1.setModo("manual"); raqueta2.setModo("maquina");
+        }
+        if(modo.equals("cero")){
+            raqueta1.setModo("maquina"); raqueta2.setModo("maquina");
+        }
+        if(modo.equals("dos")){
+            raqueta1.setModo("manual"); raqueta2.setModo("manual");
+        }
     }
 
     /**
@@ -104,10 +117,11 @@ public class Poong implements Serializable{
     /**
      * Este metodo es el encargado en el movimiento de los objetos y te los choques
      */
-    public void move(){    
+    public void move(){
         System.out.println(velocidad);
         contPremio++; contObjUno++; contObjDos++; contPro++; contTres++;
         pelota.mover(choque(raqueta1.getRaqueta()),choque(raqueta2.getRaqueta()));
+        setDirecciones();
         removeProgesive();
         pushPremio();
         pushBloque();
@@ -123,6 +137,14 @@ public class Poong implements Serializable{
         veloProgresiva();
         evalCongelacion();
         pelota.phantom();
+    }
+
+    /**
+     * Este metodo les envia las direcciones a las raquetas de como se esta moviendo la pelota
+     */
+    private void setDirecciones(){
+        raqueta1.setDireccionX(pelota.getDireccionX()); raqueta1.setDireccionY(pelota.getDireccionY());
+        raqueta2.setDireccionX(pelota.getDireccionX()); raqueta2.setDireccionY(pelota.getDireccionY());
     }
 
     /**

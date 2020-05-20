@@ -19,6 +19,9 @@ public class Raqueta implements Serializable {
     private boolean restMovilidad;
     private int contMovilidad=1;
     private boolean inmunidad;
+    private String modo;
+    private int xDireccion;
+    private int yDireccion;
     /**
      * Este es el constructor de muestra clase raqueta
      * @param x
@@ -39,6 +42,20 @@ public class Raqueta implements Serializable {
     }
 
     /**
+     * Este metodo nos hace set a la variable modo 
+     */
+    public void setModo(String modo){
+        this.modo=modo;
+    }
+
+    /**
+     * Este metodo nos retorna el modo en el que la raqueta 
+     */
+    public String getModo(){
+        return modo;
+    }
+
+    /**
      * Este metodo maneja la logica del movimiento de la raqueta1
      */
     public void moveR1(){
@@ -52,15 +69,22 @@ public class Raqueta implements Serializable {
                     if(contMovilidad==3000){restMovilidad=false; contMovilidad=0;}
                     else{
                         contMovilidad++;
-                        if(EventoTeclado.w && y>0){cont++; y--;}
-                        if(EventoTeclado.s && y<limiteY){cont++; y++;}
+                        if(!modo.equals("maquina")){
+                            if(EventoTeclado.w && y>0){cont++; y--;}
+                            if(EventoTeclado.s && y<limiteY){cont++; y++;}
+                        }
+                        else{moveR1Maquina();}
                     }
                 }
                 else{contMovilidad++;}
             }
             else{
-                if(EventoTeclado.w && y>0){cont++; y--;}
-                if(EventoTeclado.s && y<limiteY){cont++; y++;}
+                if(!modo.equals("maquina")){
+                    if(EventoTeclado.w && y>0){cont++; y--;}
+                    if(EventoTeclado.s && y<limiteY){cont++; y++;}
+                }
+                else{moveR1Maquina();}
+                
             }
         }
         else{
@@ -70,6 +94,20 @@ public class Raqueta implements Serializable {
             else{
                 espera++;
             }
+        }
+    }
+
+    /**
+     * Este metodo nos mueve la raqueta con movimiento R1 si esta es maquina
+     */
+    private void moveR1Maquina(){
+        if(xDireccion==-1 && yDireccion==1 && y<limiteY){
+            cont++;
+            y++;
+        }
+        if(xDireccion==-1 && yDireccion==-1 && y>0){
+            cont++;
+            y--;
         }
     }
 
@@ -120,15 +158,21 @@ public class Raqueta implements Serializable {
                     if(contMovilidad==3000){contMovilidad=0;restMovilidad=false;}
                     else{
                         contMovilidad++;
-                        if(EventoTeclado.up && y>0){cont++;y--;}
-                        if(EventoTeclado.down && y<limiteY){cont++;y++;}
+                        if(!modo.equals("maquina")){
+                            if(EventoTeclado.up && y>0){cont++;y--;}
+                            if(EventoTeclado.down && y<limiteY){cont++;y++;}
+                        }
+                        else{moveR2Maquina();}
                     }
                 }
                 else{ contMovilidad++;}
             }
             else{
-                if(EventoTeclado.up && y>0){cont++;y--;}
-                if(EventoTeclado.down && y<limiteY){cont++;y++;}
+                if(!modo.equals("maquina")){
+                    if(EventoTeclado.up && y>0){cont++;y--;}
+                    if(EventoTeclado.down && y<limiteY){cont++;y++;}
+                }
+                else{moveR2Maquina();}
             }
         }
         else{
@@ -138,6 +182,20 @@ public class Raqueta implements Serializable {
             else{
                 espera++;
             }
+        }
+    }
+
+    /**
+     * Este metodo nos mueve la raqueta con movimiento R2 si esta esta en maquina
+     */
+    private void moveR2Maquina(){
+        if(xDireccion==1 && yDireccion==1 && y>0){
+            cont++;
+            y--;
+        }
+        if(xDireccion==1 && yDireccion==-1 && y<limiteY){
+            cont++;
+            y++;
         }
     }
 
@@ -205,5 +263,19 @@ public class Raqueta implements Serializable {
      */
     public void setInmunidad(boolean inmunidad){
         this.inmunidad=inmunidad;
+    }
+
+    /**
+     * Este metodo hace set a la direccion X en donde se deberia mover la raqueta si esta en un modo maquina
+     */
+    public void setDireccionX(int xDireccion){
+        this.xDireccion=xDireccion;
+    }
+
+    /**
+     * Este metodo hace set a la deireccion Y en donde se deberia mover la raqueta si esta en un modo maquina
+     */
+    public void setDireccionY(int yDireccion){
+        this.yDireccion=yDireccion;
     }
 }

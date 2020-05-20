@@ -27,10 +27,10 @@ public class Controles extends JFrame{
     public Controles(String modo){
         this.modo=modo;
         prepareElementos();
-        if(modo.equals("")){
+        if(modo.equals("dos")){
             prepareElementosDos();
         }
-        else{
+        if(modo.equals("uno")){
             prepareElementosUno();
         }
         prepareOk();

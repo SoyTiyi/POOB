@@ -80,11 +80,21 @@ public class Pelota implements Serializable{
         return moveX;
     }
 
+    
     /**
-     * Este metodo cambia la variable que se le suma al cambio de la posicion x y y 
+     * Este metodo nos retorna el sumando en el eje X
+     * @return moveX
      */
-    public void cambiarEjes(){
-        moveX++; moveY++;
+    public int getDireccionX(){
+        return moveX;
+    }
+
+    /**
+     * Este metodo nos retorna el sumando en el eje Y
+     * @return moveY
+     */
+    public int getDireccionY(){
+        return moveY;
     }
 
     /**
