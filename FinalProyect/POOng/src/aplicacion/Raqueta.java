@@ -109,6 +109,12 @@ public class Raqueta implements Serializable {
             cont++;
             y--;
         }
+        if(xDireccion==1 && y<150){
+            y++;
+        }
+        if(xDireccion==1 && y>150){
+            y--;
+        }
     }
 
     /**
@@ -189,13 +195,19 @@ public class Raqueta implements Serializable {
      * Este metodo nos mueve la raqueta con movimiento R2 si esta esta en maquina
      */
     private void moveR2Maquina(){
-        if(xDireccion==1 && yDireccion==1 && y>0){
+        if(xDireccion==1 && yDireccion==1 && y<limiteY){
+            cont++;
+            y++;
+        }
+        if(xDireccion==1 && yDireccion==-1 && y>0){
             cont++;
             y--;
         }
-        if(xDireccion==1 && yDireccion==-1 && y<limiteY){
-            cont++;
+        if(xDireccion==-1 && y<150){
             y++;
+        }
+        if(xDireccion==-1 && y>150){
+            y--;
         }
     }
 

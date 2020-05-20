@@ -15,7 +15,6 @@ public class TableroJuego extends JPanel{
      * Este es el encargado de dibujar el tablero en donde se 
      */
     private ArrayList<Integer> listaPersonajes = new ArrayList<Integer>();
-    private String modo;
     private JLabel player1;
     private JLabel player2;
     private JLabel estrellita;
@@ -119,7 +118,6 @@ public class TableroJuego extends JPanel{
      * Este metodo prepara el modo de juego
      */
     private void modo(){
-        modo=poong.getModo();
         listaPersonajes.add(poong.getJugadorUno());
         listaPersonajes.add(poong.getJugadorDos());
     }
