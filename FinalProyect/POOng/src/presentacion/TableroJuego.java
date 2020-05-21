@@ -132,8 +132,11 @@ public class TableroJuego extends JPanel{
         setSize(d.width/2+45,d.height/2+40);
         setLayout(null);
         ImageIcon imgPizza = new ImageIcon(getClass().getResource("images/fortalez.png"));
+        ImageIcon imgCohete = new ImageIcon(getClass().getResource("images/cohete.png"));
         JLabel vidaUno = new JLabel(imgPizza); vidaUno.setBounds(115,13,20,20); add(vidaUno);
-        JLabel vidaDos = new JLabel(imgPizza); vidaDos.setBounds(630, 13, 20, 20); add(vidaDos);
+        JLabel vidaDos = new JLabel(imgPizza); vidaDos.setBounds(600, 13, 20, 20); add(vidaDos);
+        JLabel multUno = new JLabel(imgCohete); multUno.setBounds(20,13,20,20); add(multUno);
+        JLabel multDos = new JLabel(imgCohete); multDos.setBounds(690,13,20,20); add(multDos);
     }
 
     /**
@@ -156,15 +159,14 @@ public class TableroJuego extends JPanel{
         g.drawLine(370, 0, 370, 700);
         g.drawString(poong.getPelota().getScore1(), 250, 30);
         g.drawString(poong.getPelota().getScore2(), 480, 30);
+        g.drawString((Integer.parseInt(poong.getPelota().getScore1())*poong.getRaquetaUno().getVida())+"",70,30);
+        g.drawString((Integer.parseInt(poong.getPelota().getScore2())*poong.getRaquetaDos().getVida())+"",645,30);
         pelota.setLocation(poong.getPelota().getX(), poong.getPelota().getY());
         g.drawString(poong.getRaquetaUno().getVida()+"",150,30);
-        g.drawString(poong.getRaquetaDos().getVida()+"",580,30);
-        //g.fill((Shape) poong.getPelota().getPelota());
+        g.drawString(poong.getRaquetaDos().getVida()+"",550,30);
         controlEstrellita();
         controlObjetivoUno(); controlObjetivoDos();
         controlBloque();
-        //g.fill((Shape) raqueta1.getRaqueta());
-        //g.fill((Shape) raqueta2.getRaqueta());
     }
 
     /**

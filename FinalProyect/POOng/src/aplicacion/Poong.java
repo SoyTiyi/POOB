@@ -121,6 +121,16 @@ public class Poong implements Serializable{
         System.out.println(velocidad);
         contPremio++; contObjUno++; contObjDos++; contPro++; contTres++;
         pelota.mover(choque(raqueta1.getRaqueta()),choque(raqueta2.getRaqueta()));
+        raqueta1.moveR1();
+        raqueta2.moveR2();
+        pelota.phantom();
+        eventosJuego();
+    }
+
+    /**
+     * Este metodo nos actualiza las interacciones entre objetos
+     */
+    private void eventosJuego(){
         setDirecciones();
         removeProgesive();
         pushPremio();
@@ -132,19 +142,18 @@ public class Poong implements Serializable{
         timeObjetoUno();
         hitObjetivoDos();
         timeObjetivoDos();
-        raqueta1.moveR1();
-        raqueta2.moveR2();
         veloProgresiva();
         evalCongelacion();
-        pelota.phantom();
     }
 
     /**
      * Este metodo les envia las direcciones a las raquetas de como se esta moviendo la pelota
      */
     private void setDirecciones(){
-        raqueta1.setDireccionX(pelota.getDireccionX()); raqueta1.setDireccionY(pelota.getDireccionY());
-        raqueta2.setDireccionX(pelota.getDireccionX()); raqueta2.setDireccionY(pelota.getDireccionY());
+        int direccionX = pelota.getDireccionX();
+        int direccionY = pelota.getDireccionY();
+        raqueta1.setDireccionX(direccionX); raqueta1.setDireccionY(direccionY);
+        raqueta2.setDireccionX(direccionX); raqueta2.setDireccionY(direccionY);
     }
 
     /**
@@ -271,12 +280,13 @@ public class Poong implements Serializable{
      * Este metodo nos reinicia la velocidad cuando ya se choca al otro jugador despues de haber golpeado el premio Flash, el cual acelera la pelota
      */
     private void removeProgesive(){
-        if(pelota.getPersonPush()==1 && act2){
+        int num = pelota.getPersonPush();
+        if(num==1 && act2){
             act2=false;
             velProgre=false;
             velocidad=veloAnterior;
         }
-        if(pelota.getPersonPush()==2 && act1){
+        if(num==2 && act1){
             act1=false;
             velProgre=false;
             velocidad=veloAnterior;
