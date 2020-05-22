@@ -154,13 +154,4 @@ public class MenuMaquinas extends JFrame{
             }
         });
     }
-
-    /**
-     * Este metodo nos permite visualizar la ventana 
-     * @param args
-     */
-    public static void main(String[] args){
-        MenuMaquinas menu = new MenuMaquinas();
-        menu.setVisible(true);
-    }
 }

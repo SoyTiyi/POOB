@@ -182,13 +182,4 @@ public class Controles extends JFrame{
             }
         });
     }
-    
-    /**
-     * Este metodo nos visualiza la ventana 
-     * @param args
-     */
-    public static void main(String[] args){
-        Controles controles = new Controles("hola");
-        controles.setVisible(true);
-    }
 }

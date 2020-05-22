@@ -419,13 +419,4 @@ public class MenuPersonajes extends JFrame{
         else if(radio11.isEnabled()) poong.setPlayerDos(5);
         else if(radio12.isEnabled()) poong.setPlayerDos(6);
     }
-
-    /**
-     * Metodo principal
-     */
-    public static void main(String[] args){
-        MenuPersonajes menu = new MenuPersonajes("dos");
-        menu.setVisible(true);
-    }
-
 }

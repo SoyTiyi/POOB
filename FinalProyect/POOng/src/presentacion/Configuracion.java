@@ -80,12 +80,4 @@ public class Configuracion extends JFrame{
             }
         });
     }
-    /**
-     * Este metodo nos previsualiza la ventana
-     * @param args
-     */
-    public static void main(String[] args){
-        Configuracion configuracion = new Configuracion();
-        configuracion.setVisible(true);
-    }
 }

@@ -168,13 +168,4 @@ public class ZonaDeJuego extends JFrame {
 
         
     }
-
-    /**
-     * 
-     * Metodo principal para mostrar la ventana
-     */
-    public static void main(String[] args){
-        ZonaDeJuego zona = new ZonaDeJuego("",Poong.getPong());
-        zona.setVisible(true);
-    }
 }
